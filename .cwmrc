@@ -1,0 +1,66 @@
+# Unmap keybinding
+bind SM-h unmap
+bind M-m  unmap
+bind M-i  unmap
+bind SM-i unmap
+bind M-l  unmap
+bind SM-l unmap
+bind M-k  unmap
+bind SM-k unmap
+bind M-j  unmap
+bind M-h  unmap
+bind M-g  unmap
+bind M-/  unmap
+bind C-/  unmap
+
+
+# New map keybinding
+bind 4-p  exec
+bind 4-/  exec_wm
+bind 4-'  ssh
+bind 4-f  fullscreen
+bind 4-h  hide
+bind 4-d  delete
+bind 4-l  lower
+bind 4-r  raise
+bind 4-m  maximize
+bind S4-m vmaximize
+bind S4-r restart
+
+
+# Enable sticky mode
+sticky group mode
+
+# Set look and field
+fontname "Consalas 14"
+
+# Set groups
+autogroup 3 "urxvt,URxvt"
+autogroup 2 "firefox,WWW"
+autogroup 2 "chromium-browser,WWW"
+autogroup 2 "opera,WWW"
+autogroup 2 "emacs,GNU Emacs"
+
+# Set application menu
+command gimp     gimp
+command emacs    emacs
+command skype    skype
+command firefox  firefox
+command chromium chromium-browser
+command htop     "urxvt -e htop"
+
+ignore xclock
+
+borderwidth 2
+# color activeborder color
+# color inactiveborder color
+# color font color
+# color selfont color
+# color groupborder color
+# color inactiveborder color
+# color menubg color
+# color menufg color
+# color urgencyborder color
+# color ungroupborder color
+
+gap top
