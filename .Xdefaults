@@ -5,7 +5,6 @@ URxvt.shading: 30
 
 URxvt.cursorBlink: 1
 
-!URxvt.font: -xos4-terminus-medium-r-.-.-18-180-.-.-.-.-iso10646-1
 URxvt.font: xft:Consolas:normal:size=14
 URxvt.boldFont: xft:Consolas:bold:size=14
 URxvt.italicFont: xft:Consolas:italic:size=14
