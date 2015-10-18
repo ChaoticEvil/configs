@@ -5,23 +5,8 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/plugins/")
 
-;; Avialable themes
-(set 'darcula-theme 'darcula)
-(set 'tango-theme 'tango)
-(set 'light-soap-theme 'light-soap)
-(set 'zen-and-art-theme 'zen-and-art)
-(set 'zenburn-theme 'zenburn)
-(set 'jazz-theme 'jazz)
-(set 'ample-zen-theme 'ample-zen)
-(set 'ample-theme 'ample)
-(load-theme 'ample t t)
-(load-theme 'ample-flat t t)
-(load-theme 'ample-light t t)
-;; choose one to enable
-;;(enable-theme 'ample)
-
-(set 'current-theme 'ample) ;; Set current theme
-(set 'current-font "Consolas 14") ;;  Set default font
+(set 'current-theme 'zenburn) ;; Set current theme
+(set 'current-font "IosevkaCC 14") ;;  Set default font
 (if (equal system-type 'darwin)
     (set 'current-font "Monaco 13"))
 
@@ -42,7 +27,7 @@
 
 ;; Настройка границ
 (fringe-mode '(8 . 0)) ;; органичиталь текста только слева
-;; (setq-default indicate-empty-lines t) ;; отсутствие строки выделить глифами рядом с полосой с номером строки
+(setq-default indicate-empty-lines t) ;; отсутствие строки выделить глифами рядом с полосой с номером строки
 (setq-default indicate-buffer-boundaries 'left) ;; индикация только слева
 
 ;; Отображаем в mode-line название редактируемого файла, текущее время и размер файла
@@ -179,10 +164,6 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-;; Активируем sr-speedbar и биндим на C-f12
-(require 'sr-speedbar)
-(global-set-key (kbd "C-<f12>") 'sr-speedbar-toggle)
-
 ;; Magit
 (global-set-key (kbd "C-<f6>") 'magit-status)
 
@@ -193,10 +174,6 @@
 (ido-everywhere                t)
 (setq ido-vitrual-buffers      t)
 (setq ido-enable-flex-matching t)
-
-;; Плагин Dired
-(require 'dired)
-(setq dired-recursive-deletes 'top) ;; чтобы можно было непустые директории удалять...
 
 ;; Плагин Linum
 (require 'linum)
@@ -274,11 +251,6 @@
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
 (setq org-src-fontify-natively 't)
 
-;; Skype
-;; (require 'skype)
-;; (setq skype--my-user-handle "dr.brduch")
-
-
 ;; Javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
@@ -295,20 +267,3 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Plugins settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(delete-selection-mode t)
- '(org-CUA-compatible nil)
- '(org-replace-disputed-keys nil)
- '(recentf-mode t)
- '(shift-select-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
