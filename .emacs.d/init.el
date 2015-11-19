@@ -1,12 +1,11 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Добаляем необходимые пути
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/plugins/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ;; Подтягиваем темы
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/plugins/") ;; Не нужно, так как юзаю репы elpa/melpa
 
 (set 'current-theme 'zenburn) ;; Set current theme
-(set 'current-font "IosevkaCC 14") ;;  Set default font
+(set 'current-font "Consolas 14") ;;  Set default font
 (if (equal system-type 'darwin)
     (set 'current-font "Monaco 13"))
 
@@ -46,12 +45,8 @@
 
 ;; Настройка отступов
 (setq-default indent-tabs-mode t) ;; отключить возможность ставить отступы TAB'ом
-(setq-default tab-width 4)
-(setq tab-width 4)
-;;(setq-default tab-width          4) ;; ширина табуляции - 4 пробельных символа
-;;(setq-default c-basic-offset     4)
-;;(setq-default standart-indent    4) ;; стандартная ширина отступа - 4 пробельных символа
-;;(setq-default lisp-body-indent   4) ;; сдвигать Lisp-выражения на 4 пробельных символа
+(setq-default tab-width 4) ;; ширина табуляции - 4 пробельных символа
+(setq tab-width 4) ;; ширина табуляции - 4 пробельных символа
 (global-set-key (kbd "RET") 'newline-and-indent) ;; при нажатии Enter перевести каретку и сделать отступ
 (setq lisp-indent-function  'common-lisp-indent-function)
 
@@ -67,10 +62,8 @@
 (setq search-highlight        t)
 (setq query-replace-highlight t)
 
-;; Bookmarks map
-;;(global-set-key (kbd "C-b") 'bookmark-set)
-;;(global-set-key (kbd "M-b") 'bookmark-jump)
-;;(global-set-key (kbd "<f5>") 'bookmark-bmenu-list)
+;; Возможность переопределять выделенный фрагмент текста
+(delete-selection-mode t)
 
 ;; Фолдинг
 ;;(defvar hs-special-modes-alist
@@ -86,19 +79,7 @@
 ;; (global-set-key (kbd "C-<f9>") 'hs-hide-all)
 ;; (global-set-key (kbd "C-S-<f9>") 'hs-show-all)
 
-;; Удаляем пробелы в конце строк при сохранении файла
-;;(defun format-current-buffer()
-;;    (indent-region (point-min) (point-max)))
-;;(defun untabify-current-buffer()
-;;    (if (not indent-tabs-mode)
-;;        (untabify (point-min) (point-max)))
-;;    nil)
-;;;(add-to-list 'write-file-functions 'format-current-buffer)
-;;;(add-to-list 'write-file-functions 'untabify-current-buffer)
-;;(add-to-list 'write-file-functions 'delete-trailing-whitespace)
-
-;; Если используется современная версия emcas
-;; Используем melpa-репозиторий плагинов
+;; Если используется современная версия emcas - используем melpa-репозиторий плагинов
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
@@ -112,16 +93,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Look and Feel settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Electric-modes settings
 (electric-pair-mode    1) ;; автозакрытие {},[],() с переводом курсора внутрь скобок
-(electric-indent-mode -1) ;; отключить индентацию  electric-indent-mod'ом (default in Emacs-24.4)
+(electric-indent-mode -1) ;; отключить индентацию electric-indent-mod'ом (default in Emacs-24.4)
 
-;; Show-paren-mode settings
 (show-paren-mode t) ;; включить выделение выражений между {},[],()
 (setq show-paren-style 'expression) ;; выделить цветом выражения между {},[],()
 
-;; Отключаем компоненты GUI
 (tooltip-mode      -1) ;; отключаем подсказки
 (menu-bar-mode     -1) ;; отключаем графическое меню
 (tool-bar-mode     -1) ;; отключаем tool-bar
@@ -130,21 +107,17 @@
 (setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
 
-(load-theme current-theme t) ;; Устанавливаем активную тему
-(set-default-font current-font) ;; Устанавливаем шрифт
+(load-theme current-theme t) ;; устанавливаем активную тему
+(set-default-font current-font) ;; устанавливаем шрифт
 
 ;; Прячем splash-screen и начальное сообщение
 (setq inhibit-splash-screen   t)
 (setq ingibit-startup-message t)
 
-;; Устанавливаем title окан
+;; Устанавливаем title окна, соответствующий шаблону 'GNU Emacs: имя_редактируемого_файла'
 (setq frame-title-format "GNU Emacs: %b")
 
-;; Возможность переопределять выделенный фрагмент текста
-(delete-selection-mode t)
-
-;; Укорачиваем ответы на вопросы в минибуфере
-(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p) ;; Укорачиваем ответы на вопросы в минибуфере
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Look and Feel settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -154,7 +127,7 @@
 ;; Plugins settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Активируем ErgoEmacs
+;; ErgoEmacs
 (require 'ergoemacs-mode)
 (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
 (setq ergoemacs-keyboard-layout "us") ;; Assumes QWERTY keyboard layout
@@ -167,7 +140,7 @@
 ;; Magit
 (global-set-key (kbd "C-<f6>") 'magit-status)
 
-;; Плагин IDO
+;; IDO
 (require 'ido)
 (ido-mode                      t)
 (icomplete-mode                t)
@@ -175,7 +148,7 @@
 (setq ido-vitrual-buffers      t)
 (setq ido-enable-flex-matching t)
 
-;; Плагин Linum
+;; Linum
 (require 'linum)
 (line-number-mode   t) ;; показать номер строки в mode-line
 (global-linum-mode  t) ;; показывать номера строк во всех буферах
@@ -197,12 +170,10 @@
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ep?\\'" . web-mode))
+
 ;; Количество пробелов в отступах для html, css и javascript
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
-  ;;(setq web-mode-markup-indent-offset 4)
-  ;;(setq web-mode-css-indent-offset 4)
-  ;;(setq web-mode-code-indent-offset 4)
   (setq web-mode-enable-current-element-highlight t)
   (setq web-mode-ac-sources-alist
         '(("css" . (ac-source-css-property))
@@ -225,7 +196,7 @@
            (setcdr pair 'cperl-mode)))
      (append auto-mode-alist interpreter-mode-alist))
 (setq cperl-indent-level 4)
-;; (setq cperl-hairy nil) ;; Turns on most of the CPerlMode options
+
 (defun find-perl-module (module-name)
       (interactive "sPerl module name: ")
       (let ((path (perl-module-path module-name)))
@@ -258,12 +229,6 @@
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 (setq js2-highlight-level 4)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-
-;; Flycheck
-;; (require 'flycheck)
-;; (add-hook 'js2-mode-hook
-;;           (lambda () (flycheck-mode t)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Plugins settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
