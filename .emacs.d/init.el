@@ -1,17 +1,43 @@
+;;; Peter's Emacs config file
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Устанавливаем необходимые плагины из melpa репозитория, если таковые еще не установлены
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
+
+(add-to-list 'package-archives
+       '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar packagesList
+  '(ergoemacs-mode
+	web-mode
+	js2-mode
+	markdown-mode
+	auto-complete
+	yasnippet
+    ein
+    elpy
+    flycheck
+    material-theme
+    py-autopep8))
+
+(mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      packagesList)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/") ;; Подтягиваем темы
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/plugins/") ;; Не нужно, так как юзаю репы elpa/melpa
-
-(set 'current-theme 'zenburn) ;; Set current theme
-(set 'current-font "Consolas 14") ;;  Set default font
-(if (equal system-type 'darwin)
-    (set 'current-font "Monaco 13"))
 
 ;; Настройки кодировки
 (set-language-environment 'UTF-8)
-(setq default-buffer-file-coding-system 'utf-8)
+(setq buffer-file-coding-system 'utf-8)
 (setq-default coding-system-for-read    'utf-8)
 (setq file-name-coding-system           'utf-8)
 (set-selection-coding-system            'utf-8)
@@ -79,12 +105,6 @@
 ;; (global-set-key (kbd "C-<f9>") 'hs-hide-all)
 ;; (global-set-key (kbd "C-S-<f9>") 'hs-show-all)
 
-;; Если используется современная версия emcas - используем melpa-репозиторий плагинов
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Global settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -107,8 +127,8 @@
 (setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
 
-(load-theme current-theme t) ;; устанавливаем активную тему
-(set-default-font current-font) ;; устанавливаем шрифт
+(load-theme 'material t) ;; устанавливаем тему оформления
+(set-frame-font "Consolas 14") ;; устанавливаем шрифт
 
 ;; Прячем splash-screen и начальное сообщение
 (setq inhibit-splash-screen   t)
@@ -229,6 +249,20 @@
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 (setq js2-highlight-level 4)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;; Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; Check html and css
+(with-eval-after-load 'flycheck
+  (flycheck-add-mode 'html-tidy 'web-mode)
+  (flycheck-add-mode 'css-csslint 'web-mode))
+
+;; Check perl
+'(flycheck-perl-executable "/usr/bin/perl")
+'(flycheck-perl-include-path
+  (quote
+   ("/usr/local/share/perl/5.20.2/")))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Plugins settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
