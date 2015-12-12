@@ -20,6 +20,7 @@
 	auto-complete
 	yasnippet
     ein
+    smex
     elpy
     flycheck
     material-theme
