@@ -16,6 +16,7 @@
   '(ergoemacs-mode
 	web-mode
 	js2-mode
+	lua-mode
 	markdown-mode
 	auto-complete
 	yasnippet
