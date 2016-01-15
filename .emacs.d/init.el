@@ -128,7 +128,7 @@
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
 
 (load-theme 'material t) ;; устанавливаем тему оформления
-(set-frame-font "Iosevka Regular 14") ;; устанавливаем шрифт
+(set-frame-font "Iosevka Medium 14") ;; устанавливаем шрифт
 
 ;; Прячем splash-screen и начальное сообщение
 (setq inhibit-splash-screen   t)
