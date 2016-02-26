@@ -33,7 +33,7 @@ UID_SYM="%{$fg_bold[green]%}$%{$reset_color%}%b"
 if [[ $EUID == 0 ]]; then UID_SYM="%{$fg_bold[red]%}#%{$reset_color%}%b" fi
 
 # Set prompt.
-PS1="[%2~]$VCS_PROMPT$UID_SYM "
+PS1="[%m:%2~]$VCS_PROMPT$UID_SYM "
 
 # Autocomplete settings
 autoload -U compinit && compinit
@@ -47,5 +47,9 @@ alias lsa="ls -lAh --color=auto --group-directories-first"
 alias ls="ls --color=auto --group-directories-first"
 alias grep="grep --colour=auto"
 alias mocp="mocp -T nightly_theme"
+# work aliases
+#alias ssh local="ssh www@dev3.uid.me"
+#alias ssh remote="ssh www@test.uid.me"
+#alias ssh ucoz="ssh ucozru@10.10.0.1"
 
 # EOF
