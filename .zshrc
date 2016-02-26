@@ -32,8 +32,11 @@ VCS_PROMPT="%{$fg_bold[blue]%}\$vcs_info_msg_0_%{$reset_color%}"
 UID_SYM="%{$fg_bold[green]%}$%{$reset_color%}%b"
 if [[ $EUID == 0 ]]; then UID_SYM="%{$fg_bold[red]%}#%{$reset_color%}%b" fi
 
+# hostname prompt
+HP="%{$fg_bold[yellow]%}%m%{$reset_color%}"
+
 # Set prompt.
-PS1="[%m:%2~]$VCS_PROMPT$UID_SYM "
+PS1="[$HP:%2~]$VCS_PROMPT$UID_SYM "
 
 # Autocomplete settings
 autoload -U compinit && compinit
