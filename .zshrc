@@ -33,7 +33,8 @@ UID_SYM="%{$fg_bold[green]%}$%{$reset_color%}%b"
 if [[ $EUID == 0 ]]; then UID_SYM="%{$fg_bold[red]%}#%{$reset_color%}%b" fi
 
 # hostname prompt
-HP="%{$fg_bold[yellow]%}%m%{$reset_color%}"
+HP="%{$fg_bold[green]%}%m%{$reset_color%}"
+if [[ $EUID == 0 ]]; then HP="%{$fg_bold[red]%}%m%{$reset_color%}" fi
 
 # Set prompt.
 PS1="[$HP:%2~]$VCS_PROMPT$UID_SYM "
