@@ -1,39 +1,44 @@
 ;;; Peter's Emacs config file
 
-;; Устанавливаем необходимые плагины из melpa репозитория, если таковые еще не установлены
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Устанавливаем необходимые плагины из stable melpa репозитория,
+;; если таковые еще не установлены
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (require 'package)
 
 (add-to-list 'package-archives
-       '("melpa" . "http://melpa.org/packages/") t)
+       '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;; require packages list
 (defvar packagesList
-  '(ergoemacs-mode
+  '(ein
+	elpy
+    smex
+	magit
 	web-mode
 	js2-mode
 	lua-mode
-	markdown-mode
-	auto-complete
+	flycheck
 	yasnippet
-    ein
-    smex
-    elpy
-    flycheck
-    material-theme
-    py-autopep8))
+	py-autopep8
+	markdown-mode
+	zenburn-theme
+    auto-complete))
 
+;; install package in packagesList
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
       packagesList)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Global settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Настройки кодировки
 (set-language-environment 'UTF-8)
@@ -90,21 +95,148 @@
 
 ;; Возможность переопределять выделенный фрагмент текста
 (delete-selection-mode t)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Переопределение клавиш
+;;
+
+;; Вверх
+(global-unset-key (kbd "M-i"))
+(global-set-key (kbd "M-i") 'previous-line)
+
+;; Вниз
+(global-unset-key (kbd "M-k"))
+(global-set-key (kbd "M-k") 'next-line)
+
+;; Влево
+(global-unset-key (kbd "M-j"))
+(global-set-key (kbd "M-j") 'backward-char)
+
+;; Вправо
+(global-unset-key (kbd "M-l"))
+(global-set-key (kbd "M-l") 'forward-char)
+
+;; Page Up
+(global-unset-key (kbd "M-I"))
+(global-set-key (kbd "M-I") 'scroll-down-command)
+
+;; Page Down
+(global-unset-key (kbd "M-K"))
+(global-set-key (kbd "M-K") 'scroll-up-command)
+
+;; Forward word
+(global-unset-key (kbd "M-L"))
+(global-set-key (kbd "M-L") 'forward-word)
+
+;; Backward word
+(global-unset-key (kbd "M-J"))
+(global-set-key (kbd "M-J") 'backward-word)
+
+;; Beginnning of line
+(global-unset-key (kbd "M-H"))
+(global-set-key (kbd "M-H") 'move-end-of-line)
+
+;; End of line
+(global-unset-key (kbd "M-h"))
+(global-set-key (kbd "M-h") 'move-beginning-of-line)
+
+;; End of buffer
+(global-unset-key (kbd "M-N"))
+(global-set-key (kbd "M-N") 'end-of-buffer)
+
+;; Beginning of buffer
+(global-unset-key (kbd "M-n"))
+(global-set-key (kbd "M-n") 'beginning-of-buffer)
+
+;; Переместить курсор в другое (следующее) окно
+(global-unset-key (kbd "M-s"))
+(global-set-key (kbd "M-s") 'other-window)
+
+;; Редактирование
+;;
+
+;; Delete
+(global-unset-key (kbd "M-f"))
+(global-set-key (kbd "M-f") 'delete-forward-char)
+
+;; Backspace
+(global-unset-key (kbd "M-d"))
+(global-set-key (kbd "M-d") 'delete-backward-char)
+
+;; Delete word
+(global-unset-key (kbd "M-r"))
+(global-set-key (kbd "M-r") 'kill-word)
+
+;; Delete word backward
+(global-unset-key (kbd "M-e"))
+(global-set-key (kbd "M-e") 'backward-kill-word)
+
+;; Enter
+(global-unset-key (kbd "M-m"))
+(global-set-key (kbd "M-m") 'reindent-then-newline-and-indent)
+
+;; Выделение
+(global-unset-key (kbd "M-SPC"))
+(global-set-key (kbd "M-SPC") 'set-mark-command)
+
+;; Копирование
+(global-unset-key (kbd "M-c"))
+(global-set-key (kbd "M-c") 'kill-ring-save)
+
+;; Вырезание
+(global-unset-key (kbd "M-x"))
+(global-set-key (kbd "M-x") 'kill-region)
+
+;; Вставка
+(global-unset-key (kbd "M-v"))
+(global-set-key (kbd "M-v") 'yank)
+
+;; Отмена
+(global-unset-key (kbd "M-z"))
+(global-set-key (kbd "M-z") 'undo)
+
+;; Открытие
+(global-unset-key (kbd "C-o"))
+(global-set-key (kbd "C-o") 'find-file)
+
+;; Comment or uncomment selected region
+(global-unset-key (kbd "M-'"))
+(global-set-key (kbd "M-'") 'comment-or-uncomment-region)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Запуск команды
+(global-unset-key (kbd "<f5>"))
+(global-set-key (kbd "<f5>") 'execute-extended-command)
+
+;; Выбор буфера
+(require 'bs)
+(setq bs-configurations
+      '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
+(global-unset-key (kbd "<f2>"))
+(global-set-key (kbd "<f2>") 'bs-show)
 
 ;; Фолдинг
-;;(defvar hs-special-modes-alist
-;;  (mapcar 'purecopy
-;;		  '((c-mode "{" "}" "/[*/]" nil nil)
-;;			(c++-mode "{" "}" "/[*/]" nil nil)
-;;			(bibtex-mode ("@\\S(*\\(\\s(\\)" 1))
-;;			(java-mode "{" "}" "/[*/]" nil nil)
-;;			(js-mode "{" "}" "/[*/]" nil)))
+(defvar hs-special-modes-alist
+ (mapcar 'purecopy
+		 '((c-mode "{" "}" "/[*/]" nil nil)
+			(c++-mode "{" "}" "/[*/]" nil nil)
+			(bibtex-mode ("@\\S(*\\(\\s(\\)" 1))
+			(java-mode "{" "}" "/[*/]" nil nil)
+			(cperl-mode "{" "}" "/[*/]" nil nil)
+			(js-mode "{" "}" "/[*/]" nil)
+			(js2-mode "{" "}" "/[*/]" nil nil)
+			(json-mode "{" "}" "/[*/]" nil nil))))
 
-;;(require 'hideshow)
-;; (global-set-key (kbd "M-<f9>") 'hs-toggle-hiding)
-;; (global-set-key (kbd "C-<f9>") 'hs-hide-all)
-;; (global-set-key (kbd "C-S-<f9>") 'hs-show-all)
+(require 'hideshow)
+(global-set-key (kbd "M-<f9>") 'hs-toggle-hiding)
+(global-set-key (kbd "C-<f9>") 'hs-hide-all)
+(global-set-key (kbd "C-S-<f9>") 'hs-show-all)
 
+;; Закладки
+(global-set-key (kbd "C-b") 'bookmark-set)
+(global-set-key (kbd "M-b") 'bookmark-jump)
+(global-set-key (kbd "<f4>") 'bookmark-bmenu-list)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Global settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -127,8 +259,8 @@
 (setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
 
-(load-theme 'material t) ;; устанавливаем тему оформления
-(set-frame-font "Iosevka Medium 14") ;; устанавливаем шрифт
+(load-theme 'zenburn t) ;; устанавливаем тему оформления
+(set-frame-font "Monaco 18") ;; устанавливаем шрифт
 
 ;; Прячем splash-screen и начальное сообщение
 (setq inhibit-splash-screen   t)
@@ -146,12 +278,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Plugins settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ErgoEmacs
-(require 'ergoemacs-mode)
-(setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
-(setq ergoemacs-keyboard-layout "us") ;; Assumes QWERTY keyboard layout
-(ergoemacs-mode 1)
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -276,7 +402,7 @@
 ;; enable autopep8 formatting on save
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; End | Plugins settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
