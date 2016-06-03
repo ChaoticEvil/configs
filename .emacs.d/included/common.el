@@ -76,7 +76,7 @@
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
 
 (load-theme 'zenburn t) ;; устанавливаем тему оформления
-(set-frame-font "Monaco 18") ;; устанавливаем шрифт
+(set-frame-font "Iosevka Medium 14") ;; устанавливаем шрифт
 
 ;; Прячем splash-screen и начальное сообщение
 (setq inhibit-splash-screen   t)

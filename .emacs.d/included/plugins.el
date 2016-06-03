@@ -53,5 +53,7 @@
 (global-set-key (kbd "C-b") 'bookmark-set)
 (global-set-key (kbd "M-b") 'bookmark-jump)
 (global-set-key (kbd "<f4>") 'bookmark-bmenu-list)
+
+(global-set-key (kbd "M->") 'ace-jump-m)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 

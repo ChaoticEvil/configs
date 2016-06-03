@@ -44,6 +44,12 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; CPerl-mode
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
+(setq cperl-invalid-face nil)
+(setq cperl-electric-keywords t) ;; expands for keywords such as foreach, while, etc...
 (mapc
      (lambda (pair)
        (if (eq (cdr pair) 'perl-mode)
@@ -76,7 +82,7 @@
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+;; (add-hook 'js2-mode-hook 'ac-js2-mode)
 (setq js2-highlight-level 4)
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
@@ -87,12 +93,6 @@
 (with-eval-after-load 'flycheck
   (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode))
-
-;; Check perl
-'(flycheck-perl-executable "/usr/bin/perl")
-'(flycheck-perl-include-path
-  (quote
-   ("/usr/local/share/perl/5.20.2/")))
 
 ;; Python
 (elpy-enable)
@@ -107,6 +107,7 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-;; enable wanderlust
-(autoload 'wl "wl" "Wanderlust" t)
+;; Powerline
+(powerline-center-theme)
+(setq powerline-default-separator 'slant)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
