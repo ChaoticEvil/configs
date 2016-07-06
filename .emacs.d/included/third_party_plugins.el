@@ -96,7 +96,7 @@
 
 ;; Python
 (elpy-enable)
-(elpy-use-ipython)
+;;(elpy-use-ipython)
 
 ;; use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
@@ -107,7 +107,4 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-;; Powerline
-(powerline-center-theme)
-(setq powerline-default-separator 'slant)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

@@ -104,4 +104,12 @@
 ;; Comment or uncomment selected region
 (global-unset-key (kbd "M-'"))
 (global-set-key (kbd "M-'") 'comment-or-uncomment-region)
+
+;; Revert buffer
+(global-unset-key (kbd "C-M-r"))
+(global-set-key (kbd "C-M-r") 'revert-buffer)
+
+;; Goto line
+(global-unset-key (kbd "<f6>"))
+(global-set-key (kbd "<f6>") 'goto-line)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

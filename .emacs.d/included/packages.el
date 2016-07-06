@@ -20,7 +20,6 @@
 	lua-mode
 	flycheck
 	yasnippet
-	powerline
 	py-autopep8
 	markdown-mode
 	zenburn-theme
