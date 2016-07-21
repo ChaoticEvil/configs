@@ -21,6 +21,7 @@
 	flycheck
 	yasnippet
 	py-autopep8
+	expand-region
 	markdown-mode
 	zenburn-theme
     auto-complete))

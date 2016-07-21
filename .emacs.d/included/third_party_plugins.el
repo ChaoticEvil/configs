@@ -107,4 +107,7 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+(require 'expand-region)
+(global-unset-key (kbd "M-="))
+(global-set-key (kbd "M-=") 'er/expand-region)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
