@@ -86,4 +86,8 @@
 (setq frame-title-format "GNU Emacs: %b")
 
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Укорачиваем ответы на вопросы в минибуфере
+
+;; Потсвечиваем текущую строку
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#444444")
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
