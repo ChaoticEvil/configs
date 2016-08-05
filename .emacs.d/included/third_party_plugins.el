@@ -107,7 +107,18 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+;; Выделение региона текста
 (require 'expand-region)
 (global-unset-key (kbd "M-="))
 (global-set-key (kbd "M-=") 'er/expand-region)
+
+;; Подсветка слова, находящегося под курсором
+(require 'highlight-symbol)
+(setq highlight-symbol-on-navigation-p t)
+(global-unset-key (kbd "C-8"))
+(global-set-key (kbd "C-8") 'highlight-symbol-next)
+(global-unset-key (kbd "C-S-8"))
+(global-set-key (kbd "C-S-8") 'highlight-symbol-prev)
+(global-unset-key (kbd "C-9"))
+(global-set-key (kbd "C-9") 'highlight-symbol-query-replace)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

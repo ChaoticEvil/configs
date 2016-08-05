@@ -24,7 +24,8 @@
 	expand-region
 	markdown-mode
 	zenburn-theme
-    auto-complete))
+    auto-complete
+	highlight-symbol))
 
 ;; install package in packagesList
 (mapc #'(lambda (package)
