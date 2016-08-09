@@ -15,16 +15,17 @@
 	elpy
     smex
 	magit
+	lua-mode
 	web-mode
 	js2-mode
-	lua-mode
+	json-mode
 	flycheck
 	yasnippet
 	py-autopep8
 	expand-region
 	markdown-mode
 	zenburn-theme
-    auto-complete
+	auto-complete
 	highlight-symbol))
 
 ;; install package in packagesList

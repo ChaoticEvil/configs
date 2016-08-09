@@ -87,12 +87,39 @@
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;; Flycheck
+(require 'flycheck)
+
+;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
 
 ;; Check html and css
 (with-eval-after-load 'flycheck
   (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode))
+
+;; for better jsx syntax-highlighting in web-mode
+;; - courtesy of Patrick @halbtuerke
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+    (let ((web-mode-enable-part-face nil))
+      ad-do-it)
+    ad-do-it))
 
 ;; Python
 (elpy-enable)
@@ -115,10 +142,10 @@
 ;; Подсветка слова, находящегося под курсором
 (require 'highlight-symbol)
 (setq highlight-symbol-on-navigation-p t)
-(global-unset-key (kbd "C-8"))
-(global-set-key (kbd "C-8") 'highlight-symbol-next)
-(global-unset-key (kbd "C-S-8"))
-(global-set-key (kbd "C-S-8") 'highlight-symbol-prev)
-(global-unset-key (kbd "C-9"))
-(global-set-key (kbd "C-9") 'highlight-symbol-query-replace)
+(global-unset-key (kbd "M-8"))
+(global-set-key (kbd "M-8") 'highlight-symbol-next)
+(global-unset-key (kbd "M-7"))
+(global-set-key (kbd "M-7") 'highlight-symbol-prev)
+(global-unset-key (kbd "M-9"))
+(global-set-key (kbd "M-9") 'highlight-symbol-query-replace)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
