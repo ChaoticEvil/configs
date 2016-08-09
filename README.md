@@ -5,6 +5,7 @@
 
 	$ git clone https://github.com/ChaoticEvil/configs.git
 	$ cp -r configs/* ~/
+	$ npm install -g eslint babel-eslint
 
 ### History
 
