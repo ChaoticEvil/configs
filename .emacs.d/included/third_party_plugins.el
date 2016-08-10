@@ -148,4 +148,6 @@
 (global-set-key (kbd "M-7") 'highlight-symbol-prev)
 (global-unset-key (kbd "M-9"))
 (global-set-key (kbd "M-9") 'highlight-symbol-query-replace)
+(global-unset-key (kbd "M-0"))
+(global-set-key (kbd "M-0") 'highlight-symbol-mode)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
