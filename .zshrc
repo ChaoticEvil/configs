@@ -51,9 +51,5 @@ alias lsa="ls -lAh --color=auto --group-directories-first"
 alias ls="ls --color=auto --group-directories-first"
 alias grep="grep --colour=auto"
 alias mocp="mocp -T nightly_theme"
-# work aliases
-#alias ssh local="ssh www@dev3.uid.me"
-#alias ssh remote="ssh www@test.uid.me"
-#alias ssh ucoz="ssh ucozru@10.10.0.1"
 
 # EOF
