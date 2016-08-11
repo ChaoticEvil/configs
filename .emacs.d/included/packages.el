@@ -1,6 +1,5 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Устанавливаем необходимые плагины из melpa, если таковые еще не установлены
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; packages.el --- определение и установка необходмых плагинов (если таковые еще не установлены)
+
 (require 'package)
 (add-to-list 'package-archives
        '("melpa" . "http://melpa.org/packages/") t)
@@ -11,26 +10,26 @@
 
 ;; require packages list
 (defvar packagesList
-  '(ein
-	elpy
-    smex
-	magit
-	lua-mode
-	web-mode
-	js2-mode
-	json-mode
-	flycheck
-	yasnippet
-	py-autopep8
-	expand-region
-	markdown-mode
-	zenburn-theme
-	auto-complete
-	highlight-symbol))
+  '(ein ;;
+	elpy ;;
+    smex ;;
+	magit ;; мод для работы с git
+	lua-mode ;; мод для работы с Lua
+	web-mode ;; мод для работы с веб-подноготНОЙ
+	js2-mode ;; улучшенный мод для работы с javascript
+	json-mode ;; мод для работы с json-файлами
+	flycheck ;; интерфейс для различных линтеров
+	yasnippet ;; снипеты для различных ЯП
+	py-autopep8 ;; поддержка питнячих пепов
+	expand-region ;;
+	markdown-mode ;; подсветка markdown
+	zenburn-theme ;; лучшая тема, форевер энд евер
+	auto-complete ;; автодополнение всего и вся
+	highlight-symbol)) ;; подсветка слова, стоящего под курсором
 
 ;; install package in packagesList
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
       packagesList)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+

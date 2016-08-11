@@ -1,6 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Common settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; common.el --- general settings
 
 ;; Настройки кодировки
 (set-language-environment 'UTF-8)
@@ -37,7 +35,7 @@
 (setq font-lock-maximum-decoration t)
 
 ;; Настройка отступов
-(setq-default indent-tabs-mode t) ;; отключить возможность ставить отступы TAB'ом
+(setq-default indent-tabs-mode t) ;; в качестве отступов использовать отступы TAB'ы
 (setq-default tab-width 4) ;; ширина табуляции - 4 пробельных символа
 (setq tab-width 4) ;; ширина табуляции - 4 пробельных символа
 (global-set-key (kbd "RET") 'newline-and-indent) ;; при нажатии Enter перевести каретку и сделать отступ
@@ -48,19 +46,16 @@
 (setq scroll-margin            10) ;; сдвигать буфер верх/вниз когда курсор в 10 шагах от верхней/нижней границы
 (setq scroll-conservatively 10000)
 
-;; Clipboard settings
-(setq x-select-enable-clipboard t)
+(setq select-enable-clipboard t) ;; Clipboard settings
 
 ;; Подсветка результатов поиска
 (setq search-highlight        t)
 (setq query-replace-highlight t)
 
-;; Возможность переопределять выделенный фрагмент текста
-(delete-selection-mode t)
+(delete-selection-mode t) ;; Возможность переопределять выделенный фрагмент текста
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Look and Feel settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (electric-pair-mode    1) ;; автозакрытие {},[],() с переводом курсора внутрь скобок
 (electric-indent-mode -1) ;; отключить индентацию electric-indent-mod'ом (default in Emacs-24.4)
 
@@ -72,7 +67,7 @@
 (tool-bar-mode     -1) ;; отключаем tool-bar
 (scroll-bar-mode   -1) ;; отключаем полосу прокрутки
 (setq use-dialog-box nil) ;; никаких графических диалогов и окон - все через минибуфер
-(setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
+;;(setq redisplay-dont-pause t)  ;; лучшая отрисовка буфера
 (setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
 
 (load-theme 'zenburn t) ;; устанавливаем тему оформления
@@ -89,4 +84,4 @@
 
 ;; Потсвечиваем текущую строку
 (global-hl-line-mode nil)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+

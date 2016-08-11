@@ -1,6 +1,4 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Настройка интегрированных плагинов
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; plugins.el --- настройка встроенных плагинов
 
 ;; IDO
 (require 'ido)
@@ -15,7 +13,7 @@
 (line-number-mode   t) ;; показать номер строки в mode-line
 (global-linum-mode  t) ;; показывать номера строк во всех буферах
 (column-number-mode t) ;; показать номер столбца в mode-line
-(setq linum-format " %d ") ;; задаем формат нумерации строк
+(setq linum-format " %d") ;; задаем формат нумерации строк
 
 ;; Org-mode
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
@@ -54,6 +52,4 @@
 (global-set-key (kbd "M-b") 'bookmark-jump)
 (global-set-key (kbd "<f4>") 'bookmark-bmenu-list)
 
-(global-set-key (kbd "M->") 'ace-jump-m)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(setq-default c-basic-offset 4)
