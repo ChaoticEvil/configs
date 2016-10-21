@@ -4,7 +4,7 @@
 #
 
 export LANG=en_US.UTF-8
-export EDITOR="emacs -nw" # Console version of Emacs
+export EDITOR="nano" # Default console editor
 
 bindkey -e # Emacs-like shortcuts
 bindkey '\e[3~' delete-char # now del character works ok
