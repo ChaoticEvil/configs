@@ -47,9 +47,9 @@ zstyle ':completion:*' rehash true
 # Aliases settings
 alias mc="mc -b"
 alias df="df -h"
-alias lsa="ls -lAh --color=auto --group-directories-first"
-alias ls="ls --color=auto --group-directories-first"
 alias grep="grep --colour=auto"
+alias ls="ls --color=auto --group-directories-first"
+alias lsa="ls -lAh --color=auto --group-directories-first"
 alias mocp="mocp -T nightly_theme"
 
 # EOF

@@ -1,11 +1,12 @@
-setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
+xset -b
 
-exec feh --bg-scale data/media/wallpapers/1.jpg &
+setxkbmap -layout "us,ru" -option "grp:caps_toggle,grp_led:scroll"
 
 #while xsetroot -name "`date +"[%d.%m.%Y] %H:%M:%S"`"
 #	do
-#        	sleep 1
-#   	 done &
-#exec ~/opt/dwm/dwm
+#		sleep 1
+#	done &
 
-exec cwm -c ~/.cwmrc
+exec feh --bg-scale ~/data/media/wallpapers/smert-skelet-siniy-mrak.jpg &
+exec ~/opt/dwm/dwm
+

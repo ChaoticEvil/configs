@@ -4,10 +4,19 @@
 ### How to use it
 
 	$ git clone https://github.com/ChaoticEvil/configs.git
-	$ cp -r configs/* ~/
-	$ npm install -g eslint babel-eslint
+	$ cp -r configs/. ~/
+	$ npm install -g eslint
+	
+Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) language. It using in Emacs for js2-mode, web-mode, json-mode.
+
 
 ### History
+
+#### v0.4 [22.10.2016]
+* Add tmux config file
+* Upgrade Iosevka fonts (from 1.9.2 to 1.9.4)
+* Add st (http://st.suckless.org/) config file
+* Add dwm (http://dwm.suckless.org/) config file
 
 #### v0.3 [11.08.2016]
 * Some refactoring in emacs config.
