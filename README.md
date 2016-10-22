@@ -1,5 +1,5 @@
 ### About this repositiry
-	This repository is a collection of the author's configuration files for some *nix-desktop programs, such as: emacs, dwm, st, cwm, tmux etc.
+This repository is a collection of the author's configuration files for some *nix-desktop programs, such as: emacs, dwm, st, cwm, tmux etc.
 
 ### How to use it
 
