@@ -11,7 +11,7 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#63acba";
 static const char *colors[SchemeLast][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -19,16 +19,21 @@ static const char *colors[SchemeLast][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "sh", "dev1", "dev2", "misc", "net", "www" };
+static const char *tags[] = { "sh", "dev", "misc", "net", "www" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class              instance    title       tags mask     isfloating   monitor */
+	{ "st",               NULL,       NULL,       1 << 0,       0,           -1 },
+	{ "Gimp",             NULL,       NULL,       1 << 2,       1,           -1 },
+	{ "Firefox",          NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "Chromium",         NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "Tor Browser",      NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "transmission-gtk", NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Emacs",            NULL,       NULL,       1 << 1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -59,6 +64,10 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+static const char *apluscmd[] = { "amixer", "sset", "Front", "1+", NULL };
+static const char *aminuscmd[] = { "amixer", "sset", "Front", "1-", NULL };
+static const char *atogglecmd[] = { "amixer", "sset", "Front", "toggle", NULL };
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -84,6 +93,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ 0,                            0xffbf,    spawn,          {.v = apluscmd } },
+    { 0,                            0xffc0,    spawn,          {.v = aminuscmd } },
+	{ 0,                            0xffbe,    spawn,          {.v = atogglecmd } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
