@@ -11,6 +11,9 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.4.2 [18.11.2016]
+* Add GO-fonts (https://blog.golang.org/go-fonts) to the collection of fonts
+
 #### v0.4.1 [22.10.2016]
 * Minor edits in README.md
 
