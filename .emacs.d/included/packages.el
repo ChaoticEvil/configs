@@ -10,9 +10,9 @@
 
 ;; require packages list
 (defvar packagesList
-  '(ein ;;
-	elpy ;;
-    smex ;;
+  '(ein ;; Emacs IPython Notebook
+	elpy ;; 
+    smex ;; Smex is a M-x enhancement for Emacs.
 	magit ;; мод для работы с git
 	lua-mode ;; мод для работы с Lua
 	web-mode ;; мод для работы с веб-подноготНОЙ
@@ -21,7 +21,7 @@
 	flycheck ;; интерфейс для различных линтеров
 	yasnippet ;; снипеты для различных ЯП
 	py-autopep8 ;; поддержка питнячих пепов
-	expand-region ;;
+	expand-region ;; для схлопывания региона
 	markdown-mode ;; подсветка markdown
 	zenburn-theme ;; лучшая тема, форевер энд евер
 	auto-complete ;; автодополнение всего и вся

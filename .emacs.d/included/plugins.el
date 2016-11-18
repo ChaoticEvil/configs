@@ -53,3 +53,32 @@
 (global-set-key (kbd "<f4>") 'bookmark-bmenu-list)
 
 (setq-default c-basic-offset 4)
+
+;; CPerl-mode
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
+(setq cperl-invalid-face nil)
+(setq cperl-electric-keywords t) ;; expands for keywords such as foreach, while, etc...
+(mapc
+     (lambda (pair)
+       (if (eq (cdr pair) 'perl-mode)
+           (setcdr pair 'cperl-mode)))
+     (append auto-mode-alist interpreter-mode-alist))
+(setq cperl-indent-level 4)
+
+(defun find-perl-module (module-name)
+      (interactive "sPerl module name: ")
+      (let ((path (perl-module-path module-name)))
+        (if path
+            (find-file path)
+          (error "Module '%s' not found" module-name))))
+(defun global-trim ()
+    "Trim all trailing whitespace in the current buffer."
+    (interactive)
+    (save-excursion
+      (goto-char (point-min))
+      (while (re-search-forward "[ \t]+$" nil t)
+        (replace-match "" t t))))
+

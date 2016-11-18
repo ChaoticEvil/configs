@@ -41,34 +41,6 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;; CPerl-mode
-(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-(setq cperl-invalid-face nil)
-(setq cperl-electric-keywords t) ;; expands for keywords such as foreach, while, etc...
-(mapc
-     (lambda (pair)
-       (if (eq (cdr pair) 'perl-mode)
-           (setcdr pair 'cperl-mode)))
-     (append auto-mode-alist interpreter-mode-alist))
-(setq cperl-indent-level 4)
-
-(defun find-perl-module (module-name)
-      (interactive "sPerl module name: ")
-      (let ((path (perl-module-path module-name)))
-        (if path
-            (find-file path)
-          (error "Module '%s' not found" module-name))))
-(defun global-trim ()
-    "Trim all trailing whitespace in the current buffer."
-    (interactive)
-    (save-excursion
-      (goto-char (point-min))
-      (while (re-search-forward "[ \t]+$" nil t)
-        (replace-match "" t t))))
-
 ;; Ya-snippets
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -86,7 +58,6 @@
 
 ;; Flycheck
 (require 'flycheck)
-
 (add-hook 'after-init-hook #'global-flycheck-mode) ;; turn on flychecking globally
 
 ;; disable jshint since we prefer eslint checking
@@ -109,12 +80,16 @@
   (flycheck-add-mode 'css-csslint 'web-mode))
 
 ;; for better jsx syntax-highlighting in web-mode
-;; - courtesy of Patrick @halbtuerke
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
     (let ((web-mode-enable-part-face nil))
       ad-do-it)
     ad-do-it))
+
+(add-hook 'js2-mode (lambda ()
+	((global-unset-key (kbd "M-j"))
+	 (global-set-key (kbd "M-j") 'backward-char)
+	 )))
 
 ;; Python
 (elpy-enable)
