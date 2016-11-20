@@ -1,13 +1,13 @@
 URxvt.loginShell:  true
 URxvt..transparent: true
-URxvt.shading: 30
+URxvt.shading: 10
 
 URxvt.cursorBlink: 1
 
-URxvt.font: xft:Consolas:normal:size=14
-URxvt.boldFont: xft:Consolas:bold:size=14
-URxvt.italicFont: xft:Consolas:italic:size=14
-URxvt.boldItalicFont: xft:Consolas:bold:italic:size=14
+URxvt.font: xft:Iosevka:normal:size=14
+URxvt.boldFont: xft:Iosevka:bold:size=14
+URxvt.italicFont: xft:Iosevka:italic:size=14
+URxvt.boldItalicFont: xft:Iosevka:bold:italic:size=14
 
 URxvt.scrollstyle: rxvt
 urxvt.scrollBar: false
