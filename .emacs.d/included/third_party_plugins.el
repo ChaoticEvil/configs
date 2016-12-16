@@ -22,6 +22,7 @@
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ep?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 
 ;; Количество пробелов в отступах для html, css и javascript
 (defun my-web-mode-hook ()
