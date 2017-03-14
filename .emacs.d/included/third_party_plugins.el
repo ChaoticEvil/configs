@@ -1,4 +1,16 @@
-;;; third_party_plugins.el --- настройка плагинов из сторонних источников
+;;; third_party_plugins.el --- Settings for third-party plugins
+;;
+;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;;
+;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
+;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
+;; Version: 0.5.0
+;;
+;;; Commentary:
+;;
+;; Settings for third-party plugins
+;;
+;;; Code:
 
 ;; Autocomplete
 (require 'auto-complete-config)
@@ -16,15 +28,14 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ep?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ejs\\'" . web-mode))
 
-;; Количество пробелов в отступах для html, css и javascript
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
   (setq web-mode-enable-current-element-highlight t)
@@ -61,7 +72,7 @@
 (require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode) ;; turn on flychecking globally
 
-;; disable jshint since we prefer eslint checking
+;; Disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers
   (append flycheck-disabled-checkers
     '(javascript-jshint)))
@@ -70,7 +81,7 @@
 
 (setq-default flycheck-temp-prefix ".flycheck") ;; customize flycheck temp file prefix
 
-;; disable json-jsonlist checking for json files
+;; Disable json-jsonlist checking for json files
 (setq-default flycheck-disabled-checkers
   (append flycheck-disabled-checkers
     '(json-jsonlist)))
@@ -80,7 +91,7 @@
   (flycheck-add-mode 'html-tidy 'web-mode)
   (flycheck-add-mode 'css-csslint 'web-mode))
 
-;; for better jsx syntax-highlighting in web-mode
+;; For better jsx syntax-highlighting in web-mode
 (defadvice web-mode-highlight-part (around tweak-jsx activate)
   (if (equal web-mode-content-type "jsx")
     (let ((web-mode-enable-part-face nil))
@@ -96,21 +107,21 @@
 (elpy-enable)
 ;;(elpy-use-ipython)
 
-;; use flycheck not flymake with elpy
+;; Use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-;; enable autopep8 formatting on save
+;; Enable autopep8 formatting on save
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
-;; Выделение региона текста
+;; Smart region selection
 (require 'expand-region)
 (global-unset-key (kbd "M-="))
 (global-set-key (kbd "M-=") 'er/expand-region)
 
-;; Подсветка слова, находящегося под курсором
+;; Hightlight word under cursor
 (require 'highlight-symbol)
 (setq highlight-symbol-on-navigation-p t)
 (global-unset-key (kbd "M-8"))
@@ -122,3 +133,4 @@
 (global-unset-key (kbd "M-0"))
 (global-set-key (kbd "M-0") 'highlight-symbol-mode)
 
+;;; third_party_plugins.el ends here

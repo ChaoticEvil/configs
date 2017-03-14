@@ -11,6 +11,19 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.5.0 [13.03.2017]
+* Fixed: st config (with delete key)
+* Fixed: dwm config (with volume change keys)
+* Fixed: emacs config (refactoring)
+* Fixed: zshrc config (some aliases)
+* Added: scala influence in emacs config
+* Added: simple black theme (based on hober-theme) in emacs
+* Added: some fonts (fire mono, droind mono, m8+)
+* Upgraded: fonts (Iosevka,monaco,progmata pro,etc)
+* Removed: .wl (wanderlust) config
+* Removed: sample web-servers configs
+* Removed: some unused fonts
+
 #### v0.4.2 [18.11.2016]
 * Add GO-fonts (https://blog.golang.org/go-fonts) to the collection of fonts
 

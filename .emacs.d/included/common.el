@@ -1,6 +1,21 @@
-;;; common.el --- general settings
+;;; common.el --- Basic Emacs settings
+;;
+;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;;
+;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
+;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
+;; Version: 0.5.0
+;;
+;;; Commentary:
+;;
+;; Settings encoding and loock and feel
+;;
+;;; Code:
 
-;; Настройки кодировки
+;; Set themes directory
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;; Encoding
 (set-language-environment 'UTF-8)
 (setq buffer-file-coding-system 'utf-8)
 (setq-default coding-system-for-read    'utf-8)
@@ -10,64 +25,66 @@
 (set-terminal-coding-system             'utf-8)
 (prefer-coding-system                   'utf-8)
 
-;; Отключаем автоматическо создание резервных копиц и файлов autosave
+;; Disable autosave
 (setq make-backup-files        nil)
 (setq auto-save-default        nil)
 (setq auto-save-list-file-name nil)
 
-;; Настройка границ
-(fringe-mode '(8 . 0)) ;; строка с символами состояний (слева)
-(setq-default indicate-empty-lines t) ;; отсутствие строки выделить глифами рядом с полосой с номером строки
-(setq-default indicate-buffer-boundaries 'left) ;; индикация только слева
+;; Fringes
+(fringe-mode '(8 . 0))
+(setq-default indicate-empty-lines t) ;; Gliph indicate for empty line
+(setq-default indicate-buffer-boundaries 'left) ;; Only left-indication
 
-;; Выводим доп. инфу в modeline
-(setq display-time-24hr-format t) ;; 24-часовой временной формат в mode-line
-(display-time-mode             t) ;; показывать часы в mode-line
-(size-indication-mode          t) ;; размер файла в %-ах
+;; Print supplement info in modeline
+(display-time-mode             t) ;; Time
+(setq display-time-24hr-format t) ;; Time format
+(size-indication-mode          t) ;; Show filesize in % (percent)
 
-;; Перенос строк
-(setq word-wrap          t) ;; переносить по словам
+;; Words wrap
+(setq word-wrap          t) ;; Wrap by word
 (global-visual-line-mode t)
 
-;; Подсветка синтаксиса
+;; Syntax highlight
 (require 'font-lock)
 (setq font-lock-maximum-decoration t)
 
-;; Настройка отступов
-(setq-default indent-tabs-mode t) ;; в качестве отступов использовать символ табуляции
-(setq-default tab-width 4) ;; ширина табуляции - 4 пробельных символа
-(setq tab-width 4) ;; ширина табуляции - 4 пробельных символа
-(global-set-key (kbd "RET") 'newline-and-indent) ;; при нажатии Enter перевести каретку и сделать отступ
-(setq lisp-indent-function  'common-lisp-indent-function) ;; отступы для lisp-кода
+;; Indention
+(setq-default indent-tabs-mode t) ;; Indention as a tab symbol
+(setq-default tab-width 4) ;; Set tad width in spaces
+(setq tab-width 4) ;; Set tad width in spaces
+(global-set-key (kbd "RET") 'newline-and-indent) ;; Autoindent for newline
+(setq lisp-indent-function  'common-lisp-indent-function) ;; Enable indent for lisp code
 
-;; Настройка прокрутки
-(setq scroll-step               1) ;; вверх-вниз по 1 строке
-(setq scroll-margin             5) ;; сдвигать буфер верх/вниз когда курсор в 10 шагах от верхней/нижней границы
+;; Scroll
+(setq scroll-step               1) ;; Scroll by one line
+(setq scroll-margin             5) ;; Set top and bottom scroll margin as a five lines
 (setq scroll-conservatively 10000)
 
 (setq select-enable-clipboard t) ;; Clipboard settings
 
-;; Подсветка результатов поиска
+;; Search results highlight
 (setq search-highlight        t)
 (setq query-replace-highlight t)
 
-(delete-selection-mode t) ;; Возможность переопределять выделенный фрагмент текста
+(delete-selection-mode t) ;; Enable for delete selected text regionk
+
+(defalias 'yes-or-no-p 'y-or-n-p) ;; Short answers (yes->y, no->n)
 
 ;; Look and Feel settings
-(electric-pair-mode    1) ;; автозакрытие {},[],() с переводом курсора внутрь скобок
-(show-paren-mode t) ;; включить выделение выражений между {},[],()
-(setq show-paren-style 'expression) ;; выделить цветом выражения между {},[],()
-(tooltip-mode      -1) ;; отключаем подсказки
-(menu-bar-mode     -1) ;; отключаем графическое меню
-(tool-bar-mode     -1) ;; отключаем tool-bar
-(scroll-bar-mode   -1) ;; отключаем полосу прокрутки
-(setq use-dialog-box nil) ;; никаких графических диалогов и окон - все через минибуфер
-(setq ring-bell-function 'ignore) ;; отключить звуковой сигнал
-(load-theme 'zenburn t) ;; устанавливаем тему оформления
-(set-frame-font "Iosevka Medium 14") ;; устанавливаем шрифт
-(setq inhibit-splash-screen   t) ;; Прячем splash-screen
-(setq ingibit-startup-message t) ;; Прячем начальное сообщение
-(setq frame-title-format "GNU Emacs: %b") ;; Устанавливаем title окна 'GNU Emacs: filename'
-(defalias 'yes-or-no-p 'y-or-n-p) ;; Укорачиваем ответы на вопросы в минибуфере
-(global-hl-line-mode nil) ;; Потсвечиваем текущую строку
+(electric-pair-mode 1) ;; Autocompare scopes
+(show-paren-mode t) ;; Enable highlight for scopes
+(setq show-paren-style 'expression)
+(tooltip-mode      -1) ;; Disable tooltip
+(menu-bar-mode     -1) ;; Disable menubar
+(tool-bar-mode     -1) ;; Disable toolbar
+(scroll-bar-mode   -1) ;; Disable scrollbar
+(setq use-dialog-box nil) ;; No gui dialogs. Only minibuffer
+(setq ring-bell-function 'ignore) ;; Disable bell sound
+(setq ingibit-startup-message t) ;; Disable startup message
+(setq inhibit-splash-screen   t) ;; Disable splash-screen
+(setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
+(load-theme 'hober t) ;; Set Hober color theme
+(set-frame-font "Iosevka Medium 14") ;; Set font
+(global-hl-line-mode nil) ;; Highlight current line
 
+;;; common.el ends here

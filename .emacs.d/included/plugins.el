@@ -1,4 +1,16 @@
-;;; plugins.el --- настройка встроенных плагинов
+;;; plugins.el --- Plugins settings
+;;
+;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;;
+;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
+;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
+;; Version: 0.5.0
+;;
+;;; Commentary:
+;;
+;; Settings for used plugins
+;;
+;;; Code:
 
 ;; IDO
 (require 'ido)
@@ -10,27 +22,27 @@
 
 ;; Linum
 (require 'linum)
-(line-number-mode   t) ;; показать номер строки в mode-line
-(global-linum-mode  t) ;; показывать номера строк во всех буферах
-(column-number-mode t) ;; показать номер столбца в mode-line
-(setq linum-format " %d") ;; задаем формат нумерации строк
+(line-number-mode   t) ;; Show current line number in modeline
+(global-linum-mode  t) ;; Show lines numbers in all buffers
+(column-number-mode t) ;; Show column number in modeline
+(setq linum-format " %d") ;; Set format for line numbers
 
 ;; Org-mode
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
 (setq org-src-fontify-natively 't)
 
-;; Запуск команды
+;; Execute Emacs command
 (global-unset-key (kbd "<f5>"))
 (global-set-key (kbd "<f5>") 'execute-extended-command)
 
-;; Выбор буфера
+;; List of buffers
 (require 'bs)
 (setq bs-configurations
       '(("files" "^\\*scratch\\*" nil nil bs-visits-non-file bs-sort-buffer-interns-are-last)))
 (global-unset-key (kbd "<f2>"))
 (global-set-key (kbd "<f2>") 'bs-show)
 
-;; Фолдинг
+;; Folding
 (defvar hs-special-modes-alist
  (mapcar 'purecopy
 		 '((c-mode "{" "}" "/[*/]" nil nil)
@@ -47,12 +59,12 @@
 (global-set-key (kbd "C-<f9>") 'hs-hide-all)
 (global-set-key (kbd "C-S-<f9>") 'hs-show-all)
 
-;; Закладки
+;; Bookmarks
 (global-set-key (kbd "C-b") 'bookmark-set)
 (global-set-key (kbd "M-b") 'bookmark-jump)
 (global-set-key (kbd "<f4>") 'bookmark-bmenu-list)
 
-(setq-default c-basic-offset 4)
+(setq-default c-basic-offset 4) ;; Set indention for C-mode
 
 ;; CPerl-mode
 (add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode))
@@ -67,7 +79,7 @@
            (setcdr pair 'cperl-mode)))
      (append auto-mode-alist interpreter-mode-alist))
 (setq cperl-indent-level 4)
-
+;; Finding perl modules paths
 (defun find-perl-module (module-name)
       (interactive "sPerl module name: ")
       (let ((path (perl-module-path module-name)))
@@ -82,3 +94,31 @@
       (while (re-search-forward "[ \t]+$" nil t)
         (replace-match "" t t))))
 
+;; Scala-mode settings
+(setq exec-path (append exec-path (list "/usr/share/scala/bin" ))) ;; Set location of scala bin
+(require 'scala-mode)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(eval-after-load "scala-mode" 
+  '(progn
+    (define-key scala-mode-map (kbd "<f9>") 'ensime-builder-build)
+    (define-key scala-mode-map (kbd "<f10>") 'ensime-inf-switch)))
+
+(eval-after-load "scala-mode" 
+  '(progn
+	(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+	(define-key scala-mode-map (kbd "<f9>") 'scala-run)
+	(define-key scala-mode-map (kbd "RET") 'newline-and-indent)
+	))
+(defun scala-run () 
+  (interactive)   
+  (ensime-sbt-action "run")
+  (ensime-sbt-action "~compile")
+  (let ((c (current-buffer)))
+    (switch-to-buffer-other-window
+	 (get-buffer-create (ensime-sbt-build-buffer-name)))
+	(switch-to-buffer-other-window c))) 
+(setq exec-path
+	  (append exec-path (list "/usr/share/scala/bin"))) ;; Set path for scalac bin
+
+;;; plugins.el ends here

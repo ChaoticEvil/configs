@@ -1,4 +1,16 @@
-;;; packages.el --- определение и установка необходмых плагинов (если таковые еще не установлены)
+;;; packages.el --- Emacs packages defined
+;;
+;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;;
+;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
+;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
+;; Version: 0.5.0
+;;
+;;; Commentary:
+;;
+;; Set and install some Emacs plugins (packages)
+;;
+;;; Code:
 
 (require 'package)
 (add-to-list 'package-archives
@@ -11,22 +23,23 @@
 ;; require packages list
 (defvar packagesList
   '(ein ;; Emacs IPython Notebook
-	elpy ;; 
+	elpy ;; Python autocomplete
 	smex ;; Smex is a M-x enhancement for Emacs.
-	magit ;; мод для работы с git
-	lua-mode ;; мод для работы с Lua
-	web-mode ;; мод для работы с веб-подноготНОЙ
-	js2-mode ;; улучшенный мод для работы с javascript
-	json-mode ;; мод для работы с json-файлами
-	flycheck ;; интерфейс для различных линтеров
-	yasnippet ;; снипеты для различных ЯП
-	restclient ;; http-client для формирвоания и отравки HTTP-запросов
-	py-autopep8 ;; поддержка питнячих пепов
-	expand-region ;; для схлопывания региона
-	markdown-mode ;; подсветка markdown
-	zenburn-theme ;; лучшая тема, форевер энд евер
-	auto-complete ;; автодополнение всего и вся
-	highlight-symbol)) ;; подсветка слова, стоящего под курсором
+	magit ;; Work with git scm
+	lua-mode ;; Better work with lua
+	web-mode ;; Better work with html,css,template engines
+	js2-mode ;; Better work with javascript
+	json-mode ;; Better work with json
+	scala-mode ;; Work with scala
+	ensime ;; Scala runtime server
+	flycheck ;; Backend for several linters
+	yasnippet ;; Snippets collection
+	restclient ;; Simple http-client
+	py-autopep8 ;; Enable python pep8
+	expand-region ;; For expandong text regions
+	markdown-mode ;; Better work with markdown (.md)
+	auto-complete ;; Autocomplete
+	highlight-symbol)) ;; Highlight word under cursosr
 
 ;; install package in packagesList
 (mapc #'(lambda (package)
@@ -34,3 +47,4 @@
       (package-install package)))
       packagesList)
 
+;;; packages.el ends here

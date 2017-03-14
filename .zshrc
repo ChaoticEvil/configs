@@ -6,6 +6,10 @@
 export LANG=en_US.UTF-8
 export EDITOR="nano" # Default console editor
 
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export SCALA_HOME=/usr/share/scala
+export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
+
 bindkey -e # Emacs-like shortcuts
 bindkey '\e[3~' delete-char # now del character works ok
 
@@ -45,11 +49,16 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 
 # Aliases settings
-alias mc="mc -b"
 alias df="df -h"
-alias grep="grep --colour=auto"
-alias ls="ls --color=auto --group-directories-first"
 alias lsa="ls -lAh --color=auto --group-directories-first"
+alias ls="ls --color=auto --group-directories-first"
+alias grep="grep --colour=auto"
 alias mocp="mocp -T nightly_theme"
+alias get_bat="(acpi | cut -d ',' -f 2)"
 
-# EOF
+PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
+

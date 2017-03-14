@@ -1,26 +1,38 @@
-;;; shortcuts.el --- переопределение клавиш
+;;; shortcuts.el --- Shortcuts settings
+;;
+;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;;
+;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
+;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
+;; Version: 0.5.0
+;;
+;;; Commentary:
+;;
+;; Set shortcuts
+;;
+;;; Code:
 
-;; Вверх
+;; Move cursor up
 (global-unset-key (kbd "M-i"))
 (global-set-key (kbd "M-i") 'previous-line)
 
-;; Вниз
+;; Move cursor down
 (global-unset-key (kbd "M-k"))
 (global-set-key (kbd "M-k") 'next-line)
 
-;; Влево
+;; Move cursor left
 (global-unset-key (kbd "M-j"))
 (global-set-key (kbd "M-j") 'backward-char)
 
-;; Вправо
+;; Move cursor right
 (global-unset-key (kbd "M-l"))
 (global-set-key (kbd "M-l") 'forward-char)
 
-;; Page Up
+;; Move page up
 (global-unset-key (kbd "M-I"))
 (global-set-key (kbd "M-I") 'scroll-down-command)
 
-;; Page Down
+;; Move page down
 (global-unset-key (kbd "M-K"))
 (global-set-key (kbd "M-K") 'scroll-up-command)
 
@@ -33,26 +45,26 @@
 (global-set-key (kbd "M-J") 'backward-word)
 
 ;; Beginnning of line
-(global-unset-key (kbd "M-H"))
-(global-set-key (kbd "M-H") 'move-end-of-line)
-
-;; End of line
 (global-unset-key (kbd "M-h"))
 (global-set-key (kbd "M-h") 'move-beginning-of-line)
 
-;; End of buffer
-(global-unset-key (kbd "M-N"))
-(global-set-key (kbd "M-N") 'end-of-buffer)
+;; End of line
+(global-unset-key (kbd "M-H"))
+(global-set-key (kbd "M-H") 'move-end-of-line)
 
 ;; Beginning of buffer
 (global-unset-key (kbd "M-n"))
 (global-set-key (kbd "M-n") 'beginning-of-buffer)
 
-;; Переместить курсор в другое (следующее) окно
+;; End of buffer
+(global-unset-key (kbd "M-N"))
+(global-set-key (kbd "M-N") 'end-of-buffer)
+
+;; Move cursor in next window
 (global-unset-key (kbd "M-s"))
 (global-set-key (kbd "M-s") 'other-window)
 
-;; Редактирование
+;; Editing
 ;;
 
 ;; Delete
@@ -75,27 +87,31 @@
 (global-unset-key (kbd "M-m"))
 (global-set-key (kbd "M-m") 'reindent-then-newline-and-indent)
 
-;; Выделение
+;; Select region
 (global-unset-key (kbd "M-SPC"))
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
-;; Копирование
+;; Copy selected region
 (global-unset-key (kbd "M-c"))
 (global-set-key (kbd "M-c") 'kill-ring-save)
 
-;; Вырезание
+;; Cut selected region
 (global-unset-key (kbd "M-x"))
 (global-set-key (kbd "M-x") 'kill-region)
 
-;; Вставка
+;; Past selected region
 (global-unset-key (kbd "M-v"))
 (global-set-key (kbd "M-v") 'yank)
 
-;; Отмена
+;; Undo
 (global-unset-key (kbd "M-z"))
 (global-set-key (kbd "M-z") 'undo)
 
-;; Открытие
+;; Redo
+(global-unset-key (kbd "M-Z"))
+(global-set-key (kbd "M-Z") 'undo-only)
+
+;; Open file
 (global-unset-key (kbd "C-o"))
 (global-set-key (kbd "C-o") 'find-file)
 
@@ -111,3 +127,4 @@
 (global-unset-key (kbd "<f6>"))
 (global-set-key (kbd "<f6>") 'goto-line)
 
+;;; shortcuts.el ends here
