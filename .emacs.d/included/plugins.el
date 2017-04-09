@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.0
+;; Version: 0.5.1
 ;;
 ;;; Commentary:
 ;;

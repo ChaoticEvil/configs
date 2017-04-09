@@ -11,6 +11,11 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.5.1 [09.04.2017]
+* Removed: custom emacs themes directory
+* Added: sample mc config - .config/mc/ini
+* Added: sr-speedbar emacs plugin (filesystem tree side panel)
+
 #### v0.5.0 [13.03.2017]
 * Fixed: st config (with delete key)
 * Fixed: dwm config (with volume change keys)

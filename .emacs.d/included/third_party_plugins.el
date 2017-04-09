@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.0
+;; Version: 0.5.1
 ;;
 ;;; Commentary:
 ;;
@@ -132,5 +132,12 @@
 (global-set-key (kbd "M-9") 'highlight-symbol-query-replace)
 (global-unset-key (kbd "M-0"))
 (global-set-key (kbd "M-0") 'highlight-symbol-mode)
+
+;; Sr-speedbar
+(require 'sr-speedbar)
+(global-set-key (kbd "<f12>") 'sr-speedbar-toggle)
+(setq speedbar-show-unknown-files t) ; show all files
+(setq speedbar-use-images nil) ; use text for buttons
+(setq sr-speedbar-right-side nil) ; put on left side
 
 ;;; third_party_plugins.el ends here

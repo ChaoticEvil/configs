@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.0
+;; Version: 0.5.1
 ;;
 ;;; Commentary:
 ;;
@@ -35,9 +35,11 @@
 	flycheck ;; Backend for several linters
 	yasnippet ;; Snippets collection
 	restclient ;; Simple http-client
+	sr-speedbar ;; Filesystem tree
 	py-autopep8 ;; Enable python pep8
 	expand-region ;; For expandong text regions
 	markdown-mode ;; Better work with markdown (.md)
+	zenburn-theme ;; Best Emacs theme
 	auto-complete ;; Autocomplete
 	highlight-symbol)) ;; Highlight word under cursosr
 

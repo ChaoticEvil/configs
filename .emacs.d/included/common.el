@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.0
+;; Version: 0.5.1
 ;;
 ;;; Commentary:
 ;;
@@ -83,7 +83,7 @@
 (setq ingibit-startup-message t) ;; Disable startup message
 (setq inhibit-splash-screen   t) ;; Disable splash-screen
 (setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
-(load-theme 'hober t) ;; Set Hober color theme
+(load-theme 'zenburn t) ;; Set Hober color theme
 (set-frame-font "Iosevka Medium 14") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line
 
