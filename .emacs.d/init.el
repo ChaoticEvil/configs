@@ -4,20 +4,23 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.0
+;; Version: 0.5.2
 ;;
 ;;; Commentary:
 ;;
-;; My Emacs customisation
+;; Yet another Emacs customisation :)
 ;;
 ;;; Code:
 
 (package-initialize)
+
+(setq mac-option-key-is-meta nil)
+(setq mac-command-key-is-meta t)
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 (load "~/.emacs.d/included/packages.el"           ) ;; Set and install requirements plugins
 (load "~/.emacs.d/included/common.el"             ) ;; Basic emacs settings (encoding, look and feel, etc)
 (load "~/.emacs.d/included/shortcuts.el"          ) ;; Custom key bindings
 (load "~/.emacs.d/included/plugins.el"            ) ;; Enable and settings builtin plugins
 (load "~/.emacs.d/included/third_party_plugins.el") ;; Enable and settings third party plugins
-
-;;; init.el ends here

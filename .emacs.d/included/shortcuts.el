@@ -4,11 +4,11 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.1
+;; Version: 0.5.2
 ;;
 ;;; Commentary:
 ;;
-;; Set shortcuts
+;; Key bindings
 ;;
 ;;; Code:
 

@@ -4,11 +4,11 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.1
+;; Version: 0.5.2
 ;;
 ;;; Commentary:
 ;;
-;; Settings encoding and loock and feel
+;; Settings for encoding and loock and feel
 ;;
 ;;; Code:
 
@@ -16,14 +16,14 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
 ;; Encoding
-(set-language-environment 'UTF-8)
-(setq buffer-file-coding-system 'utf-8)
-(setq-default coding-system-for-read    'utf-8)
-(setq file-name-coding-system           'utf-8)
-(set-selection-coding-system            'utf-8)
-(set-keyboard-coding-system        'utf-8-unix)
-(set-terminal-coding-system             'utf-8)
-(prefer-coding-system                   'utf-8)
+(set-language-environment            'UTF-8)
+(setq buffer-file-coding-system      'utf-8)
+(setq-default coding-system-for-read 'utf-8)
+(setq file-name-coding-system        'utf-8)
+(set-selection-coding-system         'utf-8)
+(set-keyboard-coding-system          'utf-8-unix)
+(set-terminal-coding-system          'utf-8)
+(prefer-coding-system                'utf-8)
 
 ;; Disable autosave
 (setq make-backup-files        nil)
@@ -48,7 +48,7 @@
 (require 'font-lock)
 (setq font-lock-maximum-decoration t)
 
-;; Indention
+;; Indentation
 (setq-default indent-tabs-mode t) ;; Indention as a tab symbol
 (setq-default tab-width 4) ;; Set tad width in spaces
 (setq tab-width 4) ;; Set tad width in spaces
@@ -83,8 +83,8 @@
 (setq ingibit-startup-message t) ;; Disable startup message
 (setq inhibit-splash-screen   t) ;; Disable splash-screen
 (setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
-(load-theme 'zenburn t) ;; Set Hober color theme
-(set-frame-font "Iosevka Medium 14") ;; Set font
+(load-theme 'zenburn t) ;; Set color theme
+(set-frame-font "Iosevka Thin 18") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line
 
 ;;; common.el ends here

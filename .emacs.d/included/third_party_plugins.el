@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.1
+;; Version: 0.5.2
 ;;
 ;;; Commentary:
 ;;
@@ -12,7 +12,7 @@
 ;;
 ;;; Code:
 
-;; Autocomplete
+;; Total autocomplete
 (require 'auto-complete-config)
 (ac-config-default)
 
@@ -139,5 +139,15 @@
 (setq speedbar-show-unknown-files t) ; show all files
 (setq speedbar-use-images nil) ; use text for buttons
 (setq sr-speedbar-right-side nil) ; put on left side
+
+;; Ensime
+(setq exec-path (append exec-path '("/usr/bin")))
+(setq exec-path (append exec-path '("/usr/sbin")))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+(setq exec-path (append exec-path '("/usr/local/sbin")))
+(setenv "PATH" (shell-command-to-string "/bin/zsh -c 'echo -n $PATH'"))
+
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;;; third_party_plugins.el ends here

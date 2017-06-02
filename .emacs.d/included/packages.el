@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.1
+;; Version: 0.5.2
 ;;
 ;;; Commentary:
 ;;
@@ -22,8 +22,7 @@
 
 ;; require packages list
 (defvar packagesList
-  '(ein ;; Emacs IPython Notebook
-	elpy ;; Python autocomplete
+  '(elpy ;; Python autocomplete
 	smex ;; Smex is a M-x enhancement for Emacs.
 	magit ;; Work with git scm
 	lua-mode ;; Better work with lua
