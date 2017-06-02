@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.2
+;; Version: 0.5.3
 ;;
 ;;; Commentary:
 ;;
@@ -13,11 +13,6 @@
 ;;; Code:
 
 (package-initialize)
-
-(setq mac-option-key-is-meta nil)
-(setq mac-command-key-is-meta t)
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier nil)
 
 (load "~/.emacs.d/included/packages.el"           ) ;; Set and install requirements plugins
 (load "~/.emacs.d/included/common.el"             ) ;; Basic emacs settings (encoding, look and feel, etc)

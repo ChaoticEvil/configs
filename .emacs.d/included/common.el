@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.2
+;; Version: 0.5.3
 ;;
 ;;; Commentary:
 ;;
@@ -86,5 +86,14 @@
 (load-theme 'zenburn t) ;; Set color theme
 (set-frame-font "Iosevka Thin 18") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line
+
+;; Change Meta for OS X
+(cond
+  ((string-equal system-type "darwin") ; Mac OS X
+   (progn
+	 (setq mac-option-key-is-meta nil)
+	 (setq mac-command-key-is-meta t)
+	 (setq mac-command-modifier 'meta)
+	 (setq mac-option-modifier nil))))
 
 ;;; common.el ends here
