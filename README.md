@@ -11,6 +11,9 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.5.2 [02.06.2017]
+* Changed: Some improvements in Emacs config
+
 #### v0.5.1 [09.04.2017]
 * Removed: custom emacs themes directory
 * Added: sample mc config - .config/mc/ini
