@@ -11,6 +11,9 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.5.3 [02.06.2017]
+* Fixed: Fixed OS X meta
+
 #### v0.5.2 [02.06.2017]
 * Changed: Some improvements in Emacs config
 
