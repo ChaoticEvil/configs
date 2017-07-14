@@ -1,0 +1,36 @@
+set realname = "Name Sirname"
+set use_from = yes
+set editor='emacs -nw'
+# see the headers when editing
+# set edit_headers 
+# sort by newest conversation first.
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+# confirmation skipping
+set fast_reply=yes        # when replying, don't prompt for address
+set include=yes           # include original text on reply?
+set forward_quote=yes     # include original text on forward?
+set delete=yes            # don't ask for delete confirmation
+
+set from = user@gmail.com
+set imap_user = user
+set imap_pass = password
+set smtp_url = smtp://user@smtp.gmail.com:587/
+set smtp_pass = password
+
+# don't let your firewall kill your idle connection
+set imap_keepalive  = 900
+
+# do not copy sent mail
+set copy = no
+set move = no 
+
+set folder = imaps://imap.gmail.com:993
+set spoolfile = +INBOX #or +[Gmail]/Important
+set postponed = +[Gmail]/Drafts
+
+# cache
+set header_cache     = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
