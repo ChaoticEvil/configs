@@ -11,6 +11,11 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.5.6 [28.07.2017]
+* Added: .mailcap
+* Added: .rtorrent.rc
+* Fixed: Multiple fixes (colors and external html viewer) in .muttrc
+
 #### v0.5.5 [23.07.2017]
 * Fixed: URxvt color and fonts in .Xdefaults
 
