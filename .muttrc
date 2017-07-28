@@ -1,4 +1,16 @@
-set realname = "Name Sirname"
+# Set colors
+color normal white default
+color attachment brightyellow default
+color hdrdefault cyan default
+color indicator black cyan
+color markers brightred default
+color quoted  green default
+color signature cyan default
+color status  brightgreen blue
+color tilde blue default
+color tree  red default
+
+set realname = "Peter Brovchenko"
 set use_from = yes
 set editor='emacs -nw'
 # see the headers when editing
@@ -13,11 +25,11 @@ set include=yes           # include original text on reply?
 set forward_quote=yes     # include original text on forward?
 set delete=yes            # don't ask for delete confirmation
 
-set from = user@gmail.com
-set imap_user = user
+set from = username@gmail.com
+set imap_user = username
 set imap_pass = password
-set smtp_url = smtp://user@smtp.gmail.com:587/
-set smtp_pass = password
+set smtp_url = smtp://username@smtp.gmail.com:587/
+set smtp_pass = secret
 
 # don't let your firewall kill your idle connection
 set imap_keepalive  = 900
@@ -34,3 +46,6 @@ set postponed = +[Gmail]/Drafts
 set header_cache     = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
+
+auto_view text/x-vcard text/html text/enriched
+alternative_order text/plain text/enriched text/html
