@@ -24,7 +24,7 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 * Fixed: some refactoring in emacs config
 * Fixed: .xinitrc (now using cwm by default window manager)
 * Removed: unused fonts ()
-* Upgraded: fonts (Iosevka, Fira Code, Anonimous-pro, Progmata-pro, Consolas, Iconsolata, Hack, Droid, Go)
+* Upgraded: fonts (Iosevka v1.13.2, Fira Code v1.204, Fira Mono v3.206, Anonimous-pro, Progmata-pro, Consolas, Iconsolata, Hack v2.020, Go)
 
 #### v0.5.6 [28.07.2017]
 * Added: .mailcap
