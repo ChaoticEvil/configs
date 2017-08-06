@@ -11,6 +11,21 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 
 ### History
 
+#### v0.6.0 [01.09.2017]
+* Added: compton config (.compton.conf)
+* Added: supplement script for inc/dec brightness
+* Added: supplement script for inc/dec screen color (with redshift)
+* Fixed: .muttrc
+* Fixed: .Xdefaults
+* Fixed: .perltidyrc
+* Fixed: .perlcriticrc
+* Fixed: .cwmrc (rewrite all config)
+* Fixed: several fixes in .rtorrent.rc
+* Fixed: some refactoring in emacs config
+* Fixed: .xinitrc (now using cwm by default window manager)
+* Removed: unused fonts ()
+* Upgraded: fonts (Iosevka, Fira Code, Anonimous-pro, Consolas, Iconsolata, Hack, Droid)
+
 #### v0.5.6 [28.07.2017]
 * Added: .mailcap
 * Added: .rtorrent.rc
@@ -27,7 +42,7 @@ Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) lan
 * Fixed: OS X meta for Emacs
 
 #### v0.5.2 [02.06.2017]
-* Changed: Some improvements in Emacs config
+* Fixes: Some improvements in Emacs config
 
 #### v0.5.1 [09.04.2017]
 * Removed: custom emacs themes directory
