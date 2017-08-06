@@ -6,6 +6,14 @@ bind-key 4-p       "rofi -show run"
 bind-key 4-slash   "rofi -show window"
 bind-key 4-period  "rofi -show ssh"
 bind-key 4S-Return "urxvt -e tmux"
+bind-key F1        "amixer set Master toggle"
+bind-key F2        "amixer set Master 5.0%-"
+bind-key F3        "amixer set Master 5.0%+"
+bind-key F4        "amixer set Capture toggle"
+bind-key F5        "/home/peter/ch_brightness.sh -10"
+bind-key F6        "/home/peter/ch_brightness.sh +10"
+bind-key F7        "/home/peter/ch_temperatures.sh -500"
+bind-key F8        "/home/peter/ch_temperatures.sh +500"
 bind-key 4-f       window-fullscreen
 bind-key 4-h       window-hide
 bind-key 4-d       window-delete
@@ -19,6 +27,11 @@ bind-key 4S-h 	   window-htile
 bind-key 4S-v 	   window-vtile
 bind-key 4-s       window-cycle
 bind-key 4S-s      window-rcycle
+# Keyboard supplement keys
+bind-key XF86Calculator "xcalc"
+bind-key F12 "xlock -mode mountain"
+bind-key XF86HomePage "firefox"
+bind-key XF86MyComputer "thunar"
 
 ## Window movement (standard bindings)
 bind-key 4-i window-move-up-big

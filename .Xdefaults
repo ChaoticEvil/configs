@@ -11,7 +11,7 @@ URxvt.loginShell:  true
 !URxvt..transparent: true
 !URxvt.shading: 20
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+urxvt*background: rgba:0000/0000/0000/e000
 
 URxvt.cursorBlink: 1
 
