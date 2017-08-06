@@ -1,4 +1,5 @@
 Xft.dpi: 96
+URxvt.geometry: 90x22
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
@@ -7,15 +8,17 @@ Xft.autohint: false
 Xft.lcdfilter: lcddefault
 
 URxvt.loginShell:  true
-! URxvt..transparent: true
-! URxvt.shading: 20
+!URxvt..transparent: true
+!URxvt.shading: 20
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
 
 URxvt.cursorBlink: 1
 
-URxvt.font: xft:Iosevka:normal:size=14
-URxvt.boldFont: xft:Iosevka:bold:size=14
-URxvt.italicFont: xft:Iosevka:italic:size=14
-URxvt.boldItalicFont: xft:Iosevka:bold:italic:size=14
+URxvt.font: xft:Iosevka:normal:size=13
+URxvt.boldFont: xft:Iosevka:bold:size=13
+URxvt.italicFont: xft:Iosevka:italic:size=13
+URxvt.boldItalicFont: xft:Iosevka:bold:italic:size=13
 
 URxvt.scrollstyle: rxvt
 urxvt.scrollBar: false
@@ -57,3 +60,10 @@ URxvt*color14: #54FFFF
 ! white
 URxvt*color7:  #B2B2B2
 URxvt*color15: #FFFFFF
+
+! ROFI Color theme (glue_pro_blue)
+rofi.color-enabled: true
+rofi.color-window: #393939, #393939, #268bd2
+rofi.color-normal: #393939, #ffffff, #393939, #268bd2, #ffffff
+rofi.color-active: #393939, #268bd2, #393939, #268bd2, #205171
+rofi.color-urgent: #393939, #f3843d, #393939, #268bd2, #ffc39c

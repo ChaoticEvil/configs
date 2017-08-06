@@ -1,66 +1,63 @@
 # Unmap keybinding
-bind SM-h unmap
-bind M-m  unmap
-bind M-i  unmap
-bind SM-i unmap
-bind M-l  unmap
-bind SM-l unmap
-bind M-k  unmap
-bind SM-k unmap
-bind M-j  unmap
-bind M-h  unmap
-bind M-g  unmap
-bind M-/  unmap
-bind C-/  unmap
-
+unbind-key all
 
 # New map keybinding
-bind 4-p  exec
-bind 4-/  exec_wm
-bind 4-'  ssh
-bind 4-f  fullscreen
-bind 4-h  hide
-bind 4-d  delete
-bind 4-l  lower
-bind 4-r  raise
-bind 4-m  maximize
-bind S4-m vmaximize
-bind S4-r restart
+bind-key 4-p       "rofi -show run"
+bind-key 4-slash   "rofi -show window"
+bind-key 4-period  "rofi -show ssh"
+bind-key 4S-Return "urxvt -e tmux"
+bind-key 4-f       window-fullscreen
+bind-key 4-h       window-hide
+bind-key 4-d       window-delete
+bind-key 4-l       window-lower
+bind-key 4-r       window-raise
+bind-key 4-m       window-maximize
+bind-key 4S-r      restart
+bind-key 4-equal   window-vmaximize
+bind-key 4S-equal  window-hmaximize
+bind-key 4S-h 	   window-htile
+bind-key 4S-v 	   window-vtile
+bind-key 4-s       window-cycle
+bind-key 4S-s      window-rcycle
 
+## Window movement (standard bindings)
+bind-key 4-i window-move-up-big
+bind-key 4-k window-move-down-big
+bind-key 4-j window-move-left-big
+bind-key 4-l window-move-right-big
+
+# Window resize
+bind-key 4S-i window-resize-up-big
+bind-key 4S-k window-resize-down-big
+bind-key 4S-j window-resize-left-big
+bind-key 4S-l window-resize-right-big
 
 # Enable sticky mode
-sticky group mode
-
-# Set look and field
-fontname "Consalas 14"
+sticky yes
 
 # Set groups
-autogroup 3 "urxvt,URxvt"
+autogroup 1 "urxvt,URxvt"
 autogroup 2 "firefox,WWW"
-autogroup 2 "chromium-browser,WWW"
-autogroup 2 "opera,WWW"
-autogroup 2 "emacs,GNU Emacs"
+autogroup 3 "emacs,GNU Emacs"
 
-# Set application menu
-command gimp     gimp
-command emacs    emacs
-command skype    skype
-command firefox  firefox
-command chromium chromium-browser
-command htop     "urxvt -e htop"
+## Set application menu
+#command gimp     gimp
+#command emacs    emacs
+#command skype    skypeforlinux
+#command slack    slack
+#command telegram Telegram
+#command firefox  firefox
+#command htop     "urxvt -e htop"
 
+# Disable border
 ignore xclock
 
-borderwidth 2
-# color activeborder color
-# color inactiveborder color
-# color font color
-# color selfont color
-# color groupborder color
-# color inactiveborder color
-# color menubg color
-# color menufg color
-# color urgencyborder color
-# color ungroupborder color
+# Colors
+fontname             "Iosevka:normal:size=13"
+borderwidth          4
+snapdist             2
+color activeborder   goldenrod1
+color inactiveborder grey50
 
-gap top
+# Gap
+# gap 20 20 20 20 #[T B L R]
