@@ -6,8 +6,8 @@
 export LANG=en_US.UTF-8
 export EDITOR="nano" # Default console editor
 
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-export SCALA_HOME=/usr/share/scala
+export JAVA_HOME=/usr/lib64/jdk1.8.0_121 #/usr/lib/jvm/java-8-openjdk
+export SCALA_HOME=/usr/lib64/scala
 export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
 
 bindkey -e # Emacs-like shortcuts
@@ -56,9 +56,46 @@ alias grep="grep --colour=auto"
 alias mocp="mocp -T nightly_theme"
 alias get_bat="(acpi | cut -d ',' -f 2)"
 
-PATH="~/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="~/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
+# Work alias
+# alias berest="ssh -p 12322 peter@c.calamar.ga"
+# alias remote="ssh -p 12322 www@test.uid.me"
+# alias upages="ssh -p 12322 www@upages.io"
+# alias cuid1="ssh -l www -p 12322 195.216.243.140"
+# alias cuid2="ssh -l www -p 12322 195.216.243.141"
+alias 21stf="ssh -p 16622 web@21stf.ru"
+
+alias bright_night="\
+echo 160 > /sys/class/backlight/amdgpu_bl0/brightness && \
+redshift -o -l 47.235714:39.701505 -b 0.8 -t 3600:3600 > /dev/null"
+
+alias bright_dev="\
+echo 180 > /sys/class/backlight/amdgpu_bl0/brightness && \
+redshift -o -l 47.235714:39.701505 -b 0.8 -t 4000:4000 > /dev/null"
+
+alias bright_normal="\
+echo 200 > /sys/class/backlight/amdgpu_bl0/brightness && \
+redshift -o -l 47.235714:39.701505 -b 0.8 -t 4500:4500 > /dev/null"
+
+alias bright_film="\
+echo 220 > /sys/class/backlight/amdgpu_bl0/brightness && \
+redshift -o -l 47.235714:39.701505 -b 0.9 -t 5000:5000 > /dev/null"
+
+alias bright_max="\
+echo 255 > /sys/class/backlight/amdgpu_bl0/brightness && \
+redshift -o -l 47.235714:39.701505 -b 1.0 -t 6000:6000 > /dev/null"
+
+alias bright0="redshift -o -l 47.235714:39.701505 -b 0.8 -t 4000:4000 > /dev/null"
+alias bright1="redshift -o -l 47.235714:39.701505 -b 0.8 -t 5250:5250 > /dev/null"
+alias bright2="redshift -o -l 47.235714:39.701505 -b 0.8 -t 6500:6500 > /dev/null"
+alias bright3="redshift -o -l 47.235714:39.701505 -b 0.9 -t 6500:6500 > /dev/null"
+alias bright4="redshift -o -l 47.235714:39.701505 -b 1.0 -t 6500:6500 > /dev/null"
+
+PATH=$PATH:~/perl5/bin
+PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
+
+export ANDROID_HOME=/home/peter/opt/android
+export _JAVA_OPTIONS='-Dsun.java2d.opengl=true'
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export TERM=xterm-256color
 
