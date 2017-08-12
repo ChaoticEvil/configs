@@ -31,9 +31,10 @@
 (setq auto-save-list-file-name nil)
 
 ;; Fringes
-(fringe-mode '(8 . 0))
-(setq-default indicate-empty-lines t) ;; Gliph indicate for empty line
-(setq-default indicate-buffer-boundaries 'left) ;; Only left-indication
+(if (not (is-in-terminal))
+	(fringe-mode '(8 . 0))
+  (setq-default indicate-empty-lines t) ;; Gliph indicate for empty line
+  (setq-default indicate-buffer-boundaries 'left)) ;; Only left-indication
 
 ;; Print supplement info in modeline
 (display-time-mode             t) ;; Time
@@ -77,14 +78,17 @@
 (tooltip-mode      -1) ;; Disable tooltip
 (menu-bar-mode     -1) ;; Disable menubar
 (tool-bar-mode     -1) ;; Disable toolbar
-(scroll-bar-mode   -1) ;; Disable scrollbar
+
+(if (not (is-in-terminal))
+	(scroll-bar-mode   -1)) ;; Disable scrollbar
+
 (setq use-dialog-box nil) ;; No gui dialogs. Only minibuffer
 (setq ring-bell-function 'ignore) ;; Disable bell sound
 (setq ingibit-startup-message t) ;; Disable startup message
 (setq inhibit-splash-screen   t) ;; Disable splash-screen
 (setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
 (load-theme 'zenburn t) ;; Set color theme
-(set-frame-font "Iosevka Thin 18") ;; Set font
+(set-frame-font "Iosevka Medium 14") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line
 
 ;; Change Meta for OS X

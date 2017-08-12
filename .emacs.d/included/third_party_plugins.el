@@ -141,11 +141,11 @@
 (setq sr-speedbar-right-side nil) ; put on left side
 
 ;; Ensime
-(setq exec-path (append exec-path '("/usr/bin")))
-(setq exec-path (append exec-path '("/usr/sbin")))
-(setq exec-path (append exec-path '("/usr/local/bin")))
-(setq exec-path (append exec-path '("/usr/local/sbin")))
-(setenv "PATH" (shell-command-to-string "/bin/zsh -c 'echo -n $PATH'"))
+;; (setq exec-path (append exec-path '("/usr/bin")))
+;; (setq exec-path (append exec-path '("/usr/sbin")))
+;; (setq exec-path (append exec-path '("/usr/local/bin")))
+;; (setq exec-path (append exec-path '("/usr/local/sbin")))
+;; (setenv "PATH" (shell-command-to-string "/bin/zsh -c 'echo -n $PATH'"))
 
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
