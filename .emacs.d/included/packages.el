@@ -25,14 +25,14 @@
   '(elpy ;; Python autocomplete
 	smex ;; Smex is a M-x enhancement for Emacs.
 	magit ;; Work with git scm
+	ensime ;; Scala runtime server
+	pomidor ;; Pomidor is a simple and cool pomodoro technique timer
 	lua-mode ;; Better work with lua
 	web-mode ;; Better work with html,css,template engines
 	js2-mode ;; Better work with javascript
 	json-mode ;; Better work with json
 	scala-mode ;; Work with scala
-	ensime ;; Scala runtime server
 	flycheck ;; Backend for several linters
-	yasnippet ;; Snippets collection
 	restclient ;; Simple http-client
 	sr-speedbar ;; Filesystem tree
 	py-autopep8 ;; Enable python pep8
