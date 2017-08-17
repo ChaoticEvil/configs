@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.3
+;; Version: 0.6.0
 ;;
 ;;; Commentary:
 ;;
@@ -23,4 +23,4 @@
 (load "~/.emacs.d/included/plugins.el"            ) ;; Enable and settings builtin plugins
 (load "~/.emacs.d/included/third_party_plugins.el") ;; Enable and settings third party plugins
 
-;;
+;; init.el ends here

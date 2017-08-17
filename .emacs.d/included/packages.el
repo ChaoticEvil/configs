@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.5.3
+;; Version: 0.6.0
 ;;
 ;;; Commentary:
 ;;
@@ -38,7 +38,7 @@
 	py-autopep8 ;; Enable python pep8
 	expand-region ;; For expandong text regions
 	markdown-mode ;; Better work with markdown (.md)
-	zenburn-theme ;; Best Emacs theme
+	zenburn-theme ;; Best Emacs theme :)
 	auto-complete ;; Autocomplete
 	highlight-symbol)) ;; Highlight word under cursosr
 
