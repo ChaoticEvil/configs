@@ -1,29 +1,30 @@
 ### About this repositiry
-This repository is a collection of the author's configuration files for some *nix-desktop programs, such as: emacs, dwm, st, cwm, tmux etc.
+This repository is a collection of the author's configuration files for some *nix-desktop programs, such as: emacs, dwm, st, cwm, tmux, mutt, urxvt.
 
 ### How to use it
 
 	$ git clone https://github.com/ChaoticEvil/configs.git
 	$ cp -r configs/. ~/
+	
+For using eslint with js2-mode in Emacs - install eslint globally:
+
 	$ npm install -g eslint
 	
-Eslint (http://eslint.org/) is a good syntax linter for JavaScript (ES5,ES6) language. It using in Emacs for js2-mode, web-mode, json-mode.
-
 ### History
 
-#### v0.6.0 [01.09.2017]
+#### v0.6.0 [18.08.2017]
 * Added: compton config (.compton.conf)
-* Added: supplement script for inc/dec brightness
-* Added: supplement script for inc/dec screen color (with redshift)
+* Added: supplement script for inc/dec brightness (for cwm)
+* Added: supplement script for inc/dec screen color with redshift (for cwm)
 * Fixed: .muttrc
 * Fixed: .Xdefaults
 * Fixed: .perltidyrc
 * Fixed: .perlcriticrc
 * Fixed: .cwmrc (rewrite all config)
 * Fixed: .rtorrent.rc
-* Fixed: some refactoring in emacs config
+* Fixed: some refactoring in emacs config (X11 and terminal version)
 * Fixed: .xinitrc (now using cwm by default window manager)
-* Removed: unused fonts ()
+* Removed: unused fonts
 * Upgraded: fonts (Iosevka v1.13.2, Fira Code v1.204, Fira Mono v3.206, Anonimous-pro, Progmata-pro, Consolas, Iconsolata, Hack v2.020, Go)
 
 #### v0.5.6 [28.07.2017]
