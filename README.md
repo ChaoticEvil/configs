@@ -12,6 +12,9 @@ For using eslint with js2-mode in Emacs - install eslint globally:
 	
 ### History
 
+#### v0.6.1 [18.08.2017]
+* Removed: duplicate eslintrc
+
 #### v0.6.0 [18.08.2017]
 * Added: compton config (.compton.conf)
 * Added: supplement script for inc/dec brightness (for cwm)
