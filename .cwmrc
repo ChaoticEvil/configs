@@ -27,10 +27,11 @@ bind-key 4S-h 	   window-htile
 bind-key 4S-v 	   window-vtile
 bind-key 4-s       window-cycle
 bind-key 4S-s      window-rcycle
+
 # Keyboard supplement keys
 bind-key XF86Calculator "xcalc"
-bind-key F12 "xlock -mode mountain"
-bind-key XF86HomePage "firefox"
+bind-key F12            "xlock -mode mountain"
+bind-key XF86HomePage   "firefox"
 bind-key XF86MyComputer "thunar"
 
 ## Window movement (standard bindings)
@@ -49,9 +50,14 @@ bind-key 4S-l window-resize-right-big
 sticky yes
 
 # Set groups
-autogroup 1 "urxvt,URxvt"
-autogroup 2 "firefox,WWW"
-autogroup 3 "emacs,GNU Emacs"
+bind-key 4-1  group-only-1
+bind-key 4-2  group-only-2
+bind-key 4-3  group-only-3
+bind-key 4-4  group-only-4
+bind-key 4S-1 window-movetogroup-1
+bind-key 4S-2 window-movetogroup-2
+bind-key 4S-3 window-movetogroup-3
+bind-key 4S-4 window-movetogroup-4
 
 ## Set application menu
 #command gimp     gimp
@@ -71,6 +77,3 @@ borderwidth          4
 snapdist             2
 color activeborder   "#62BA64"
 color inactiveborder grey50
-
-# Gap
-# gap 20 20 20 20 #[T B L R]
