@@ -4,11 +4,13 @@
 #
 
 export LANG=en_US.UTF-8
+export LESS=eFRX
 export EDITOR="nano" # Default console editor
 
-export JAVA_HOME=/usr/lib64/jdk1.8.0_121 #/usr/lib/jvm/java-8-openjdk
-export SCALA_HOME=/usr/lib64/scala
-export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
+# # Uncomment for use JAVA and SCALA ENV variables
+# export JAVA_HOME=/usr/lib64/jdk1.8.0_131
+# export SCALA_HOME=/usr/lib64/scala
+# export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
 
 bindkey -e # Emacs-like shortcuts
 bindkey '\e[3~' delete-char # now del character works ok
@@ -93,9 +95,5 @@ alias bright4="redshift -o -l 47.235714:39.701505 -b 1.0 -t 6500:6500 > /dev/nul
 PATH=$PATH:~/perl5/bin
 PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
 
-export ANDROID_HOME=/home/peter/opt/android
-export _JAVA_OPTIONS='-Dsun.java2d.opengl=true'
-export _JAVA_AWT_WM_NONREPARENTING=1
-
 export TERM=xterm-256color
-
+export COLORTERM=trueolor
