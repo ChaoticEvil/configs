@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.6.0
+;; Version: 0.6.2
 ;;
 ;;; Commentary:
 ;;
@@ -93,6 +93,12 @@
 	  cperl-continued-statement-offset 4
 	  cperl-indent-parens-as-block t
 	  cperl-tab-always-indent t)
+
+(add-hook 'cperl-mode-hook
+          (lambda()
+            (setq tab-width 4)
+            (setq indent-tabs-mode nil)
+            ))
 
 ;; Finding perl modules paths
 (defun find-perl-module (module-name)

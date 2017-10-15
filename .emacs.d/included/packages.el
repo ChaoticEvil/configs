@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.6.0
+;; Version: 0.6.2
 ;;
 ;;; Commentary:
 ;;
@@ -22,24 +22,25 @@
 
 ;; require packages list
 (defvar packagesList
-  '(elpy ;; Python autocomplete
-	smex ;; Smex is a M-x enhancement for Emacs.
-	magit ;; Work with git scm
-	ensime ;; Scala runtime server
-	pomidor ;; Pomidor is a simple and cool pomodoro technique timer
-	lua-mode ;; Better work with lua
-	web-mode ;; Better work with html,css,template engines
-	js2-mode ;; Better work with javascript
-	json-mode ;; Better work with json
-	scala-mode ;; Work with scala
-	flycheck ;; Backend for several linters
-	restclient ;; Simple http-client
-	sr-speedbar ;; Filesystem tree
-	py-autopep8 ;; Enable python pep8
-	expand-region ;; For expandong text regions
-	markdown-mode ;; Better work with markdown (.md)
-	zenburn-theme ;; Best Emacs theme :)
-	auto-complete ;; Autocomplete
+  '(elpy               ;; Python autocomplete
+	smex               ;; Smex is a M-x enhancement for Emacs.
+	magit              ;; Work with git scm
+	ensime             ;; Scala runtime server
+	pomidor            ;; Pomidor is a simple and cool pomodoro technique timer
+	lua-mode           ;; Better work with lua
+	web-mode           ;; Better work with html,css,template engines
+	js2-mode           ;; Better work with javascript
+	yaml-mode          ;; Better work with YAML
+	json-mode          ;; Better work with json
+	scala-mode         ;; Work with scala
+	flycheck           ;; Backend for several linters
+	restclient         ;; Simple http-client
+	sr-speedbar        ;; Filesystem tree
+	py-autopep8        ;; Enable python pep8
+	expand-region      ;; For expandong text regions
+	markdown-mode      ;; Better work with markdown (.md)
+	auto-complete      ;; Autocomplete
+	zenburn-theme      ;; Best Emacs theme :)
 	highlight-symbol)) ;; Highlight word under cursosr
 
 ;; install package in packagesList
