@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.6.0
+;; Version: 0.6.2
 ;;
 ;;; Commentary:
 ;;
@@ -52,13 +52,6 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-;; Ya-snippets
-(require 'yasnippet)
-(yas-global-mode 1)
-(define-key yas-minor-mode-map (kbd "<tab>") nil)
-(define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "<M-s>") 'yas-expand)
 
 ;; Javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -141,12 +134,6 @@
 (setq sr-speedbar-right-side nil) ; put on left side
 
 ;; Ensime
-;; (setq exec-path (append exec-path '("/usr/bin")))
-;; (setq exec-path (append exec-path '("/usr/sbin")))
-;; (setq exec-path (append exec-path '("/usr/local/bin")))
-;; (setq exec-path (append exec-path '("/usr/local/sbin")))
-;; (setenv "PATH" (shell-command-to-string "/bin/zsh -c 'echo -n $PATH'"))
-
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
