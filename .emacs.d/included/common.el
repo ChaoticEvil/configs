@@ -89,8 +89,7 @@
 (setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
 
 ;; Set color theme only for windowed mode
-(if (not (is-in-terminal))
-	(load-theme 'zenburn t))
+(load-theme 'zenburn t)
 
 (set-frame-font "Iosevka Medium 14") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line
