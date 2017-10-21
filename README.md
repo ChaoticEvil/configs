@@ -11,20 +11,14 @@ This repository is a collection of the author's configuration files for some *ni
 For using eslint with js2-mode in Emacs - install eslint globally:
 
 	$ npm install -g eslint
-	
-### Custom Emacs shortcuts
-
-...
-	
+		
 ## History
 
-### v0.6.2 [29.11.2017]
-* Added: emacs shortcuts in this doc
-* Fixed: .cwmrc
-* Fixed: .perltidy & .perlcritic
-* Fixed: change some emacs shortcuts
-* Fixed: several fixes for emacs console version
-* Upgraded: fonts ()
+### v0.6.2 [21.10.2017]
+* Fixed: .tmux.conf (infobar, 256 colors mode)
+* Fixed: .cwmrc (window groups)
+* Fixed: .perltidy (improved rules)
+* Fixed: .emacs.d (change some emacs shortcuts, some fixes in console mdoe)
 
 ### v0.6.1 [18.08.2017]
 * Removed: duplicate eslintrc
