@@ -1,10 +1,27 @@
+# Some user commands (applications)
+command gimp        gimp
+command emacs       emacs
+command urxvt       urxvt
+command geeqie      geeqie
+command tixati      tixati
+command firefox     firefox
+command zathura     zathura
+command deadbeef    deadbeef
+command linphone    linphone
+command telega      Telegram
+command tor         tor-browser
+command libreoffice libreoffice5.4
+command htop        "urxvt -e htop"
+command moc         "mocp -T transparent-background" 
+
 # Unmap keybinding
 unbind-key all
 
 # New map keybinding
-bind-key 4-p       "rofi -show run"
-bind-key 4-slash   "rofi -show window"
-bind-key 4-period  "rofi -show ssh"
+bind-key 4-p       menu-cmd
+bind-key 4-[       menu-exec            # "rofi -show run"
+bind-key 4-slash   menu-window          # "rofi -show window"
+bind-key 4-period  menu-ssh             # "rofi -show ssh"
 bind-key 4S-Return "urxvt -e tmux"
 bind-key 4-F1      "amixer set Master toggle"
 bind-key 4-F2      "amixer set Master 5.0%-"
@@ -16,11 +33,12 @@ bind-key 4-F7      "/home/peter/ch_temperatures.sh -500"
 bind-key 4-F8      "/home/peter/ch_temperatures.sh +500"
 bind-key 4-f       window-fullscreen
 bind-key 4-h       window-hide
-bind-key 4-d       window-delete
+bind-key 4S-d      window-delete
 bind-key 4-l       window-lower
 bind-key 4-r       window-raise
 bind-key 4-m       window-maximize
 bind-key 4S-r      restart
+bind-key 4S-q      quit
 bind-key 4-equal   window-vmaximize
 bind-key 4S-equal  window-hmaximize
 bind-key 4S-h 	   window-htile
@@ -63,21 +81,15 @@ bind-key 4S-4 window-movetogroup-4
 bind-key 4S-5 window-movetogroup-5
 bind-key 4S-6 window-movetogroup-6
 
-## Set application menu
-#command gimp     gimp
-#command emacs    emacs
-#command skype    skypeforlinux
-#command slack    slack
-#command telegram Telegram
-#command firefox  firefox
-#command htop     "urxvt -e htop"
-
-# Disable border
-ignore xclock
-
-# Colors
+# Colors and decorations
 fontname             "Iosevka:normal:size=13"
 borderwidth          4
 snapdist             2
-color activeborder   "#62BA64"
-color inactiveborder grey50
+color activeborder   "#F07241"
+color inactiveborder grey30
+
+# Menu colors
+color font    white
+color selfont black
+color menubg  black
+color menufg  "#F07241"

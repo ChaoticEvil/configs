@@ -10,7 +10,7 @@ color status  brightgreen blue
 color tilde blue default
 color tree  red default
 
-set realname = "Firstname Lastname"
+set realname = "Peter Brovchenko"
 set use_from = yes
 set editor='emacs -nw'
 # see the headers when editing
@@ -49,3 +49,6 @@ set certificate_file = ~/.mutt/certificates
 
 auto_view text/x-vcard text/html text/enriched
 alternative_order text/plain text/enriched text/html
+
+# Shortcuts
+bind index G imap-fetch-mail

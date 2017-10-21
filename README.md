@@ -14,11 +14,18 @@ For using eslint with js2-mode in Emacs - install eslint globally:
 		
 ## History
 
+### v0.6.3 [10.02.2018]
+* Fixed: .cwmrc (disable rofi)
+* Fixed: .mailcap (add default charset - utf8)
+* Fixed: .muttrc (multiple small fixes)
+* Fixed: .tmux.conf (remove hostname from tabbar)
+* Fixed: redshift config (disable geoclue by default)
+
 ### v0.6.2 [21.10.2017]
-* Fixed: .tmux.conf (infobar, 256 colors mode)
-* Fixed: .cwmrc (window groups)
+* Fixed: .cwmrc (fixed window groups)
 * Fixed: .perltidy (improved rules)
-* Fixed: .emacs.d (change some emacs shortcuts, some fixes in console mdoe)
+* Fixed: .tmux.conf (fixed infobar and 256 colors mode)
+* Fixed: .emacs.d (changed several shortcuts, some fixes in console mode)
 
 ### v0.6.1 [18.08.2017]
 * Removed: duplicate eslintrc

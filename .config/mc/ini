@@ -81,17 +81,17 @@ editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
 ignore_ftp_chattr_errors=true
-skin=dark
+skin=modarin256-defbg
 
 filepos_max_saved_entries=1024
 
 [Layout]
 message_visible=1
-keybar_visible=1
+keybar_visible=0
 xterm_title=1
 output_lines=0
 command_prompt=1
-menubar_visible=1
+menubar_visible=0
 free_space=1
 horizontal_split=0
 vertical_equal=1
@@ -124,6 +124,8 @@ rxvt-unicode-256color=
 screen=
 
 xterm=
+
+tmux-256color=
 
 [Panels]
 show_mini_info=true
