@@ -19,7 +19,7 @@ unbind-key all
 
 # New map keybinding
 bind-key 4-p       menu-cmd
-bind-key 4-[       menu-exec            # "rofi -show run"
+bind-key 4-e       menu-exec            # "rofi -show run"
 bind-key 4-slash   menu-window          # "rofi -show window"
 bind-key 4-period  menu-ssh             # "rofi -show ssh"
 bind-key 4S-Return "urxvt -e tmux"
