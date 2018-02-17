@@ -1,10 +1,10 @@
 ;;; plugins.el --- Plugins settings
 ;;
-;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;; Copyright (C) 2015-2018 by Peter Brovchenko <peter.brovchenko@gmail.com>
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.6.2
+;; Version: 0.7.0
 ;;
 ;;; Commentary:
 ;;
@@ -75,7 +75,7 @@
 ;;
 ;; Perl
 ;;
-(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\)\\'" . cperl-mode)) ;; Auto associate with cperl-mode
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\|t\\)\\'" . cperl-mode)) ;; Auto associate with cperl-mode
 (add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))

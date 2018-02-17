@@ -12,7 +12,7 @@ command telega      Telegram
 command tor         tor-browser
 command libreoffice libreoffice5.4
 command htop        "urxvt -e htop"
-command moc         "mocp -T transparent-background" 
+command moc         "urxvt -e mocp -T transparent-background" 
 
 # Unmap keybinding
 unbind-key all
@@ -85,11 +85,11 @@ bind-key 4S-6 window-movetogroup-6
 fontname             "Iosevka:normal:size=13"
 borderwidth          4
 snapdist             2
-color activeborder   "#F07241"
+color activeborder   "#9fca56"
 color inactiveborder grey30
 
 # Menu colors
 color font    white
 color selfont black
 color menubg  black
-color menufg  "#F07241"
+color menufg  "#9fca56"
