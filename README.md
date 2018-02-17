@@ -14,6 +14,18 @@ For using eslint with js2-mode in Emacs - install eslint globally:
 		
 ## History
 
+### v0.7.0 [17.02.2018]
+* Added: new fonts (M+ v0.63, Input 1.2)
+* Added: some wallpapers (added to data/media/wallpapers)
+* Added: simple Perl script for slackware updating (slupgrade.pl)
+* Added: Emacs theme - gattaca-theme (based on original bas16-seti theme)
+* Upgraded: fonts (Iosevka v1.14.0, Hack v3.002)
+* Fixed: .xinitrc (small refactoring)
+* Fixed: .emacs.d (small refactoring)
+* Fixed: .Xdefaults (changed color pallete)
+* Fixed: .cwmrc (enhance color pallete, fixed key bindings)
+* Fixed: .tmux.conf (enhance colors, small fixes in statusbar)
+
 ### v0.6.3 [10.02.2018]
 * Fixed: .cwmrc (disable rofi)
 * Fixed: .mailcap (add default charset - utf8)

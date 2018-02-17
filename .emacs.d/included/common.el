@@ -1,10 +1,10 @@
 ;;; common.el --- Basic Emacs settings
 ;;
-;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;; Copyright (C) 2015-2018 by Peter Brovchenko <peter.brovchenko@gmail.com>
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.6.2
+;; Version: 0.7.0
 ;;
 ;;; Commentary:
 ;;
@@ -89,7 +89,7 @@
 (setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
 
 ;; Set color theme only for windowed mode
-(load-theme 'zenburn t)
+(load-theme 'gattaca t)
 
 (set-frame-font "Iosevka Medium 14") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line

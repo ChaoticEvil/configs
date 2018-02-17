@@ -1,10 +1,10 @@
 ;;; third_party_plugins.el --- Settings for third-party plugins
 ;;
-;; Copyright (C) 2015-2017 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;; Copyright (C) 2015-2018 by Peter Brovchenko <peter.brovchenko@gmail.com>
 ;;
 ;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.6.2
+;; Version: 0.7.0
 ;;
 ;;; Commentary:
 ;;
@@ -35,6 +35,7 @@
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ep?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vbhtml?\\'" . web-mode))
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."

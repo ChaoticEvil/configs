@@ -7,10 +7,9 @@ export LANG=en_US.UTF-8
 export LESS=eFRX
 export EDITOR="nano" # Default console editor
 
-# # Uncomment for use JAVA and SCALA ENV variables
-# export JAVA_HOME=/usr/lib64/jdk1.8.0_131
-# export SCALA_HOME=/usr/lib64/scala
-# export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
+export JAVA_HOME=/usr/lib64/jdk1.8.0_152
+export SCALA_HOME=/usr/lib64/scala
+export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
 
 bindkey -e # Emacs-like shortcuts
 bindkey '\e[3~' delete-char # now del character works ok
@@ -65,6 +64,9 @@ alias get_bat="(acpi | cut -d ',' -f 2)"
 # alias cuid1="ssh -l www -p 12322 195.216.243.140"
 # alias cuid2="ssh -l www -p 12322 195.216.243.141"
 alias 21stf="ssh -p 16622 web@21stf.ru"
+alias dslife="ssh peter.brovchenko@cbroker-deploy.reg.ru"
+alias morph="ssh peter.brovchenko@31.31.205.31"
+alias logs="ssh peter.brovchenko@logs.reg.ru"
 
 alias bright_night="\
 echo 160 > /sys/class/backlight/amdgpu_bl0/brightness && \
@@ -94,6 +96,10 @@ alias bright4="redshift -o -l 47.235714:39.701505 -b 1.0 -t 6500:6500 > /dev/nul
 
 PATH=$PATH:~/perl5/bin
 PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
+
+export ANDROID_HOME=/home/peter/opt/android
+export _JAVA_OPTIONS='-Dsun.java2d.opengl=true'
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 export TERM=xterm-256color
 export COLORTERM=trueolor
