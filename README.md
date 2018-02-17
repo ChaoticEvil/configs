@@ -1,18 +1,63 @@
 ## About this repositiry
-This repository is a collection of the author's configuration files for some *nix-desktop programs, such as: emacs, dwm, st, cwm, tmux, mutt, urxvt.
+This repository is a collection of the author's configuration files for some *nix-desktop programs, such as: cwm, emacs,  tmux, mutt, urxvt and more.
+
+*This is not a silver bullet, but simply way to organize and maintain for unified "look and feel" on different PC's, running on Unix-Like OS.*
+
+The author also hopes that this examples of configuration files will be useful to anyone else.
+
+**The author is not responsible for the relevance, correctness, completeness and quality of the information provided.**
+
+## Depencences
+
+* Basic
+  * cwm
+  * feh
+  * moc
+  * tmux
+  * mutt
+  * lynx
+  * urxvt
+  * emacs
+* Optional
+  * npm (for using eslint in Emacs)
+
+Make sure that these packages are installed on your system.
+
+For Debian-based distribution:
+
+```shell
+$ apt-get install feh cwm moc tmux mutt lynx rxvt-unicode-256color emacs25
+```
+
+For Arch Linux
+
+```shell
+$ pacman -Si feh cwm moc tmux mutt lynx rxvt-unicode emacs
+```
 
 ## How to use it
 
-	$ git clone https://github.com/ChaoticEvil/configs.git
-	$ cp -r configs/. ~/
+```shell
+$ git clone https://github.com/ChaoticEvil/configs.git
+$ cp -r configs/. ~/
+```
 	
-### Using emacs config
+### For using eslint in Emacs
 
 For using eslint with js2-mode in Emacs - install eslint globally:
 
-	$ npm install -g eslint
+```shell
+$ npm install -g eslint
+```
 		
 ## History
+
+### v0.7.2 [01.03.2018]
+* Removed: st config
+* Removed: dwm config
+* Added: some wallpapers
+* Added: cursor icons (neutral)
+* Fixed: .tmux.conf (small refactoring)
 
 ### v0.7.1 [17.02.2018]
 * Upgraded: sbt-ensime (from v2.0.1 to v2.2.0)
