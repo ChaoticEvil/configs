@@ -14,6 +14,9 @@ For using eslint with js2-mode in Emacs - install eslint globally:
 		
 ## History
 
+### v0.7.1 [17.02.2018]
+* Upgraded: sbt-ensime (from v2.0.1 to v2.2.0)
+
 ### v0.7.0 [17.02.2018]
 * Added: new fonts (M+ v0.63, Input 1.2)
 * Added: some wallpapers (added to data/media/wallpapers)
