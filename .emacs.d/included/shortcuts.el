@@ -1,10 +1,10 @@
 ;;; shortcuts.el --- Shortcuts settings
 ;;
-;; Copyright (C) 2015-2018 by Peter Brovchenko <peter.brovchenko@gmail.com>
+;; Copyright (C) 2015-2018 by Peter Brovchenko <p.brovchenko@protonmail.com>
 ;;
-;; Author: Peter Brovchenko <peter.brovchenko@gmail.com>
-;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d
-;; Version: 0.7.0
+;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
+;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/included/shortcuts.el
+;; Version: 0.7.3
 ;;
 ;;; Commentary:
 ;;
