@@ -52,7 +52,7 @@ $ npm install -g eslint
 		
 ## History
 
-### v0.7.2 [01.03.2018]
+### v0.7.2 [17.02.2018]
 * Removed: st config
 * Removed: dwm config
 * Added: some wallpapers
