@@ -56,7 +56,7 @@ $ npm install -g eslint
 * Fixed: slupgrade.pl
 * Fixed: .emacs config (new package installation, refactoring)
 * Upgraded: sbt-ensime (from v2.2.0 to v2.6.1)
-* Upgraded: fonts ()
+* Upgraded: fonts (Iosevka v1.14.3, Hack v3.003)
 * Removed: integral_orbit.* wallpapers
 * Removed: st and dwm config directories
 
