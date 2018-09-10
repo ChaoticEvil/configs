@@ -52,6 +52,9 @@ $ npm install -g eslint
 		
 ## History
 
+### v0.7.5 [10.09.2018]
+* Fixed .perltidyrc (refactoring and add new rules)
+
 ### v0.7.4 [10.09.2018]
 * Fixed .cwmrc
 * Fixed .muttrc
