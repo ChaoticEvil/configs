@@ -52,13 +52,11 @@ $ npm install -g eslint
 		
 ## History
 
-### v0.7.4 [01.09.2018]
-* Upgraded: sbt-ensime ()
-* Upgraded: fonts ()
-* Removed: * wallpapers
+### v0.7.4 [10.09.2018]
 * Fixed .cwmrc
 * Fixed .muttrc
-* Fixed Emacs automatic install plugns + various refactoring
+* Upgraded: sbt-ensime
+* Upgraded: fonts (Iosevka v2.0.0)
 
 ### v0.7.3 [23.06.2018]
 * Upgraded: sbt-ensime (from v2.2.0 to v2.6.1)

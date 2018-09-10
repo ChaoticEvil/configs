@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/included/shortcuts.el
-;; Version: 0.7.3
+;; Version: 0.7.4
 ;;
 ;;; Commentary:
 ;;
