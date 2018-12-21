@@ -52,32 +52,40 @@ $ npm install -g eslint
 		
 ## History
 
-### v0.7.5 [10.09.2018]
+### v0.7.6 [2018-12-21]
+* Fixed .emacs.d
+* Fixed .eslintrc
+* Fixed README.md (date format)
+* Upgraded: fonts (Iosevka to v2.0.2)
+* Remove wallpapers
+* Remove gattaca - the custom emacs theme
+
+### v0.7.5 [2018-09-10]
 * Fixed .perltidyrc (refactoring and add new rules)
 
-### v0.7.4 [10.09.2018]
+### v0.7.4 [2018-09-10]
 * Fixed .cwmrc
 * Fixed .muttrc
 * Upgraded: sbt-ensime
 * Upgraded: fonts (Iosevka v2.0.0)
 
-### v0.7.3 [23.06.2018]
+### v0.7.3 [2018-06-23]
 * Upgraded: sbt-ensime (from v2.2.0 to v2.6.1)
 * Upgraded: fonts (Iosevka v1.14.3, Hack v3.003)
 * Removed: integral_orbit.* wallpapers
 * Removed: st and dwm config directories
 
-### v0.7.2 [17.02.2018]
+### v0.7.2 [2018-02-17]
 * Removed: st config
 * Removed: dwm config
 * Added: some wallpapers
 * Added: cursor icons (neutral)
 * Fixed: .tmux.conf (small refactoring)
 
-### v0.7.1 [17.02.2018]
+### v0.7.1 [2018-02-17]
 * Upgraded: sbt-ensime (from v2.0.1 to v2.2.0)
 
-### v0.7.0 [17.02.2018]
+### v0.7.0 [2018-02-17]
 * Added: new fonts (M+ v0.63, Input 1.2)
 * Added: some wallpapers (added to data/media/wallpapers)
 * Added: simple Perl script for slackware updating (slupgrade.pl)
@@ -89,23 +97,23 @@ $ npm install -g eslint
 * Fixed: .cwmrc (enhance color pallete, fixed key bindings)
 * Fixed: .tmux.conf (enhance colors, small fixes in statusbar)
 
-### v0.6.3 [10.02.2018]
+### v0.6.3 [2018-02-10]
 * Fixed: .cwmrc (disable rofi)
 * Fixed: .mailcap (add default charset - utf8)
 * Fixed: .muttrc (multiple small fixes)
 * Fixed: .tmux.conf (remove hostname from tabbar)
 * Fixed: redshift config (disable geoclue by default)
 
-### v0.6.2 [21.10.2017]
+### v0.6.2 [2017-10-21]
 * Fixed: .cwmrc (fixed window groups)
 * Fixed: .perltidy (improved rules)
 * Fixed: .tmux.conf (fixed infobar and 256 colors mode)
 * Fixed: .emacs.d (changed several shortcuts, some fixes in console mode)
 
-### v0.6.1 [18.08.2017]
+### v0.6.1 [2017-08-18]
 * Removed: duplicate eslintrc
 
-### v0.6.0 [18.08.2017]
+### v0.6.0 [2017-08-18]
 * Added: compton config (.compton.conf)
 * Added: supplement script for inc/dec brightness (for cwm)
 * Added: supplement script for inc/dec screen color with redshift (for cwm)
@@ -120,30 +128,30 @@ $ npm install -g eslint
 * Removed: unused fonts
 * Upgraded: fonts (Iosevka v1.13.2, Fira Code v1.204, Fira Mono v3.206, Anonimous-pro, Progmata-pro, Consolas, Iconsolata, Hack v2.020, Go)
 
-### v0.5.6 [28.07.2017]
+### v0.5.6 [2017-07-28]
 * Added: .mailcap
 * Added: .rtorrent.rc
 * Fixed: Multiple fixes (colors and external html viewer) in .muttrc
 
-### v0.5.5 [23.07.2017]
+### v0.5.5 [2017-07-23]
 * Fixed: URxvt color and fonts in .Xdefaults
 
-### v0.5.4 [14.07.2017]
+### v0.5.4 [2017-07-14]
 * Added: .muttrc
 * Added: .sbt/
 
-### v0.5.3 [02.06.2017]
+### v0.5.3 [2017-06-02]
 * Fixed: OS X meta for Emacs
 
-### v0.5.2 [02.06.2017]
+### v0.5.2 [2017-06-02]
 * Fixes: Some improvements in Emacs config
 
-### v0.5.1 [09.04.2017]
+### v0.5.1 [2017-04-09]
 * Removed: custom emacs themes directory
 * Added: sample mc config - .config/mc/ini
 * Added: sr-speedbar emacs plugin (filesystem tree side panel)
 
-### v0.5.0 [13.03.2017]
+### v0.5.0 [2017-03-13]
 * Fixed: st config (with delete key)
 * Fixed: dwm config (with volume change keys)
 * Fixed: emacs config (refactoring)
@@ -156,30 +164,30 @@ $ npm install -g eslint
 * Removed: sample web-servers configs
 * Removed: some unused fonts
 
-### v0.4.2 [18.11.2016]
+### v0.4.2 [2016-11-18]
 * Add GO-fonts (https://blog.golang.org/go-fonts) to the collection of fonts
 
-### v0.4.1 [22.10.2016]
+### v0.4.1 [2016-10-22]
 * Minor edits in README.md
 
-### v0.4 [22.10.2016]
+### v0.4 [2016-10-22]
 * Add tmux config file
 * Upgrade Iosevka fonts (from 1.9.2 to 1.9.4)
 * Add st (http://st.suckless.org/) config file
 * Add dwm (http://dwm.suckless.org/) config file
 
-### v0.3 [11.08.2016]
+### v0.3 [2016-08-11]
 * Some refactoring in emacs config.
 * Separate emacs config in multiple small files.
 * Upgrade Iosevka fonts (from 1.7.1 to 1.9.2)
 * Add eslint config and emacs connections witn him.
 
-### v0.2 [18.01.2016]
+### v0.2 [2016-01-18]
 * Update fonts collection.
 * Few fixes in emacs config.
 * Some fixes and changes in  README file.
 
-### v0.1 [20.10.2015]
+### v0.1 [2015-10-20]
 * Wrote README file.
 * Collection contains the best (according to the author) fonts for programming.
 * Added basic, working version of the configuration files: emacs, zsh, cwm, Xdefaults and xinitrc.

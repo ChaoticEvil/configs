@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/included/packages.el
-;; Version: 0.7.4
+;; Version: 0.7.6
 ;;
 ;;; Commentary:
 ;;
@@ -22,7 +22,7 @@
 
 ;; require packages list
 (defvar packagesList
-  '(elpy               ;; Python autocomplete
+  '(	elpy               ;; Python autocomplete
 	smex               ;; Smex is a M-x enhancement for Emacs.
 	magit              ;; Work with git scm
 	ensime             ;; Scala runtime server
@@ -37,6 +37,7 @@
 	restclient         ;; Simple http-client
 	sr-speedbar        ;; Filesystem tree
 	py-autopep8        ;; Enable python pep8
+	nimbus-theme       ;; Color scheme
 	expand-region      ;; For expandong text regions
 	markdown-mode      ;; Better work with markdown (.md)
 	auto-complete      ;; Autocomplete

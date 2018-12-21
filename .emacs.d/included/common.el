@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/included/common.el
-;; Version: 0.7.4
+;; Version: 0.7.6
 ;;
 ;;; Commentary:
 ;;
@@ -61,13 +61,15 @@
 (setq scroll-margin             5) ;; Set top and bottom scroll margin as a five lines
 (setq scroll-conservatively 10000)
 
-(setq select-enable-clipboard t) ;; Clipboard settings
+;; Clipboard settings
+(setq select-enable-clipboard t)
 
 ;; Search results highlight
 (setq search-highlight        t)
 (setq query-replace-highlight t)
 
-(delete-selection-mode t) ;; Enable for delete selected text regionk
+;; Enable for delete selected text regionk
+(delete-selection-mode t)
 
 (defalias 'yes-or-no-p 'y-or-n-p) ;; Short answers (yes->y, no->n)
 
@@ -89,9 +91,9 @@
 (setq frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
 
 ;; Set color theme only for windowed mode
-(load-theme 'gattaca t)
+(load-theme 'nimbus t)
 
-(set-frame-font "Iosevka Medium 14") ;; Set font
+(set-frame-font "Iosevka Medium 19") ;; Set font
 (global-hl-line-mode nil) ;; Highlight current line
 
 ;; Change Meta for OS X

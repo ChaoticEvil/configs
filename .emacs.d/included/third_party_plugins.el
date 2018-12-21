@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/included/third_party_plugins.el
-;; Version: 0.7.4
+;; Version: 0.7.6
 ;;
 ;;; Commentary:
 ;;
@@ -36,6 +36,10 @@
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.ep?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.vbhtml?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.vbhtml?\\'" . web-mode))
+(setq web-mode-engines-alist
+      '(("underscore"    . "\\.html\\'"))
+)
 
 (defun my-web-mode-hook ()
   "Hooks for Web mode."
@@ -99,7 +103,8 @@
 
 ;; Python
 (elpy-enable)
-;;(elpy-use-ipython)
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i --simple-prompt")
 
 ;; Use flycheck not flymake with elpy
 (when (require 'flycheck nil t)
@@ -137,5 +142,9 @@
 ;; Ensime
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;; Pomidor
+(setq pomidor-sound-tick nil
+      pomidor-sound-tack nil)
 
 ;;; third_party_plugins.el ends here
