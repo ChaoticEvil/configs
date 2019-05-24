@@ -6,24 +6,24 @@ use warnings;
 
 use Carp 'croak';
 use File::Fetch;
+use Term::ANSIColor qw(:constants);
 use threads;
 use Thread::Queue;
-use Term::ANSIColor qw(:constants);
 
 $File::Fetch::BLACKLIST = [qw(lwp netftp httplite httptiny lynx ncftp rsync ftp fetch)];
 
 use constant FILELIST        => 'FILELIST.TXT';
 use constant AVAILABLE_HOSTS => [
-    'http://ftp.osuosl.org/pub/slackware/slackware64-current/',     # ORIGINAL
-    'https://mirror.yandex.ru/slackware/slackware64-current/',      # YANDEX MIRROR
+    'http://ftp.osuosl.org/pub/slackware/slackware64-current/', # ORIGINAL
+    'https://mirror.yandex.ru/slackware/slackware64-current/',  # YANDEX MIRROR
     'http://slackware.falseking.org/slackware/slackware64-current/' # ALTERNATE RUSSIAN MIRROR
 ];
 use constant HOST => AVAILABLE_HOSTS->[0]; # DEFAULT HOST
 
 my $thq = Thread::Queue->new();
 
-my $packages     = {}; # Getted packages from remote host
-my $sys_packages = {}; # Already installed packages
+my $packages     = {};          # Getted packages from remote host
+my $sys_packages = {};          # Already installed packages
 
 # Parse system packages info
 opendir(my $dh, '/var/log/packages/');
@@ -91,89 +91,89 @@ sub get_pkg_info {
     my $pkg_split = [split /-/x, $pkg];
     my ($title, $version, $arch, $tag, $build) = ('', '', '', '', '');
      
-	if (scalar @$pkg_split == 6) {
-		$title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2]));
-		$version = $pkg_split->[3];
-		$arch = $pkg_split->[4];
-		$build = [split /\./x, $pkg_split->[5]];
+    if (scalar @$pkg_split == 6) {
+        $title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2]));
+        $version = $pkg_split->[3];
+        $arch = $pkg_split->[4];
+        $build = [split /\./x, $pkg_split->[5]];
 
-		if (scalar @$build > 1) {
-			$build = [split /_/, $build->[0]];
+        if (scalar @$build > 1) {
+            $build = [split /_/, $build->[0]];
             $tag = $build->[1];
-			$build = $build->[0];
-		}
-	} elsif (scalar @$pkg_split == 5) {
-		$title = join('-', ($pkg_split->[0], $pkg_split->[1]));
-		$version = $pkg_split->[2];
-		$arch = $pkg_split->[3];
-		$build = [split /\./x, $pkg_split->[4]];
+            $build = $build->[0];
+        }
+    } elsif (scalar @$pkg_split == 5) {
+        $title = join('-', ($pkg_split->[0], $pkg_split->[1]));
+        $version = $pkg_split->[2];
+        $arch = $pkg_split->[3];
+        $build = [split /\./x, $pkg_split->[4]];
 
-		if (scalar @$build > 1) {
-			$build = [split /_/, $build->[0]];
+        if (scalar @$build > 1) {
+            $build = [split /_/, $build->[0]];
             $tag = $build->[1];
-			$build = $build->[0];
-		}
-	} elsif (scalar @$pkg_split == 4) {
-		$title = $pkg_split->[0];
-		$version = $pkg_split->[1];
-		$arch = $pkg_split->[2];
-		$build = [split /\./x, $pkg_split->[3]];
+            $build = $build->[0];
+        }
+    } elsif (scalar @$pkg_split == 4) {
+        $title = $pkg_split->[0];
+        $version = $pkg_split->[1];
+        $arch = $pkg_split->[2];
+        $build = [split /\./x, $pkg_split->[3]];
 
-		if (scalar @$build > 1) {
-			$build = [split /_/, $build->[0]];
+        if (scalar @$build > 1) {
+            $build = [split /_/, $build->[0]];
             $tag = $build->[1];
-			$build = $build->[0];
-		}
-	} elsif (scalar @$pkg_split == 6) {
-		if ($pkg_split->[3] =~ /\d/x) {
-			$title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2]));
-			$version = $pkg_split->[3];
-		} else {
-			$title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2], $pkg_split->[3]));
-			$version = '';
-		}
+            $build = $build->[0];
+        }
+    } elsif (scalar @$pkg_split == 6) {
+        if ($pkg_split->[3] =~ /\d/x) {
+            $title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2]));
+            $version = $pkg_split->[3];
+        } else {
+            $title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2], $pkg_split->[3]));
+            $version = '';
+        }
 
-		$arch = $pkg_split->[4];
-		$build = [split /\./x, $pkg_split->[5]];
+        $arch = $pkg_split->[4];
+        $build = [split /\./x, $pkg_split->[5]];
 
-		if (scalar @$build > 1) {
-			$build = [split /_/, $build->[0]];
+        if (scalar @$build > 1) {
+            $build = [split /_/, $build->[0]];
             $tag = $build->[1];
-			$build = $build->[0];
-		}
-	} elsif (scalar @$pkg_split == 7) {
-		$title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2], $pkg_split->[3]));
-		$version = $pkg_split->[4];
-		$arch = $pkg_split->[5];
-		$build = [split /\./x, $pkg_split->[6]];
+            $build = $build->[0];
+        }
+    } elsif (scalar @$pkg_split == 7) {
+        $title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2], $pkg_split->[3]));
+        $version = $pkg_split->[4];
+        $arch = $pkg_split->[5];
+        $build = [split /\./x, $pkg_split->[6]];
 
-		if (scalar @$build > 1) {
-			$build = [split /_/, $build->[0]];
+        if (scalar @$build > 1) {
+            $build = [split /_/, $build->[0]];
             $tag = $build->[1];
-			$build = $build->[0];
-		}
-	} elsif (scalar @$pkg_split == 8) {
-		$title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2], $pkg_split->[3], $pkg_split->[4]));
-		$version = $pkg_split->[5];
-		$arch = $pkg_split->[6];
-		$build = [split /\./x, $pkg_split->[7]];
+            $build = $build->[0];
+        }
+    } elsif (scalar @$pkg_split == 8) {
+        $title = join('-', ($pkg_split->[0], $pkg_split->[1], $pkg_split->[2], $pkg_split->[3], $pkg_split->[4]));
+        $version = $pkg_split->[5];
+        $arch = $pkg_split->[6];
+        $build = [split /\./x, $pkg_split->[7]];
 
-		if (scalar @$build > 1) {
-			$build = [split /_/, $build->[0]];
+        if (scalar @$build > 1) {
+            $build = [split /_/, $build->[0]];
             $tag = $build->[1];
-			$build = $build->[0];
-		}
-	}
+            $build = $build->[0];
+        }
+    }
 
     if (ref $build eq 'ARRAY') {
         $build = [split /_/x, $build->[0]]->[0];
     }
 
     return +{
-        title => $title,
+        title   => $title,
         version => $version,
-        arch => $arch,
-        build => $build
+        arch    => $arch,
+        build   => $build
     };
 }
 
