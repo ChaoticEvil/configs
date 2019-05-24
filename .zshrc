@@ -56,12 +56,6 @@ alias ls="ls --color=auto --group-directories-first"
 alias grep="grep --colour=auto"
 alias mocp="mocp -T nightly_theme"
 
-# SSH aliases
-alias 21stf="ssh -p 16622 web@212.109.223.252"
-alias dslife="ssh peter.brovchenko@cbroker-deploy.reg.ru"
-alias morph="ssh peter.brovchenko@31.31.205.31"
-alias logs="ssh peter.brovchenko@logs.reg.ru"
-
 PATH=$PATH:~/perl5/bin
 PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
 
