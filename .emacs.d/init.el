@@ -380,9 +380,6 @@
 	(while (re-search-forward "[ \t]+$" nil t)
 	  (replace-match "" t t))))
 
-;;
-;; Scala-mode settings
-;;
 
 ;; (setq exec-path (append exec-path (list "/usr/share/scala/bin" ))) ;; Set location of scala bin
 ;; (require 'scala-mode)
@@ -635,6 +632,19 @@
     :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+
+;;
+;; Scala
+;;
+
+(use-package ensime
+    :ensure t
+    :config
+    (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
+
+(setq exec-path (append exec-path (list "/usr/local/bin/scala" ))) ;; Set location of scala bin
+
+
 ;; (defun my-web-mode-hook ()
 ;;   "Hooks for Web mode."
 ;;   (setq web-mode-enable-current-element-highlight t)
@@ -707,19 +717,3 @@
 ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (tea-time org-bullets git-gutter dumb-jump aggressive-indent rainbow-delimiters apropospriate-theme panda-theme flycheck-irony company-irony irony company-anaconda company-go restclient yaml-mode highlight-symbol expand-region crux sr-speedbar markdown-mode lua-mode web-mode magit company nimbus-theme use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
