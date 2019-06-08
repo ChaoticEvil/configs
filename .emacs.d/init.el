@@ -380,33 +380,6 @@
 	(while (re-search-forward "[ \t]+$" nil t)
 	  (replace-match "" t t))))
 
-
-;; (setq exec-path (append exec-path (list "/usr/share/scala/bin" ))) ;; Set location of scala bin
-;; (require 'scala-mode)
-;; (require 'ensime)
-;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-;; (eval-after-load "scala-mode" 
-;;   '(progn
-;;     (define-key scala-mode-map (kbd "<f9>") 'ensime-builder-build)
-;;     (define-key scala-mode-map (kbd "<f10>") 'ensime-inf-switch)))
-
-;; (eval-after-load "scala-mode" 
-;;   '(progn
-;; 	(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-;; 	(define-key scala-mode-map (kbd "<f9>") 'scala-run)
-;; 	(define-key scala-mode-map (kbd "RET") 'newline-and-indent)
-;; 	))
-;; (defun scala-run () 
-;;   (interactive)   
-;;   (ensime-sbt-action "run")
-;;   (ensime-sbt-action "~compile")
-;;   (let ((c (current-buffer)))
-;;     (switch-to-buffer-other-window
-;; 	 (get-buffer-create (ensime-sbt-build-buffer-name)))
-;; 	(switch-to-buffer-other-window c))) 
-;; (setq exec-path
-;; 	  (append exec-path (list "/usr/share/scala/bin"))) ;; Set path for scalac bin
-
 ;;;
 ;;; Third-party packages settings
 ;;;
@@ -483,13 +456,6 @@
     :config
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-;; (use-package aggressive-indent
-;;     :ensure t
-;;     :config
-;;     (global-aggressive-indent-mode 1)
-;;     (add-to-list 'aggressive-indent-excluded-modes 'html-mode))
-
-
 ;; brew install the_silver_searcher
 (use-package dumb-jump
     :ensure t
@@ -498,7 +464,6 @@
            ("C-M-p" . dumb-jump-back)
            ("C-M-q" . dumb-jump-quick-look))
     :config (setq dumb-jump-force-searcher 'rg))
-
 
 ;; Magit
 (use-package magit
@@ -572,7 +537,7 @@
 ;; Smart region selection
 (use-package expand-region
     :ensure t
-    :bind ("M-=". 'er/expand-region))
+    :bind ("M--". 'er/expand-region))
 
 ;; Hightlight word under cursor
 (use-package highlight-symbol
@@ -583,6 +548,7 @@
            ("M-0" . 'highlight-symbol-mode))
     :config (setq highlight-symbol-on-navigation-p t))
 
+;; restclient - http client
 (use-package restclient
     :ensure t)
 
@@ -631,7 +597,6 @@
 (use-package org-bullets
     :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 
 ;;
 ;; Scala
