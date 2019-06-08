@@ -25,11 +25,11 @@ set include=yes           # include original text on reply?
 set forward_quote=yes     # include original text on forward?
 set delete=yes            # don't ask for delete confirmation
 
-set from = username@gmail.com
-set imap_user = username
-set imap_pass = password
-set smtp_url = smtp://username@smtp.gmail.com:587/
-set smtp_pass = secret
+set from = "@gmail.com"
+set imap_user = "@gmail.com"
+set imap_pass = ''
+set smtp_url = "smtp://@smtp.gmail.com:587/"
+set smtp_pass = ''
 
 # don't let your firewall kill your idle connection
 set imap_keepalive  = 900
@@ -38,7 +38,7 @@ set imap_keepalive  = 900
 set copy = no
 set move = no 
 
-set folder = imaps://imap.gmail.com:993
+set folder = "imaps://imap.gmail.com:993"
 set spoolfile = +INBOX #or +[Gmail]/Important
 set postponed = +[Gmail]/Drafts
 
@@ -52,3 +52,6 @@ alternative_order text/plain text/enriched text/html
 
 # Shortcuts
 bind index G imap-fetch-mail
+
+set send_charset = "utf-8"
+set charset = "utf-8"
