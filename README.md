@@ -18,6 +18,8 @@ The author also hopes that this examples of configuration files will be useful t
   * lynx
   * urxvt
   * emacs
+  * compton
+  * redshift
 * Optional
   * npm (for using eslint in Emacs)
 
@@ -26,13 +28,19 @@ Make sure that these packages are installed on your system.
 For Debian-based distribution:
 
 ```shell
-$ apt-get install feh cwm moc tmux mutt lynx rxvt-unicode-256color emacs25
+$ apt-get install feh cwm moc tmux mutt lynx rxvt-unicode-256color emacs compton redshift
 ```
 
 For Arch Linux
 
 ```shell
-$ pacman -Si feh cwm moc tmux mutt lynx rxvt-unicode emacs
+$ pacman -Si feh cwm moc tmux mutt lynx rxvt-unicode emacs compton redshift
+```
+
+For MacOS
+
+```shell
+$ brew install tmux mutt lynx emacs
 ```
 
 ## How to use it
@@ -51,6 +59,14 @@ $ npm install -g eslint
 ```
 		
 ## History
+
+### v0.8.0 [2019-06-08]
+* Rewrited Emacs config (total rewrite)
+* Fixed slupgrade.pl
+* Fixed .muttrc
+* Fixed README.md
+* Upgraded sbt 1.0 -> 1.2
+* Upgraded fonts (Iosevka 2.0.2 -> 2.2.1)
 
 ### v0.7.6 [2018-12-21]
 * Fixed .emacs.d
@@ -191,5 +207,3 @@ $ npm install -g eslint
 * Wrote README file.
 * Collection contains the best (according to the author) fonts for programming.
 * Added basic, working version of the configuration files: emacs, zsh, cwm, Xdefaults and xinitrc.
-
-<!-- EOF -->
