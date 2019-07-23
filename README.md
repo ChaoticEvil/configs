@@ -60,6 +60,10 @@ $ npm install -g eslint
 		
 ## History
 
+### v0.8.1 [2019-07-23]
+* Added yasnippet for Emacs
+* Fixed init.el config (typo)
+
 ### v0.8.0 [2019-06-08]
 * Rewrited Emacs config (total rewrite)
 * Fixed slupgrade.pl

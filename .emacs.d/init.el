@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/init.el
-;; Version: 0.8.0
+;; Version: 0.8.1
 ;;
 ;;; Commentary:
 ;;
@@ -113,8 +113,7 @@
 	  initial-scratch-message ""         ;; Empty string into *scratch* buffer
 	  confirm-kill-emacs nil             ;; Always confirm before closing Emacs?
 	  show-trailing-whitespace t         ;; Display trailing whitespace.
-	  frame-title-format "GNU Emacs: %b" ;; Set window title as 'GNU Emacs: <filename>'
-	  )
+	  frame-title-format "GNU Emacs: %b") ;; Set window title as 'GNU Emacs: <filename>'
 
 ;; Set font only if we're not in the terminal.
 (when (display-graphic-p)
@@ -360,8 +359,7 @@
 (add-hook 'cperl-mode-hook
           (lambda()
             (setq tab-width 4)
-            (setq indent-tabs-mode nil)
-            ))
+            (setq indent-tabs-mode nil)))
 
 ;; Finding perl modules paths
 (defun find-perl-module (module-name)
@@ -405,6 +403,12 @@
 ;; Set theme (Nimbus)
 (use-package nimbus-theme)
 
+;; Snippets
+(use-package yasnippet
+    :ensure t
+    :init
+    (yas-global-mode t))
+
 ;; Company mode for total auto-completion.
 (use-package company
     :diminish company-mode
@@ -430,9 +434,9 @@
         (add-to-list 'company-backends 'company-irony))
 
     (use-package company-anaconda
-      :ensure t
-      :config
-      (add-to-list 'company-backends 'company-anaconda)))
+        :ensure t
+        :config
+        (add-to-list 'company-backends 'company-anaconda)))
 
 ;; Python anaconda
 (use-package anaconda-mode
@@ -449,7 +453,6 @@
 (use-package flycheck-irony
     :ensure t
     :hook (flycheck-mode . flycheck-irony-setup))
-
 
 (use-package rainbow-delimiters
     :ensure t
@@ -496,13 +499,13 @@
            ("\\.vbhtml?\\'" . web-mode)
            ("\\.jinja\\'" . web-mode))
     :config (setq web-mode-markup-indent-offset 4
-                 web-mode-code-indent-offset 4
-                 web-mode-css-indent-offset 4
-                 js-indent-level 4
-                 web-mode-enable-auto-pairing t
-                 web-mode-enable-auto-expanding t
-                 web-mode-enable-css-colorization t
-                 web-mode-engines-alist '(("underscore" . "\\.html\\'")))
+                  web-mode-code-indent-offset 4
+                  web-mode-css-indent-offset 4
+                  js-indent-level 4
+                  web-mode-enable-auto-pairing t
+                  web-mode-enable-auto-expanding t
+                  web-mode-enable-css-colorization t
+                  web-mode-engines-alist '(("underscore" . "\\.html\\'")))
     (add-hook 'web-mode-hook 'electric-pair-mode))
 
 ;; Lua
@@ -519,21 +522,18 @@
     :bind (("<f12>" . sr-speedbar-toggle))
     :config (setq speedbar-show-unknown-files t ;; show all files
                   speedbar-use-images nil       ;; use text for buttons
-                  sr-speedbar-right-side nil    ;; put on left side
-                  ))
+                  sr-speedbar-right-side nil))    ;; put on left side
 
 ;; Pomidor
 (use-package pomidor
     :config (setq pomidor-sound-tick nil
-                  pomidor-sound-tack nil
-                  ))
+                  pomidor-sound-tack nil))
 ;; Crux
 (use-package crux
     :bind (("M-h" . crux-move-beginning-of-line)
            ("C-k" . crux-kill-whole-line)
-           ("C-j" . crux-top-join-line)
-           ))
- 
+           ("C-j" . crux-top-join-line)))
+
 ;; Smart region selection
 (use-package expand-region
     :ensure t
