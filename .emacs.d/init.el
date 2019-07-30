@@ -290,6 +290,13 @@
 ;; Org-mode
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
 (setq org-src-fontify-natively 't)
+(define-key org-mode-map (kbd "M-e") nil)
+(org-babel-do-load-languages
+ 'org-babel-load-languages '(
+                             (C . t)
+                             (shell . t)
+                             (perl . t)
+                             (python . t)))
 
 ;; Execute Emacs command
 (global-unset-key (kbd "<f5>"))
