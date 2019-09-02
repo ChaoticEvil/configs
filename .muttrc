@@ -117,12 +117,7 @@ macro index <f3> '<sync-mailbox><enter-command>source ~/.mutt/peter.brovchenko.r
 # --------------------------------------------------------------------------------
 
 # Gmail accounts
-folder-hook 'peter.brovchenko.reg.ru' 'source ~/.mutt/peter.brovchenko.reg.ru'
 folder-hook 'peter.brovchenko.gmail.com' 'source ~/.mutt/peter.brovchenko.gmail.com'
-
-# Protonmail accounts
-folder-hook 'dr.brduch.protonmail.com' 'source ~/.mutt/dr.brduch.protonmail.com'
-#folder-hook 'peter.brovchenko.gmail.com' 'source ~/.mutt/peter.brovchenko.gmail.com'
 
 # Default account
 source ~/.mutt/peter.brovchenko.gmail.com
