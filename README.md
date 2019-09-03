@@ -60,6 +60,14 @@ $ npm install -g eslint
 		
 ## History
 
+<!-- ### v0.9.0 [2019-00-00] -->
+<!-- * Fixed esling with Emacs -->
+<!-- * Add Emacs linting for Scala -->
+<!-- * Add Emacs linting for Python -->
+<!-- * Add Emacs linting for C programming language -->
+<!-- * Upgraded fonts () -->
+<!-- * Added working mutt config for using with multiple accounts (gmail and protonmail) -->
+
 ### v0.8.1 [2019-07-23]
 * Added yasnippet for Emacs
 * Fixed init.el config (typo)
