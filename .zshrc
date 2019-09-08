@@ -1,15 +1,6 @@
-#
-# Author: Peter P. Neuromantic <p.brovchenko@protonmail.com>
-# This configuration file is based on the .zshrc file of my brother.
-#
-
 export LANG=en_US.UTF-8
 export LESS=eFRX
 export EDITOR="nano" # Default console editor
-
-export JAVA_HOME=/usr/lib64/jdk1.8.0_162
-export SCALA_HOME=/usr/lib64/scala
-export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
 
 bindkey -e # Emacs-like shortcuts
 bindkey '\e[3~' delete-char # now del character works ok
@@ -50,18 +41,17 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' rehash true
 
 # Command aliases
-alias df="df -h"
-alias lsa="ls -lAh --color=auto --group-directories-first"
-alias ls="ls --color=auto --group-directories-first"
-alias grep="grep --colour=auto"
-alias mocp="mocp -T nightly_theme"
+# alias df="df -h"
+# alias lsa="ls -lAh --color=auto --group-directories-first"
+# alias ls="ls --color=auto --group-directories-first"
+# alias grep="grep --colour=auto"
+# alias mocp="mocp -T nightly_theme"
 
-PATH=$PATH:~/perl5/bin
-PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
-
-export ANDROID_HOME=/home/peter/opt/android_sdk
-export _JAVA_OPTIONS='-Dsun.java2d.opengl=true'
-export _JAVA_AWT_WM_NONREPARENTING=1
+# export PATH=$PATH:~/perl5/bin
+# export PERL5LIB=$PERL5LIB:~/perl5/lib/perl5
+# export JAVA_HOME=/usr/lib64/jdk1.8.0_162
+# export SCALA_HOME=/usr/lib64/scala
+# export PATH=$PATH:$JAVA_HOME/bin:$SCALA_HOME/bin
 
 export TERM=xterm-256color
 export COLORTERM=trueolor
