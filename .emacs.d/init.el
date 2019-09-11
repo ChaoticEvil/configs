@@ -347,7 +347,7 @@
 (add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
 (add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
 
-(setq cperl-invalid-face nil)    ;; disable errors
+;; (setq cperl-invalid-face nil)    ;; disable errors
 (setq cperl-electric-keywords t) ;; expands for keywords such as foreach, while, etc...
 
 ;; Autocomplete pairs
@@ -368,14 +368,6 @@
           (lambda()
             (setq tab-width 4)
             (setq indent-tabs-mode nil)))
-
-;; Finding perl modules paths
-(defun find-perl-module (module-name)
-  (interactive "sPerl module name: ")
-  (let ((path (perl-module-path module-name)))
-    (if path
-        (find-file path)
-      (error "Module '%s' not found" module-name))))
 
 ;;;
 ;;; Third-party packages settings
@@ -403,11 +395,14 @@
 (use-package nimbus-theme
     :ensure t)
 
-;; Snippets
+;; Snippets system
 (use-package yasnippet
     :ensure t
-    :init
-    (yas-global-mode t))
+    :init (yas-global-mode t)
+    :config
+    ;; Snippets collection
+    (use-package yasnippet-snippets
+        :ensure t))
 
 ;; Company mode for total auto-completion.
 (use-package company
@@ -438,12 +433,13 @@
         :config
         (add-to-list 'company-backends 'company-anaconda))
 
-    (use-package company-plsense
-        :ensure t
-        :config
-        (add-to-list 'company-backends 'company-plsense)
-        (add-hook 'perl-mode-hook 'company-mode)
-        (add-hook 'cperl-mode-hook 'company-mode)))
+    ;; (use-package company-plsense
+    ;;     :ensure t
+    ;;     :config
+    ;;     (add-to-list 'company-backends 'company-plsense)
+    ;;     (add-hook 'perl-mode-hook 'company-mode)
+    ;;     (add-hook 'cperl-mode-hook 'company-mode))
+    )
 
 ;; Python anaconda
 (use-package anaconda-mode
@@ -557,10 +553,31 @@
 (use-package flycheck
     :ensure t
     :config
-    (add-hook 'after-init-hook 'global-flycheck-mode)
+    (add-hook 'after-init-hook #'global-flycheck-mode)
+
     (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.30.0/bin"
                                        "/usr/local/Cellar/perl/5.30.0/lib/perl"
                                        "/Volumes/data/peter/perl5"))
+    ;; Flycheck and perlcritic
+    (flycheck-define-checker perl-perlcritic
+      "A perl syntax checker using perlcritic. See URL `http://search.cpan.org/dist/Perl-Critic/bin/perlcritic'"
+      :command ("perlcritic" "-p" "/Volumes/data/peter/.perlcriticrc" source)
+      :error-patterns
+      ((error line ":" column ":" (any "5") ":" (message))
+       (warning line ":" column ":" (any "234") ":" (message))
+       (info line ":" column ":" (any "1") ":" (message)))
+      :modes (cperl-mode perl-mode)
+      :next-checkers (perl))
+
+    (flycheck-define-checker perl
+      "A Perl syntax checker using the Perl interpreter. See URL `http://www.perl.org'."
+      :command ("perl" "-w" "-c" source)
+      :error-patterns
+      ((error line-start (minimal-match (message))
+              " at " (file-name) " line " line
+              (or "." (and ", " (zero-or-more not-newline))) line-end))
+      :modes (perl-mode cperl-mode))
+
     ;;(add-hook 'flycheck-mode-hook 'jc/use-eslint-from-node-modules)
     ;;(add-to-list 'flycheck-checkers 'proselint)
     (setq-default flycheck-highlighting-mode 'lines)
@@ -636,9 +653,8 @@
 
 (global-unset-key "\C-o")
 (setq ps/key-prefix "\C-o")
-(setq ps/load-flymake t)
-
 (setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
+
 (if (string-match "Devel.PerlySense.external" ps/external-dir)
     (progn
       (message
@@ -654,12 +670,5 @@
 Is Devel::PerlySense installed properly?
 Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir)
   )
-
-(setq flymake-no-changes-timeout 9999)
-(setq flymake-start-syntax-check-on-newline nil)
 (setq ps/enable-test-coverage-visualization nil)
-;;(set-face-background 'flymake-errline "antique white")
-;;(set-face-background 'flymake-warnline "lavender")
-;;(set-face-background 'dropdown-list-face "lightgrey")
-;;(set-face-background 'dropdown-list-selection-face "grey")
 (setq ps/use-prepare-shell-command t)
