@@ -44,6 +44,9 @@
 (defun is-in-terminal()
   (not (display-graphic-p)))
 
+;; Line numbers
+(global-display-line-numbers-mode)
+
 ;; Fringes
 (if (not (is-in-terminal))
     (fringe-mode '(8 . 0))
@@ -276,16 +279,6 @@
 (ido-everywhere                t)
 (setq ido-vitrual-buffers      t)
 (setq ido-enable-flex-matching t)
-
-;; Linum
-(require 'linum)
-(line-number-mode   t)    ;; Show current line number in modeline
-(global-linum-mode  t)    ;; Show lines numbers in all buffers
-(column-number-mode t)    ;; Show column number in modeline
-;; Set format for line numbers
-(if (not (is-in-terminal))
-    (setq linum-format " %d")
-  (setq linum-format " %d "))
 
 ;; Org-mode
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
