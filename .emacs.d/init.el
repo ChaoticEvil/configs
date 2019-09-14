@@ -57,10 +57,55 @@
 (if (not (is-in-terminal))
     (scroll-bar-mode   -1))
 
-;; Print supplement info in modeline
-(display-time-mode             t) ;; Time
-(setq display-time-24hr-format t) ;; Time format
-(size-indication-mode          t) ;; Show filesize in % (percent)
+;; Set custom format for modeline
+(setq-default mode-line-format
+              (list
+               "----------"
+               ;; the buffer name; the file name as a tool tip
+               '(:eval (propertize " %b " 'face 'font-lock-keyword-face))
+
+               ;; line and column
+               "(" ;; '%02' to set to 2 chars at least; prevents flickering
+               (propertize "%02lL" 'face 'font-lock-type-face) ","
+               (propertize "%02cC" 'face 'font-lock-type-face)
+               ") "
+
+               ;; relative position, size of file
+               "["
+               (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+               "/"
+               (propertize "%I" 'face 'font-lock-constant-face) ;; size
+               "] "
+
+               ;; the current major mode for the buffer.
+               "["
+               '(:eval (propertize "%m" 'face 'font-lock-string-face))
+               "] "
+
+
+               "[" ;; insert vs overwrite mode, input-method in a tooltip
+               '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+                        'face 'font-lock-preprocessor-face))
+
+               ;; was this buffer modified since the last save?
+               '(:eval (when (buffer-modified-p)
+                         (concat ","  (propertize "Mod"
+                                                  'face 'font-lock-warning-face))))
+
+               ;; is this buffer read-only?
+               '(:eval (when buffer-read-only
+                         (concat ","  (propertize "RO"
+                                                  'face 'font-lock-type-face))))
+               "] "
+
+               ;; minor modes
+               ;; minor-mode-alist
+
+               ;; add the time, with the date and the emacs uptime in the tooltip
+               '(:eval (propertize (format-time-string "%H:%M")))
+
+               " %-" ;; fill with '-'
+               ))
 
 ;; Words wrap
 (setq word-wrap          t) ;; Wrap by word
