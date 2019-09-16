@@ -82,7 +82,6 @@
                '(:eval (propertize "%m" 'face 'font-lock-string-face))
                "] "
 
-
                "[" ;; insert vs overwrite mode, input-method in a tooltip
                '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
                         'face 'font-lock-preprocessor-face))
