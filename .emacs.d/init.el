@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/init.el
-;; Version: 0.9.0
+;; Version: 0.8.2
 ;;
 ;;; Commentary:
 ;;
@@ -701,11 +701,9 @@
                        (expand-file-name
                         (format "%s/%s" ps/external-dir "emacs")
                         ) load-path))
-      (load "perly-sense")
-      )
+      (load "perly-sense"))
   (message "Could not identify PerlySense install dir.
 Is Devel::PerlySense installed properly?
-Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir)
-  )
+Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir))
 (setq ps/enable-test-coverage-visualization nil)
 (setq ps/use-prepare-shell-command t)

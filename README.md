@@ -49,7 +49,7 @@ $ brew install tmux mutt lynx emacs
 $ git clone https://github.com/ChaoticEvil/configs.git
 $ cp -r configs/. ~/
 ```
-	
+
 ### For using eslint in Emacs
 
 For using eslint with js2-mode in Emacs - install eslint globally:
@@ -57,16 +57,20 @@ For using eslint with js2-mode in Emacs - install eslint globally:
 ```shell
 $ npm install -g eslint
 ```
-		
+
 ## History
 
-<!-- ### v0.9.0 [2019-00-00] -->
-<!-- * Fixed esling with Emacs -->
-<!-- * Add Emacs linting for Scala -->
-<!-- * Add Emacs linting for Python -->
-<!-- * Add Emacs linting for C programming language -->
-<!-- * Upgraded fonts () -->
-<!-- * Added working mutt config for using with multiple accounts (gmail and protonmail) -->
+### v0.8.2 [2019-10-01]
+* Fixed .perltidyrc
+* Fixed .perlcriticrc
+* Fixed esling with Emacs
+* Fixed Emacs modeline format
+* Fixed tmux option 'window-status-current-style'
+* Add fonts: (Anonymous Pro Minus, MS Cascadia)
+* Add working mutt config for using with multiple gmail accounts
+* Remove sr-speedbar from emacs config
+* Upgraded sbt 1.2 -> 1.3
+* Upgraded fonts (Iosevka 2.2.1 -> 2.3.0)
 
 ### v0.8.1 [2019-07-23]
 * Added yasnippet for Emacs
