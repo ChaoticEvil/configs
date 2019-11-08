@@ -60,7 +60,7 @@ $ npm install -g eslint
 
 ## History
 
-### v0.8.2 [2019-10-01]
+### v0.8.2 [2019-11-08]
 * Fixed .perltidyrc
 * Fixed .perlcriticrc
 * Fixed esling with Emacs
