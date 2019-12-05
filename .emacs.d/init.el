@@ -1,10 +1,10 @@
 ;;; init.el --- Peter's Emacs config file
 ;;
-;; Copyright (C) 2015-2019 by Peter Brovchenko <p.brovchenko@protonmail.com>
+;; Copyright (C) 2015-2020 by Peter Brovchenko <p.brovchenko@protonmail.com>
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/init.el
-;; Version: 0.8.2
+;; Version: 0.8.3
 ;;
 ;;; Commentary:
 ;;
