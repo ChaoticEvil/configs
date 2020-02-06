@@ -12,9 +12,9 @@
 ;;
 ;;; Code:
 
-;;;
+;;; ================================================================================
 ;;; Common settings
-;;;
+;;; ================================================================================
 
 ;; Increase GC threshold to speed up startup.
 ;; Reset the GC threshold after initialization, and GC whenever we tab out.
@@ -63,6 +63,8 @@
                "----------"
                ;; the buffer name; the file name as a tool tip
                '(:eval (propertize " %b " 'face 'font-lock-keyword-face))
+
+               '(:eval (list (nyan-create)))
 
                ;; line and column
                "(" ;; '%02' to set to 2 chars at least; prevents flickering
@@ -145,9 +147,14 @@
 ;; Remove trailing whitespace before save buffer
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;;;
+;;; ================================================================================
+;;; /Common settings
+;;; ================================================================================
+
+
+;;; ================================================================================
 ;;; Look and Feel settings
-;;;
+;;; ================================================================================
 
 (electric-pair-mode 1) ;; Autocompare scopes
 (show-paren-mode t)    ;; Enable highlight for scopes
@@ -183,9 +190,14 @@
 ;; Highlight current line
 (global-hl-line-mode nil)
 
-;;;
+;;; ================================================================================
+;;; /Look and Feel settings
+;;; ================================================================================
+
+
+;;; ================================================================================
 ;;; Shortcusts settings
-;;;
+;;; ================================================================================
 
 ;; Move cursor up
 (global-unset-key (kbd "M-i"))
@@ -312,9 +324,14 @@
      (setq mac-command-modifier 'meta)
      (setq mac-option-modifier nil))))
 
-;;;
+;;; ================================================================================
+;;; /Shortcusts settings
+;;; ================================================================================
+
+
+;;; ================================================================================
 ;;; Biltin packages settings
-;;;
+;;; ================================================================================
 
 ;; IDO
 (require 'ido)
@@ -368,47 +385,14 @@
 (global-set-key (kbd "M-b") 'bookmark-jump)
 (global-set-key (kbd "<f4>") 'bookmark-bmenu-list)
 
-;;
-;; C
-;;
+;;; ================================================================================
+;;; /Biltin packages settings
+;;; ================================================================================
 
-(setq-default c-basic-offset 4) ;; Set indention for C-mode
 
-;;
-;; Perl
-;;
-
-;; Auto associate with cperl-mode
-(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\|t\\)\\'" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
-(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
-
-;; (setq cperl-invalid-face nil)    ;; disable errors
-(setq cperl-electric-keywords t) ;; expands for keywords such as foreach, while, etc...
-
-;; Autocomplete pairs
-(mapc
- (lambda (pair)
-   (if (eq (cdr pair) 'perl-mode)
-       (setcdr pair 'cperl-mode)))
- (append auto-mode-alist interpreter-mode-alist))
-
-;; Indentation
-(setq cperl-indent-level 4
-      cperl-close-paren-offset -4
-      cperl-continued-statement-offset 4
-      cperl-indent-parens-as-block t
-      cperl-tab-always-indent t)
-
-(add-hook 'cperl-mode-hook
-          (lambda()
-            (setq tab-width 4)
-            (setq indent-tabs-mode nil)))
-
-;;;
+;;; ================================================================================
 ;;; Third-party packages settings
-;;;
+;;; ================================================================================
 
 (require 'package)
 ;; Explicitly enable packages.
@@ -470,29 +454,13 @@
         :config
         (add-to-list 'company-backends 'company-anaconda))
 
-    ;; (use-package company-plsense
-    ;;     :ensure t
-    ;;     :config
-    ;;     (add-to-list 'company-backends 'company-plsense)
-    ;;     (add-hook 'perl-mode-hook 'company-mode)
-    ;;     (add-hook 'cperl-mode-hook 'company-mode))
+    (use-package company-plsense
+        :ensure t
+        :config
+        (add-to-list 'company-backends 'company-plsense)
+        (add-hook 'perl-mode-hook 'company-mode)
+        (add-hook 'cperl-mode-hook 'company-mode))
     )
-
-;; Python anaconda
-(use-package anaconda-mode
-    :ensure t
-    :config
-    (add-hook 'python-mode-hook 'anaconda-mode)
-    (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
-
-;; C
-(use-package irony
-    :ensure t
-    :hook (c-mode . irony-mode))
-
-(use-package flycheck-irony
-    :ensure t
-    :hook (flycheck-mode . flycheck-irony-setup))
 
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
@@ -549,11 +517,6 @@
                   web-mode-engines-alist '(("underscore" . "\\.html\\'")))
     (add-hook 'web-mode-hook 'electric-pair-mode))
 
-;; Lua
-(use-package lua-mode
-    :mode "\\.lua\\'"
-    :config (setq lua-indent-level 4))
-
 ;; Markdowm
 (use-package markdown-mode
     :mode "\\.md\\'")
@@ -592,8 +555,8 @@
     :config
     (add-hook 'after-init-hook #'global-flycheck-mode)
 
-    (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.30.0/bin"
-                                       "/usr/local/Cellar/perl/5.30.0/lib/perl"
+    (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.30.1/bin"
+                                       "/usr/local/Cellar/perl/5.30.1/lib/perl"
                                        "/Volumes/data/peter/perl5"))
     ;; Flycheck and perlcritic
     (flycheck-define-checker perl-perlcritic
@@ -658,7 +621,147 @@
     :ensure t
     :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+;; nyan-mode
+(use-package nyan-mode
+    :ensure t
+    :config
+    (setq nyan-animate-nyancat t))
+
+;;; ================================================================================
+;;; /Third-party packages settings
+;;; ================================================================================
+
+
+;; ================================================================================
+;; Languages
+;; ================================================================================
+
+;; --------------------------------------------------------------------------------
+;; C
 ;;
+
+;; Set indention for C-mode
+(setq-default c-basic-offset 4)
+
+(use-package irony
+    :ensure t
+    :hook (c-mode . irony-mode))
+
+(use-package flycheck-irony
+    :ensure t
+    :hook (flycheck-mode . flycheck-irony-setup))
+
+;;
+;; /C
+;; --------------------------------------------------------------------------------
+
+
+;; --------------------------------------------------------------------------------
+;; Perl
+;;
+
+;; Auto associate with cperl-mode
+(add-to-list 'auto-mode-alist '("\\.\\([pP][Llm]\\|al\\|t\\)\\'" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("perl5" . cperl-mode))
+(add-to-list 'interpreter-mode-alist '("miniperl" . cperl-mode))
+
+(setq cperl-invalid-face nil)    ;; disable errors
+(setq cperl-electric-keywords t) ;; expands for keywords such as foreach, while, etc...
+
+;; Autocomplete pairs
+(mapc
+ (lambda (pair)
+   (if (eq (cdr pair) 'perl-mode)
+       (setcdr pair 'cperl-mode)))
+ (append auto-mode-alist interpreter-mode-alist))
+
+;; Indentation
+(setq cperl-indent-level 4
+      cperl-close-paren-offset -4
+      cperl-continued-statement-offset 4
+      cperl-indent-parens-as-block t
+      cperl-tab-always-indent t)
+
+(add-hook 'cperl-mode-hook
+          (lambda()
+            (setq tab-width 4)
+            (setq indent-tabs-mode nil)))
+
+;; Perly-seanse
+(global-unset-key "\C-o")
+(setq ps/key-prefix "\C-o")
+(setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
+
+(if (string-match "Devel.PerlySense.external" ps/external-dir)
+    (progn
+      (message
+       "PerlySense elisp files  at (%s) according to perly_sense, loading..."
+       ps/external-dir)
+      (setq load-path (cons
+                       (expand-file-name
+                        (format "%s/%s" ps/external-dir "emacs")
+                        ) load-path))
+      (load "perly-sense"))
+  (message "Could not identify PerlySense install dir.
+Is Devel::PerlySense installed properly?
+Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir))
+(setq ps/enable-test-coverage-visualization nil)
+(setq ps/use-prepare-shell-command t)
+
+;;
+;; /Perl
+;; --------------------------------------------------------------------------------
+
+
+;; --------------------------------------------------------------------------------
+;; JavaScript
+;;
+
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;; needed: npm install -g eslint
+(add-hook 'js2-mode-hook
+          (defun my-js2-mode-setup ()
+            (flycheck-mode t)
+            (when (executable-find "eslint")
+              (flycheck-select-checker 'javascript-eslint))))
+
+;;
+;; /JavaScript
+;; --------------------------------------------------------------------------------
+
+
+;; --------------------------------------------------------------------------------
+;; Lua
+;;
+
+(use-package lua-mode
+    :mode "\\.lua\\'"
+    :config (setq lua-indent-level 4))
+
+;;
+;; /Lua
+;; --------------------------------------------------------------------------------
+
+
+;; --------------------------------------------------------------------------------
+;; Python
+;;
+
+;; Python anaconda
+(use-package anaconda-mode
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+
+;;
+;; /Python
+;; --------------------------------------------------------------------------------
+
+
+;; --------------------------------------------------------------------------------
 ;; Scala
 ;;
 
@@ -682,28 +785,29 @@
      'self-insert-command
      minibuffer-local-completion-map))
 
-(setq exec-path (append exec-path (list "/usr/share/scala/bin" ))) ;; Set location of scala bin
+;; Set location of scala bin
+(setq exec-path (append exec-path (list "/usr/share/scala/bin" )))
 
 ;;
-;; Perly-seanse
-;;
+;; /Scala
+;; --------------------------------------------------------------------------------
 
-(global-unset-key "\C-o")
-(setq ps/key-prefix "\C-o")
-(setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
+;; ================================================================================
+;; /Languages
+;; ================================================================================
 
-(if (string-match "Devel.PerlySense.external" ps/external-dir)
-    (progn
-      (message
-       "PerlySense elisp files  at (%s) according to perly_sense, loading..."
-       ps/external-dir)
-      (setq load-path (cons
-                       (expand-file-name
-                        (format "%s/%s" ps/external-dir "emacs")
-                        ) load-path))
-      (load "perly-sense"))
-  (message "Could not identify PerlySense install dir.
-Is Devel::PerlySense installed properly?
-Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir))
-(setq ps/enable-test-coverage-visualization nil)
-(setq ps/use-prepare-shell-command t)
+;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (nyan-mode emojify yasnippet-snippets yaml-mode web-mode use-package restclient rainbow-delimiters pomidor org-bullets nimbus-theme markdown-mode magit lua-mode json-mode js2-mode highlight-symbol flycheck-irony expand-region ensime dumb-jump crux company-irony company-anaconda))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

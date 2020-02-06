@@ -60,8 +60,9 @@ $ npm install -g eslint
 
 ## History
 
-<!-- ### v0.8.3 [2020-01-00] -->
-<!-- *  -->
+### v0.8.3 [2020-02-06]
+* Add nyan-mode for Emacs
+* Fixes perly_sense error show (using flymake)
 
 ### v0.8.2 [2019-11-08]
 * Fixed .perltidyrc
