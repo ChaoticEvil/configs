@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/init.el
-;; Version: 0.8.3
+;; Version: 0.8.4
 ;;
 ;;; Commentary:
 ;;
@@ -427,40 +427,48 @@
 
 ;; Company mode for total auto-completion.
 (use-package company
+    :ensure t
     :diminish company-mode
     :bind ("M-/" . company-complete)
     :hook (after-init . global-company-mode)
     :config (setq company-backends (remove 'company-ropemacs company-backends)
-                  company-tooltip-limit 20 company-tooltip-align-annotations t)
-    :init (setq company-idle-delay nil
-                ;; Align tooltips to right border.
-                company-tooltip-align-annotations t)
+                  company-tooltip-limit 20
+                  company-tooltip-align-annotations t)
+    :init (setq company-idle-delay 0
+                company-tooltip-align-annotations t
+                company-minimum-prefix-length 3)
     (global-company-mode 1))
 
-(use-package company
+(use-package company-irony
     :ensure t
-    :diminish
     :config
-    (add-hook 'after-init-hook 'global-company-mode)
-    (setq company-idle-delay t)
+    (require 'company)
+    (add-to-list 'company-backends 'company-irony))
 
-    (use-package company-irony
-        :ensure t
-        :config
-        (add-to-list 'company-backends 'company-irony))
+;; (use-package company
+;;     :ensure t
+;;     :diminish
+;;     :config
+;;     (add-hook 'after-init-hook 'global-company-mode)
+;;     (setq company-idle-delay t)
 
-    (use-package company-anaconda
-        :ensure t
-        :config
-        (add-to-list 'company-backends 'company-anaconda))
+;;     (use-package company-irony
+;;         :ensure t
+;;         :config
+;;         (add-to-list 'company-backends 'company-irony))
 
-    (use-package company-plsense
-        :ensure t
-        :config
-        (add-to-list 'company-backends 'company-plsense)
-        (add-hook 'perl-mode-hook 'company-mode)
-        (add-hook 'cperl-mode-hook 'company-mode))
-    )
+;;     (use-package company-anaconda
+;;         :ensure t
+;;         :config
+;;         (add-to-list 'company-backends 'company-anaconda))
+
+;;     ;; (use-package company-plsense
+;;     ;;     :ensure t
+;;     ;;     :config
+;;     ;;     (add-to-list 'company-backends 'company-plsense)
+;;     ;;     (add-hook 'perl-mode-hook 'company-mode)
+;;     ;;     (add-hook 'cperl-mode-hook 'company-mode))
+;;     )
 
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
@@ -645,7 +653,10 @@
 
 (use-package irony
     :ensure t
-    :hook (c-mode . irony-mode))
+    :config
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
 (use-package flycheck-irony
     :ensure t
@@ -797,17 +808,3 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;; ================================================================================
 
 ;;; init.el ends here
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (nyan-mode emojify yasnippet-snippets yaml-mode web-mode use-package restclient rainbow-delimiters pomidor org-bullets nimbus-theme markdown-mode magit lua-mode json-mode js2-mode highlight-symbol flycheck-irony expand-region ensime dumb-jump crux company-irony company-anaconda))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

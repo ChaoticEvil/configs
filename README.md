@@ -60,6 +60,9 @@ $ npm install -g eslint
 
 ## History
 
+<!-- ### v0.8.4 [2020-03-00] -->
+<!-- * Upgraded fonts (Iosevka 2.3.0 -> 3.0.0) -->
+
 ### v0.8.3 [2020-02-06]
 * Add nyan-mode for Emacs
 * Fixes perly_sense error show (using flymake)
