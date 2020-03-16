@@ -529,6 +529,12 @@
 (use-package markdown-mode
     :mode "\\.md\\'")
 
+;; YAML
+(use-package yaml-mode
+    :ensure t
+    :mode (("\\.yml\\"   . yaml-mode)
+           ("\\.yaml\\'" . yaml-mode)))
+
 ;; Pomidor
 (use-package pomidor
     :config (setq pomidor-sound-tick nil
