@@ -416,6 +416,8 @@
 (use-package nimbus-theme
     :ensure t)
 
+(load-theme 'nimbus t)
+
 ;; Snippets system
 (use-package yasnippet
     :ensure t
@@ -530,10 +532,10 @@
     :mode "\\.md\\'")
 
 ;; YAML
-(use-package yaml-mode
-    :ensure t
-    :mode (("\\.yml\\"   . yaml-mode)
-           ("\\.yaml\\'" . yaml-mode)))
+; (use-package yaml-mode
+;     :ensure t
+;     :mode (("\\.yml\\"   . yaml-mode)
+;            ("\\.yaml\\'" . yaml-mode)))
 
 ;; Pomidor
 (use-package pomidor
@@ -782,10 +784,10 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;; Scala
 ;;
 
-(use-package ensime
-    :ensure t
-    :config
-    (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
+;; (use-package ensime
+;;     :ensure t
+;;     :config
+;;     (add-hook 'scala-mode-hook 'ensime-scala-mode-hook))
 
 (use-package scala-mode
     :ensure t
