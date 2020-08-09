@@ -16,6 +16,11 @@
 ;;; Common settings
 ;;; ================================================================================
 
+(defun insert-timestamp ()
+  "Insert current timestamp under cursor."
+  (interactive)
+  (insert (format-time-string "%Z: %F %H:%M:%S")))
+
 ;; Increase GC threshold to speed up startup.
 ;; Reset the GC threshold after initialization, and GC whenever we tab out.
 (setq gc-cons-threshold (* 64 1000 1000))
@@ -438,7 +443,8 @@
                   company-tooltip-align-annotations t)
     :init (setq company-idle-delay 0
                 company-tooltip-align-annotations t
-                company-minimum-prefix-length 3)
+                company-minimum-prefix-length 3
+                auto-compile-update-autoloads t)
     (global-company-mode 1))
 
 (use-package company-irony
@@ -571,8 +577,8 @@
     :config
     (add-hook 'after-init-hook #'global-flycheck-mode)
 
-    (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.30.1/bin"
-                                       "/usr/local/Cellar/perl/5.30.1/lib/perl"
+    (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.32.0/bin"
+                                       "/usr/local/Cellar/perl/5.32.0/lib/perl"
                                        "/Volumes/data/peter/perl5"))
     ;; Flycheck and perlcritic
     (flycheck-define-checker perl-perlcritic

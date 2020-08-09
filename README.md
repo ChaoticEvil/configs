@@ -60,12 +60,15 @@ $ npm install -g eslint
 
 ## History
 
-<!-- ### v0.8.4 [2020-03-00] -->
-<!-- * Upgraded fonts (Iosevka 2.3.0 -> 3.0.0) -->
+### v0.8.4 [2020-08-09]
+* Added `insert-timestamp` function to emacs
+* Fixed: README* typo
+* Fixed default perl5 paths for emacs flycheck
+* Upgraded fonts (Iosevka 2.3.0 -> 3.4.0)
 
 ### v0.8.3 [2020-02-06]
-* Add nyan-mode for Emacs
-* Fixes perly_sense error show (using flymake)
+* Added nyan-mode for Emacs
+* Fixed perly_sense error show (using flymake)
 
 ### v0.8.2 [2019-11-08]
 * Fixed .perltidyrc
@@ -73,8 +76,8 @@ $ npm install -g eslint
 * Fixed esling with Emacs
 * Fixed Emacs modeline format
 * Fixed tmux option 'window-status-current-style'
-* Add fonts: (Anonymous Pro Minus, MS Cascadia)
-* Add working mutt config for using with multiple gmail accounts
+* Added fonts: (Anonymous Pro Minus, MS Cascadia)
+* Added working mutt config for using with multiple gmail accounts
 * Remove sr-speedbar from emacs config
 * Upgraded sbt 1.2 -> 1.3
 * Upgraded fonts (Iosevka 2.2.1 -> 2.3.0)
@@ -183,7 +186,7 @@ $ npm install -g eslint
 * Fixed: OS X meta for Emacs
 
 ### v0.5.2 [2017-06-02]
-* Fixes: Some improvements in Emacs config
+* Fixed: Some improvements in Emacs config
 
 ### v0.5.1 [2017-04-09]
 * Removed: custom emacs themes directory
@@ -204,22 +207,22 @@ $ npm install -g eslint
 * Removed: some unused fonts
 
 ### v0.4.2 [2016-11-18]
-* Add GO-fonts (https://blog.golang.org/go-fonts) to the collection of fonts
+* Added GO-fonts (https://blog.golang.org/go-fonts) to the collection of fonts
 
 ### v0.4.1 [2016-10-22]
 * Minor edits in README.md
 
 ### v0.4 [2016-10-22]
-* Add tmux config file
+* Added tmux config file
 * Upgrade Iosevka fonts (from 1.9.2 to 1.9.4)
-* Add st (http://st.suckless.org/) config file
-* Add dwm (http://dwm.suckless.org/) config file
+* Added st (http://st.suckless.org/) config file
+* Added dwm (http://dwm.suckless.org/) config file
 
 ### v0.3 [2016-08-11]
 * Some refactoring in emacs config.
 * Separate emacs config in multiple small files.
 * Upgrade Iosevka fonts (from 1.7.1 to 1.9.2)
-* Add eslint config and emacs connections witn him.
+* Added eslint config and emacs connections witn him.
 
 ### v0.2 [2016-01-18]
 * Update fonts collection.
