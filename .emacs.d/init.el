@@ -4,7 +4,7 @@
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/init.el
-;; Version: 0.8.4
+;; Version: 0.8.5
 ;;
 ;;; Commentary:
 ;;
@@ -15,11 +15,6 @@
 ;;; ================================================================================
 ;;; Common settings
 ;;; ================================================================================
-
-(defun insert-timestamp ()
-  "Insert current timestamp under cursor."
-  (interactive)
-  (insert (format-time-string "%Z: %F %H:%M:%S")))
 
 ;; Increase GC threshold to speed up startup.
 ;; Reset the GC threshold after initialization, and GC whenever we tab out.
@@ -69,7 +64,7 @@
                ;; the buffer name; the file name as a tool tip
                '(:eval (propertize " %b " 'face 'font-lock-keyword-face))
 
-               '(:eval (list (nyan-create)))
+               ;; '(:eval (list (nyan-create)))
 
                ;; line and column
                "(" ;; '%02' to set to 2 chars at least; prevents flickering
@@ -322,10 +317,10 @@
 
 ;; Change Meta for OS X
 (cond
-  ((string-equal system-type "darwin") ; Mac OS X
+  ((string-equal system-type "darwin")
    (progn
      (setq mac-option-key-is-meta nil)
-     (setq mac-command-key-is-meta t)
+     (setq mac-command-key-is-meta nil)
      (setq mac-command-modifier 'meta)
      (setq mac-option-modifier nil))))
 
@@ -349,10 +344,8 @@
 ;; Org-mode
 (setq org-todo-keywords '((sequence "TODO" "IN PROGRESS" "|" "DONE" "DELEGATED")))
 (setq org-src-fontify-natively 't)
-;;(define-key org-mode-map (kbd "M-e") nil)
 (org-babel-do-load-languages
- 'org-babel-load-languages '(
-                             (C . t)
+ 'org-babel-load-languages '((C . t)
                              (shell . t)
                              (perl . t)
                              (python . t)))
@@ -443,8 +436,7 @@
                   company-tooltip-align-annotations t)
     :init (setq company-idle-delay 0
                 company-tooltip-align-annotations t
-                company-minimum-prefix-length 3
-                auto-compile-update-autoloads t)
+                company-minimum-prefix-length 3)
     (global-company-mode 1))
 
 (use-package company-irony
@@ -452,31 +444,6 @@
     :config
     (require 'company)
     (add-to-list 'company-backends 'company-irony))
-
-;; (use-package company
-;;     :ensure t
-;;     :diminish
-;;     :config
-;;     (add-hook 'after-init-hook 'global-company-mode)
-;;     (setq company-idle-delay t)
-
-;;     (use-package company-irony
-;;         :ensure t
-;;         :config
-;;         (add-to-list 'company-backends 'company-irony))
-
-;;     (use-package company-anaconda
-;;         :ensure t
-;;         :config
-;;         (add-to-list 'company-backends 'company-anaconda))
-
-;;     ;; (use-package company-plsense
-;;     ;;     :ensure t
-;;     ;;     :config
-;;     ;;     (add-to-list 'company-backends 'company-plsense)
-;;     ;;     (add-hook 'perl-mode-hook 'company-mode)
-;;     ;;     (add-hook 'cperl-mode-hook 'company-mode))
-;;     )
 
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
@@ -538,15 +505,22 @@
     :mode "\\.md\\'")
 
 ;; YAML
-; (use-package yaml-mode
-;     :ensure t
-;     :mode (("\\.yml\\"   . yaml-mode)
-;            ("\\.yaml\\'" . yaml-mode)))
+(use-package yaml-mode
+    :ensure t
+    :mode (("\\.yml\\'"   . yaml-mode)
+           ("\\.yaml\\'" . yaml-mode)))
 
 ;; Pomidor
 (use-package pomidor
+    :ensure t
     :config (setq pomidor-sound-tick nil
-                  pomidor-sound-tack nil))
+                  pomidor-sound-tack nil)
+    :hook (pomidor-mode . (lambda ()
+                            (display-line-numbers-mode -1)
+                            (setq left-fringe-width 0 right-fringe-width 0)
+                            (setq left-margin-width 2 right-margin-width 0)
+                            (set-window-buffer nil (current-buffer)))))
+
 ;; Crux
 (use-package crux
     :bind (("M-h" . crux-move-beginning-of-line)
@@ -567,9 +541,13 @@
            ("M-0" . 'highlight-symbol-mode))
     :config (setq highlight-symbol-on-navigation-p t))
 
-;; restclient - http client
+;; Restclient - http client
 (use-package restclient
     :ensure t)
+(use-package company-restclient
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-restclient))
 
 ;; Syntax check
 (use-package flycheck
@@ -600,8 +578,6 @@
               (or "." (and ", " (zero-or-more not-newline))) line-end))
       :modes (perl-mode cperl-mode))
 
-    ;;(add-hook 'flycheck-mode-hook 'jc/use-eslint-from-node-modules)
-    ;;(add-to-list 'flycheck-checkers 'proselint)
     (setq-default flycheck-highlighting-mode 'lines)
     ;; Define fringe indicator / warning levels
     (define-fringe-bitmap 'flycheck-fringe-bitmap-ball
@@ -713,27 +689,6 @@
             (setq tab-width 4)
             (setq indent-tabs-mode nil)))
 
-;; Perly-seanse
-(global-unset-key "\C-o")
-(setq ps/key-prefix "\C-o")
-(setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
-
-(if (string-match "Devel.PerlySense.external" ps/external-dir)
-    (progn
-      (message
-       "PerlySense elisp files  at (%s) according to perly_sense, loading..."
-       ps/external-dir)
-      (setq load-path (cons
-                       (expand-file-name
-                        (format "%s/%s" ps/external-dir "emacs")
-                        ) load-path))
-      (load "perly-sense"))
-  (message "Could not identify PerlySense install dir.
-Is Devel::PerlySense installed properly?
-Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir))
-(setq ps/enable-test-coverage-visualization nil)
-(setq ps/use-prepare-shell-command t)
-
 ;;
 ;; /Perl
 ;; --------------------------------------------------------------------------------
@@ -743,15 +698,16 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;; JavaScript
 ;;
 
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;; needed: npm install -g eslint
-(add-hook 'js2-mode-hook
+(use-package js2-mode
+    :ensure t
+    :config
+    (add-hook 'js2-mode-hook
           (defun my-js2-mode-setup ()
             (flycheck-mode t)
             (when (executable-find "eslint")
-              (flycheck-select-checker 'javascript-eslint))))
+              (flycheck-select-checker 'javascript-eslint)))))
 
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 ;;
 ;; /JavaScript
 ;; --------------------------------------------------------------------------------
@@ -775,11 +731,11 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;;
 
 ;; Python anaconda
-(use-package anaconda-mode
-    :ensure t
-    :config
-    (add-hook 'python-mode-hook 'anaconda-mode)
-    (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+;; (use-package anaconda-mode
+;;     :ensure t
+;;     :config
+;;     (add-hook 'python-mode-hook 'anaconda-mode)
+;;     (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
 
 ;;
 ;; /Python
@@ -802,23 +758,69 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
     :config
     (setq scala-indent:use-javadoc-style t))
 
-(use-package sbt-mode
-    :commands sbt-start sbt-command
-    :config
-    (substitute-key-definition
-     'minibuffer-complete-word
-     'self-insert-command
-     minibuffer-local-completion-map))
+;; (use-package sbt-mode
+;;     :commands sbt-start sbt-command
+;;     :config
+;;     (substitute-key-definition
+;;      'minibuffer-complete-word
+;;      'self-insert-command
+;;      minibuffer-local-completion-map))
 
-;; Set location of scala bin
-(setq exec-path (append exec-path (list "/usr/share/scala/bin" )))
+;; ;; Set location of scala bin
+;; (setq exec-path (append exec-path (list "/usr/share/scala/bin" )))
 
 ;;
 ;; /Scala
 ;; --------------------------------------------------------------------------------
 
+
+(use-package lsp-mode
+  :ensure t
+  :config
+  (add-hook 'cperl-mode-hook #'lsp)
+  (add-hook 'python-mode-hook #'lsp)
+  (setq lsp-print-performance t)
+  (setq lsp-enable-snippet t)
+  (with-eval-after-load 'lsp-mode
+    ;; :project/:workspace/:file
+    (setq lsp-modeline-diagnostics-scope :project))
+  :commands lsp)
+
+(use-package lsp-ui
+    :ensure t)
+
+;; (use-package 'lsp-imenu
+;;     :ensure t
+;;     :config
+;;     (add-hook 'lsp-after-open-hook 'lsp-enable-imenu))
+
+(use-package company-lsp
+    :ensure t
+    :config
+    (push 'company-lsp company-backends))
+
+(use-package lsp-treemacs
+    :ensure    t)
+
+;; (use-package lispy
+;;   :ensure    t
+;;   :diminish  lispy-mode
+;;   :hook      ((emacs-lisp-mode . lispy-mode)
+;;              (scheme-mode . lispy-mode)))
+
 ;; ================================================================================
 ;; /Languages
 ;; ================================================================================
+
+
+;; Для писательства
+;; (use-package writeroom-mode
+;;     :ensure t)
+
+
+;; (use-package flyspell
+;;   :hook ((org-mode-hook . flyspell-mode)
+;;          (text-mode-hook . flyspell-mode)
+;;          (markdown-mode-hook . flyspell-mode)))
 
 ;;; init.el ends here
