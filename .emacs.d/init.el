@@ -789,29 +789,19 @@
 (use-package lsp-ui
     :ensure t)
 
-;; (use-package 'lsp-imenu
-;;     :ensure t
-;;     :config
-;;     (add-hook 'lsp-after-open-hook 'lsp-enable-imenu))
+(use-package 'lsp-imenu
+    :ensure t
+    :config
+    (add-hook 'lsp-after-open-hook 'lsp-enable-imenu))
 
 (use-package company-lsp
     :ensure t
     :config
     (push 'company-lsp company-backends))
 
-(use-package lsp-treemacs
-    :ensure    t)
-
-;; (use-package lispy
-;;   :ensure    t
-;;   :diminish  lispy-mode
-;;   :hook      ((emacs-lisp-mode . lispy-mode)
-;;              (scheme-mode . lispy-mode)))
-
 ;; ================================================================================
 ;; /Languages
 ;; ================================================================================
-
 
 ;; Для писательства
 ;; (use-package writeroom-mode
