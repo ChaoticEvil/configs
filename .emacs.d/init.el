@@ -431,8 +431,7 @@
     :diminish company-mode
     :bind ("M-/" . company-complete)
     :hook (after-init . global-company-mode)
-    :config (setq company-backends (remove 'company-ropemacs company-backends)
-                  company-tooltip-limit 20
+    :config (setq company-tooltip-limit 20
                   company-tooltip-align-annotations t)
     :init (setq company-idle-delay 0
                 company-tooltip-align-annotations t
@@ -784,6 +783,12 @@
   (with-eval-after-load 'lsp-mode
     ;; :project/:workspace/:file
     (setq lsp-modeline-diagnostics-scope :project))
+  (setq-default lsp-pyls-configuration-sources ["flake8"])
+  (lsp-register-custom-settings
+   '(("pyls.plugins.pyls_mypy.enabled" t t)
+     ("pyls.plugins.pyls_mypy.live_mode" nil t)
+     ("pyls.plugins.pyls_isort.enabled" t t)))
+  :hook ((python-mode . lsp))
   :commands lsp)
 
 (use-package lsp-ui
@@ -798,6 +803,11 @@
     :ensure t
     :config
     (push 'company-lsp company-backends))
+
+(use-package elpy
+   :ensure t
+   :init
+   (elpy-enable))
 
 ;; ================================================================================
 ;; /Languages
@@ -814,3 +824,16 @@
 ;;          (markdown-mode-hook . flyspell-mode)))
 
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(elpy company-lsp lsp-ui lsp-mode scala-mode lua-mode js2-mode flycheck-irony nyan-mode org-bullets flycheck company-restclient restclient highlight-symbol expand-region crux pomidor yaml-mode markdown-mode web-mode magit dumb-jump rainbow-delimiters company-irony company yasnippet-snippets yasnippet nimbus-theme use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
