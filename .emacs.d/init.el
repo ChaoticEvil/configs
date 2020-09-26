@@ -772,42 +772,51 @@
 ;; /Scala
 ;; --------------------------------------------------------------------------------
 
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :config
+;;   (add-hook 'cperl-mode-hook #'lsp)
+;;   (add-hook 'python-mode-hook #'lsp)
+;;   (setq lsp-print-performance t)
+;;   (setq lsp-enable-snippet t)
+;;   (with-eval-after-load 'lsp-mode
+;;     ;; :project/:workspace/:file
+;;     (setq lsp-modeline-diagnostics-scope :project))
+;;   (setq-default lsp-pyls-configuration-sources ["flake8"])
+;;   (lsp-register-custom-settings
+;;    '(("pyls.plugins.pyls_mypy.enabled" t t)
+;;      ("pyls.plugins.pyls_mypy.live_mode" nil t)
+;;      ("pyls.plugins.pyls_isort.enabled" t t)))
+;;   :hook ((python-mode . lsp))
+;;   :commands lsp)
 
-(use-package lsp-mode
-  :ensure t
-  :config
-  (add-hook 'cperl-mode-hook #'lsp)
-  (add-hook 'python-mode-hook #'lsp)
-  (setq lsp-print-performance t)
-  (setq lsp-enable-snippet t)
-  (with-eval-after-load 'lsp-mode
-    ;; :project/:workspace/:file
-    (setq lsp-modeline-diagnostics-scope :project))
-  (setq-default lsp-pyls-configuration-sources ["flake8"])
-  (lsp-register-custom-settings
-   '(("pyls.plugins.pyls_mypy.enabled" t t)
-     ("pyls.plugins.pyls_mypy.live_mode" nil t)
-     ("pyls.plugins.pyls_isort.enabled" t t)))
-  :hook ((python-mode . lsp))
-  :commands lsp)
+;; (use-package lsp-ui
+;;     :ensure t)
 
-(use-package lsp-ui
-    :ensure t)
+;; (use-package 'lsp-imenu
+;;     :ensure t
+;;     :config
+;;     (add-hook 'lsp-after-open-hook 'lsp-enable-imenu))
 
-(use-package 'lsp-imenu
-    :ensure t
-    :config
-    (add-hook 'lsp-after-open-hook 'lsp-enable-imenu))
-
-(use-package company-lsp
-    :ensure t
-    :config
-    (push 'company-lsp company-backends))
+;; (use-package company-lsp
+;;     :ensure t
+;;     :config
+;;     (push 'company-lsp company-backends))
 
 (use-package elpy
    :ensure t
    :init
-   (elpy-enable))
+   (elpy-enable)
+   :config
+   (setq python-shell-interpreter "ipython"
+         python-shell-interpreter-args "-i --simple-prompt")
+   (define-key python-mode-map (kbd "M-.") 'jedi:goto-definition)
+   (setq jedi:complete-on-dot t)
+  :hook
+  (add-hook 'python-mode-hook 'jedi:setup))
+
+(use-package pyenv-mode
+    :ensure t)
 
 ;; ================================================================================
 ;; /Languages
@@ -817,11 +826,10 @@
 ;; (use-package writeroom-mode
 ;;     :ensure t)
 
-
-;; (use-package flyspell
-;;   :hook ((org-mode-hook . flyspell-mode)
-;;          (text-mode-hook . flyspell-mode)
-;;          (markdown-mode-hook . flyspell-mode)))
+(use-package flyspell
+  :hook ((org-mode-hook . flyspell-mode)
+         (text-mode-hook . flyspell-mode)
+         (markdown-mode-hook . flyspell-mode)))
 
 ;;; init.el ends here
 (custom-set-variables
@@ -830,7 +838,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(elpy company-lsp lsp-ui lsp-mode scala-mode lua-mode js2-mode flycheck-irony nyan-mode org-bullets flycheck company-restclient restclient highlight-symbol expand-region crux pomidor yaml-mode markdown-mode web-mode magit dumb-jump rainbow-delimiters company-irony company yasnippet-snippets yasnippet nimbus-theme use-package)))
+   '(alert pyenv-mode pyenv elpy company-lsp lsp-ui lsp-mode scala-mode lua-mode js2-mode flycheck-irony nyan-mode org-bullets flycheck company-restclient restclient highlight-symbol expand-region crux pomidor yaml-mode markdown-mode web-mode magit dumb-jump rainbow-delimiters company-irony company yasnippet-snippets yasnippet nimbus-theme use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
