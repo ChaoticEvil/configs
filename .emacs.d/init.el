@@ -8,7 +8,7 @@
 ;;
 ;;; Commentary:
 ;;
-;; Yet another Emacs customisation :)
+;; Yet another Emacs customization :)
 ;;
 ;;; Code:
 
