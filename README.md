@@ -58,7 +58,23 @@ For using eslint with js2-mode in Emacs - install eslint globally:
 $ npm install -g eslint
 ```
 
+### Py
+
+pip install jedi autopep8 flake8 ipython importmagic yapf isort black mypy
+
+### Perl
+
+cpan i Devel::PerlySense Perl::Critic Perl::Tidy Devel::Cover
+
 ## History
+
+### v0.8.5 [2020-09-00] {IN_PROGRESS}
+* Added yaml-mode for
+* Added lsp-mode for Scala lang (scala-mode, sbt, metals)
+* Fixed: pomidor plugin inclusion
+* Fixed: js2-mode plugin inclusion
+* Removed: nyan-mode plugin inclusion
+* ...
 
 ### v0.8.4 [2020-08-09]
 * Added `insert-timestamp` function to emacs
