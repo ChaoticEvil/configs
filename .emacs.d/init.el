@@ -438,26 +438,11 @@
                 company-minimum-prefix-length 3)
     (global-company-mode 1))
 
-(use-package company-irony
-    :ensure t
-    :config
-    (require 'company)
-    (add-to-list 'company-backends 'company-irony))
-
 ;; Rainbow delimiters
 (use-package rainbow-delimiters
     :ensure t
     :config
     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
-
-;; brew install the_silver_searcher
-(use-package dumb-jump
-    :ensure t
-    :diminish dumb-jump-mode
-    :bind (("C-M-g" . dumb-jump-go)
-           ("C-M-p" . dumb-jump-back)
-           ("C-M-q" . dumb-jump-quick-look))
-    :config (setq dumb-jump-force-searcher 'rg))
 
 ;; Magit
 (use-package magit
@@ -556,7 +541,8 @@
 
     (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.32.0/bin"
                                        "/usr/local/Cellar/perl/5.32.0/lib/perl"
-                                       "/Volumes/data/peter/perl5"))
+                                       "/Volumes/data/perl5"
+                                       "/Volumes/data/work/regru/srs"))
     ;; Flycheck and perlcritic
     (flycheck-define-checker perl-perlcritic
       "A perl syntax checker using perlcritic. See URL `http://search.cpan.org/dist/Perl-Critic/bin/perlcritic'"
@@ -712,12 +698,6 @@
 (use-package writeroom-mode
     :ensure t)
 
-;; Spell checking
-(use-package flyspell
-    :hook ((org-mode-hook . flyspell-mode)
-           (text-mode-hook . flyspell-mode)
-           (markdown-mode-hook . flyspell-mode)))
-
 ;;; ================================================================================
 ;;; /Third-party packages settings
 ;;; ================================================================================
@@ -740,6 +720,12 @@
     (add-hook 'c-mode-hook 'irony-mode)
     (add-hook 'c++-mode-hook 'irony-mode)
     (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+(use-package company-irony
+    :ensure t
+    :config
+    (require 'company)
+    (add-to-list 'company-backends 'company-irony))
 
 (use-package flycheck-irony
     :ensure t
@@ -781,6 +767,44 @@
           (lambda()
             (setq tab-width 4)
             (setq indent-tabs-mode nil)))
+
+;; *** PerlySense Config ***
+(global-unset-key "\C-o")
+(setq ps/key-prefix "\C-o")
+(setq ps/load-flymake t)
+(setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
+(if (string-match "Devel.PerlySense.external" ps/external-dir)
+    (progn
+      (message
+       "PerlySense elisp files  at (%s) according to perly_sense, loading..."
+       ps/external-dir)
+      (setq load-path (cons
+                       (expand-file-name
+                        (format "%s/%s" ps/external-dir "emacs")
+                        ) load-path))
+      (load "perly-sense")
+      )
+  (message "Could not identify PerlySense install dir.
+Is Devel::PerlySense installed properly?
+Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir)
+  )
+;; ** Flymake Config **
+;; If you only want syntax check whenever you save, not continously
+(setq flymake-no-changes-timeout 9999)
+(setq flymake-start-syntax-check-on-newline nil)
+;; ** Code Coverage Visualization **
+;; If you have a Devel::CoverX::Covered database handy and want to
+;; display the sub coverage in the source, set this to t
+(setq ps/enable-test-coverage-visualization nil)
+;; Run calls to perly_sense as a prepared shell command. Experimental
+;; optimization, please try it out.
+(setq ps/use-prepare-shell-command t)
+
+;; Autocompletion
+(use-package company-plsense
+    :ensure t
+    :config
+    (add-to-list 'company-backends 'company-plsense))
 
 ;;
 ;; /Perl
@@ -899,5 +923,3 @@
 ;; ================================================================================
 ;; /Languages
 ;; ================================================================================
-
-;;; init.el ends here

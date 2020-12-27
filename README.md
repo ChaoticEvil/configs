@@ -72,7 +72,7 @@ $ cpan i Devel::PerlySense Perl::Critic Perl::Tidy Devel::Cover
 
 ## History
 
-### v0.8.5 [2020-09-00] {IN_PROGRESS}
+### v0.8.5 [2020-12-27]
 * Added yaml-mode
 * Added lsp-mode for Scala lang (scala-mode, sbt, metals)
 * Fixed: pomidor plugin inclusion
