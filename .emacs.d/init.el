@@ -498,9 +498,11 @@
 (use-package pomidor
     :ensure t
     :config (setq pomidor-sound-tick nil
-                  pomidor-sound-tack nil)
+                  pomidor-sound-tack nil
+                  pomidor-sound-overwork nil
+	              pomidor-sound-break-over nil)
     :hook (pomidor-mode . (lambda ()
-                            (display-line-numbers-mode -1)
+                            (display-line-numbers-mode nil)
                             (setq left-fringe-width 0 right-fringe-width 0)
                             (setq left-margin-width 2 right-margin-width 0)
                             (set-window-buffer nil (current-buffer)))))
@@ -923,3 +925,16 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;; ================================================================================
 ;; /Languages
 ;; ================================================================================
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(alert lsp-ui lsp-metals lsp-mode sbt-mode scala-mode pyenv-mode elpy lua-mode js2-mode company-plsense flycheck-irony company-irony irony writeroom-mode treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs org-bullets flycheck company-restclient restclient highlight-symbol expand-region crux pomidor yaml-mode markdown-mode web-mode magit rainbow-delimiters company yasnippet-snippets yasnippet nimbus-theme use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
