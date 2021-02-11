@@ -542,8 +542,10 @@
     (add-hook 'after-init-hook #'global-flycheck-mode)
 
     (setq flycheck-perl-include-path '("/usr/local/Cellar/perl/5.32.0/bin"
-                                       "/usr/local/Cellar/perl/5.32.0/lib/perl"
+                                       "/usr/local/Cellar/perl/5.32.0/lib/perl5"
                                        "/Volumes/data/perl5"
+                                       "/Volumes/data/perl5/bin"
+                                       "/Volumes/data/perl5/lib/perl5"
                                        "/Volumes/data/work/regru/srs"))
     ;; Flycheck and perlcritic
     (flycheck-define-checker perl-perlcritic
@@ -771,36 +773,28 @@
             (setq indent-tabs-mode nil)))
 
 ;; *** PerlySense Config ***
+
+;; The PerlySense prefix key (unset only if needed, like for \C-o)
 (global-unset-key "\C-o")
 (setq ps/key-prefix "\C-o")
-(setq ps/load-flymake t)
+
+;; *** PerlySense load (don't touch) ***
 (setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
 (if (string-match "Devel.PerlySense.external" ps/external-dir)
-    (progn
-      (message
-       "PerlySense elisp files  at (%s) according to perly_sense, loading..."
-       ps/external-dir)
-      (setq load-path (cons
-                       (expand-file-name
-                        (format "%s/%s" ps/external-dir "emacs")
-                        ) load-path))
-      (load "perly-sense")
-      )
-  (message "Could not identify PerlySense install dir.
+   (progn
+     (message
+      "PerlySense elisp files  at (%s) according to perly_sense, loading..."
+      ps/external-dir)
+     (setq load-path (cons
+                      (expand-file-name
+                       (format "%s/%s" ps/external-dir "emacs")
+                       ) load-path))
+     (load "perly-sense")
+     )
+ (message "Could not identify PerlySense install dir.
 Is Devel::PerlySense installed properly?
 Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir)
-  )
-;; ** Flymake Config **
-;; If you only want syntax check whenever you save, not continously
-(setq flymake-no-changes-timeout 9999)
-(setq flymake-start-syntax-check-on-newline nil)
-;; ** Code Coverage Visualization **
-;; If you have a Devel::CoverX::Covered database handy and want to
-;; display the sub coverage in the source, set this to t
-(setq ps/enable-test-coverage-visualization nil)
-;; Run calls to perly_sense as a prepared shell command. Experimental
-;; optimization, please try it out.
-(setq ps/use-prepare-shell-command t)
+ )
 
 ;; Autocompletion
 (use-package company-plsense
@@ -925,16 +919,3 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;; ================================================================================
 ;; /Languages
 ;; ================================================================================
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(alert lsp-ui lsp-metals lsp-mode sbt-mode scala-mode pyenv-mode elpy lua-mode js2-mode company-plsense flycheck-irony company-irony irony writeroom-mode treemacs-persp treemacs-magit treemacs-icons-dired treemacs-projectile treemacs org-bullets flycheck company-restclient restclient highlight-symbol expand-region crux pomidor yaml-mode markdown-mode web-mode magit rainbow-delimiters company yasnippet-snippets yasnippet nimbus-theme use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
