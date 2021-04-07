@@ -1,10 +1,10 @@
 ;;; init.el --- Peter's Emacs config file
 ;;
-;; Copyright (C) 2015-2020 by Peter Brovchenko <p.brovchenko@protonmail.com>
+;; Copyright (C) 2015-2021 by Peter Brovchenko <p.brovchenko@protonmail.com>
 ;;
 ;; Author: Peter Brovchenko <p.brovchenko@protonmail.com>
 ;; URL: https://github.com/ChaoticEvil/configs/tree/master/.emacs.d/init.el
-;; Version: 0.8.5
+;; Version: 0.8.6
 ;;
 ;;; Commentary:
 ;;
@@ -351,8 +351,8 @@
                              (python . t)))
 
 ;; Execute Emacs command
-(global-unset-key (kbd "<f5>"))
-(global-set-key (kbd "<f5>") 'execute-extended-command)
+(global-unset-key (kbd "C-5"))
+(global-set-key (kbd "C-5") 'execute-extended-command)
 
 ;; List of buffers (with *scratch)
 (require 'bs)
@@ -702,6 +702,15 @@
 (use-package writeroom-mode
     :ensure t)
 
+;; Projectile
+(use-package projectile
+    :ensure t
+    :init
+    (projectile-mode +1)
+    :bind (:map projectile-mode-map
+                ("s-p" . projectile-command-map)
+                ("C-c p" . projectile-command-map)))
+
 ;;; ================================================================================
 ;;; /Third-party packages settings
 ;;; ================================================================================
@@ -772,29 +781,16 @@
             (setq tab-width 4)
             (setq indent-tabs-mode nil)))
 
-;; *** PerlySense Config ***
-
+;; PerlySense Config
 ;; The PerlySense prefix key (unset only if needed, like for \C-o)
 (global-unset-key "\C-o")
 (setq ps/key-prefix "\C-o")
+;; (setq ps/load-flymake t)
 
-;; *** PerlySense load (don't touch) ***
 (setq ps/external-dir (shell-command-to-string "perly_sense external_dir"))
-(if (string-match "Devel.PerlySense.external" ps/external-dir)
-   (progn
-     (message
-      "PerlySense elisp files  at (%s) according to perly_sense, loading..."
-      ps/external-dir)
-     (setq load-path (cons
-                      (expand-file-name
-                       (format "%s/%s" ps/external-dir "emacs")
-                       ) load-path))
-     (load "perly-sense")
-     )
- (message "Could not identify PerlySense install dir.
-Is Devel::PerlySense installed properly?
-Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-dir)
- )
+(setq load-path (cons (expand-file-name (format "%s/%s" ps/external-dir "emacs"))
+                      load-path))
+(load "perly-sense")
 
 ;; Autocompletion
 (use-package company-plsense
@@ -919,3 +915,5 @@ Does 'perly_sense external_dir' give you a proper directory? (%s)" ps/external-d
 ;; ================================================================================
 ;; /Languages
 ;; ================================================================================
+
+;;; init.el ends here
